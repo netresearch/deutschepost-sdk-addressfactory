@@ -1,0 +1,228 @@
+<?php
+
+/**
+ * See LICENSE.md for license details.
+ */
+
+declare(strict_types=1);
+
+namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
+
+class PackstationType
+{
+    /**
+     * @var string $Nr
+     */
+    protected $Nr;
+
+    /**
+     * @var string $Plz
+     */
+    protected $Plz;
+
+    /**
+     * @var OrtType $Ort
+     */
+    protected $Ort;
+
+    /**
+     * @var OrtszusatzType $Ortszusatz
+     */
+    protected $Ortszusatz;
+
+    /**
+     * @var string $Gemeinde
+     */
+    protected $Gemeinde;
+
+    /**
+     * @var string $Kreis
+     */
+    protected $Kreis;
+
+    /**
+     * @var string $RegBezirk
+     */
+    protected $RegBezirk;
+
+    /**
+     * @var string $Bundesland
+     */
+    protected $Bundesland;
+
+    /**
+     * @var LeitdatenType $Leitdaten
+     */
+    protected $Leitdaten;
+
+    /**
+     * @return string
+     */
+    public function getNr(): string
+    {
+        return $this->Nr;
+    }
+
+    /**
+     * @param string $Nr
+     *
+     * @return PackstationType
+     */
+    public function setNr(string $Nr): PackstationType
+    {
+        $this->Nr = $Nr;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlz(): string
+    {
+        return $this->Plz;
+    }
+
+    /**
+     * @param string $Plz
+     *
+     * @return PackstationType
+     */
+    public function setPlz(string $Plz): PackstationType
+    {
+        $this->Plz = $Plz;
+        return $this;
+    }
+
+    /**
+     * @return OrtType
+     */
+    public function getOrt(): OrtType
+    {
+        return $this->Ort;
+    }
+
+    /**
+     * @param OrtType $Ort
+     *
+     * @return PackstationType
+     */
+    public function setOrt(OrtType $Ort): PackstationType
+    {
+        $this->Ort = $Ort;
+        return $this;
+    }
+
+    /**
+     * @return OrtszusatzType
+     */
+    public function getOrtszusatz(): OrtszusatzType
+    {
+        return $this->Ortszusatz;
+    }
+
+    /**
+     * @param OrtszusatzType $Ortszusatz
+     *
+     * @return PackstationType
+     */
+    public function setOrtszusatz(OrtszusatzType $Ortszusatz): PackstationType
+    {
+        $this->Ortszusatz = $Ortszusatz;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGemeinde(): string
+    {
+        return $this->Gemeinde;
+    }
+
+    /**
+     * @param string $Gemeinde
+     *
+     * @return PackstationType
+     */
+    public function setGemeinde(string $Gemeinde): PackstationType
+    {
+        $this->Gemeinde = $Gemeinde;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKreis(): string
+    {
+        return $this->Kreis;
+    }
+
+    /**
+     * @param string $Kreis
+     *
+     * @return PackstationType
+     */
+    public function setKreis(string $Kreis): PackstationType
+    {
+        $this->Kreis = $Kreis;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegBezirk(): string
+    {
+        return $this->RegBezirk;
+    }
+
+    /**
+     * @param string $RegBezirk
+     *
+     * @return PackstationType
+     */
+    public function setRegBezirk(string $RegBezirk): PackstationType
+    {
+        $this->RegBezirk = $RegBezirk;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBundesland(): string
+    {
+        return $this->Bundesland;
+    }
+
+    /**
+     * @param string $Bundesland
+     *
+     * @return PackstationType
+     */
+    public function setBundesland(string $Bundesland): PackstationType
+    {
+        $this->Bundesland = $Bundesland;
+        return $this;
+    }
+
+    /**
+     * @return LeitdatenType
+     */
+    public function getLeitdaten(): LeitdatenType
+    {
+        return $this->Leitdaten;
+    }
+
+    /**
+     * @param LeitdatenType $Leitdaten
+     *
+     * @return PackstationType
+     */
+    public function setLeitdaten(LeitdatenType $Leitdaten): PackstationType
+    {
+        $this->Leitdaten = $Leitdaten;
+        return $this;
+    }
+}
