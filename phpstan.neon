@@ -1,3 +1,6 @@
 includes:
 parameters:
-  ignoreErrors:
+	ignoreErrors:
+		-
+			message: '/Access to an undefined property SoapFault::\$faultstring./'
+			path: src/Soap/ClientDecorator/ErrorHandlerDecorator.php

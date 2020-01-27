@@ -41,10 +41,10 @@ $ ./vendor/bin/phpunit -c test/phpunit.xml
 
 The Postdirekt Addressfactory API SDK supports the following features:
 
-* Get address data
-* Get extended address data
+* Get address record by flat address data
+* Get address record by complex address data
 
-### Address Data
+### Get Record
 
 TODO: explain `ProcessSimpleDataRequest` web service call:
 * public api services
@@ -59,7 +59,7 @@ t.b.d.
 
 t.b.d.
 
-### Extended Address Data
+### Get Record By Complex Address
 
 TODO: explain `ProcessDataRequest` web service call:
 * public api services
