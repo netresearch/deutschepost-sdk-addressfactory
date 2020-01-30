@@ -22,14 +22,10 @@ class OrtType
 
     /**
      * @param string $value
-     * @param string $kurz
      */
-    public function __construct(
-        string $value,
-        string $kurz
-    ) {
+    public function __construct(string $value)
+    {
         $this->_ = $value;
-        $this->kurz = $kurz;
     }
 
     /**
@@ -38,17 +34,6 @@ class OrtType
     public function getValue(): string
     {
         return $this->_;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return OrtType
-     */
-    public function setValue(string $value): OrtType
-    {
-        $this->_ = $value;
-        return $this;
     }
 
     /**
@@ -61,12 +46,9 @@ class OrtType
 
     /**
      * @param string $kurz
-     *
-     * @return OrtType
      */
-    public function setKurz(string $kurz): OrtType
+    public function setKurz(string $kurz): void
     {
         $this->kurz = $kurz;
-        return $this;
     }
 }

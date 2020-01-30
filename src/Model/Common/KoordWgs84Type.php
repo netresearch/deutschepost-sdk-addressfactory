@@ -11,44 +11,25 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class KoordWgs84Type
 {
     /**
-     * @var string $Laenge
-     */
-    protected $Laenge;
-
-    /**
      * @var string $Breite
      */
     protected $Breite;
 
     /**
-     * @param string $Laenge
+     * @var string $Laenge
+     */
+    protected $Laenge;
+
+    /**
      * @param string $Breite
+     * @param string $Laenge
      */
     public function __construct(
-        string $Laenge,
-        string $Breite
+        string $Breite,
+        string $Laenge
     ) {
-        $this->Laenge = $Laenge;
         $this->Breite = $Breite;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLaenge(): string
-    {
-        return $this->Laenge;
-    }
-
-    /**
-     * @param string $Laenge
-     *
-     * @return KoordWgs84Type
-     */
-    public function setLaenge(string $Laenge): KoordWgs84Type
-    {
         $this->Laenge = $Laenge;
-        return $this;
     }
 
     /**
@@ -60,13 +41,10 @@ class KoordWgs84Type
     }
 
     /**
-     * @param string $Breite
-     *
-     * @return KoordWgs84Type
+     * @return string
      */
-    public function setBreite(string $Breite): KoordWgs84Type
+    public function getLaenge(): string
     {
-        $this->Breite = $Breite;
-        return $this;
+        return $this->Laenge;
     }
 }

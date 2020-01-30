@@ -22,14 +22,10 @@ class StrasseType
 
     /**
      * @param string $value
-     * @param string $kurz
      */
-    public function __construct(
-        string $value,
-        string $kurz
-    ) {
+    public function __construct(string $value)
+    {
         $this->_ = $value;
-        $this->kurz = $kurz;
     }
 
     /**
@@ -38,17 +34,6 @@ class StrasseType
     public function getValue(): string
     {
         return $this->_;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return StrasseType
-     */
-    public function setValue(string $value): StrasseType
-    {
-        $this->_ = $value;
-        return $this;
     }
 
     /**
@@ -61,12 +46,9 @@ class StrasseType
 
     /**
      * @param string $kurz
-     *
-     * @return StrasseType
      */
-    public function setKurz(string $kurz): StrasseType
+    public function setKurz(string $kurz): void
     {
         $this->kurz = $kurz;
-        return $this;
     }
 }

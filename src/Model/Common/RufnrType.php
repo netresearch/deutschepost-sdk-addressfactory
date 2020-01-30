@@ -21,7 +21,7 @@ class RufnrType
     protected $Durchwahl;
 
     /**
-     * One of: Unbekannt, Privat, Geschaeftlich, Mobil, Fax
+     * One of the TYPE_ - constants
      *
      * @var string
      */
@@ -79,16 +79,5 @@ class RufnrType
     public function getTyp(): string
     {
         return $this->typ;
-    }
-
-    /**
-     * @param string $typ
-     *
-     * @return RufnrType
-     */
-    public function setTyp(string $typ): RufnrType
-    {
-        $this->typ = $typ;
-        return $this;
     }
 }

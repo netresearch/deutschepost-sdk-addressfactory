@@ -30,15 +30,4 @@ class ExtFieldItemType
     {
         return $this->ExtField;
     }
-
-    /**
-     * @param ExtFieldType[] $ExtField
-     *
-     * @return ExtFieldItemType
-     */
-    public function setExtField(array $ExtField): ExtFieldItemType
-    {
-        $this->ExtField = $ExtField;
-        return $this;
-    }
 }

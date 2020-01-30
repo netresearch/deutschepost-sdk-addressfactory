@@ -80,7 +80,6 @@ class NameItemType
      */
     protected $PsPostNr;
 
-
     /**
      * @return string
      */

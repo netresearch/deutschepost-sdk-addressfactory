@@ -39,8 +39,9 @@ class AddressFactoryService implements AddressFactoryServiceInterface
      *
      * @param AbstractClient $client
      */
-    public function __construct(AbstractClient $client)
-    {
+    public function __construct(
+        AbstractClient $client
+    ) {
         $this->client = $client;
     }
 
@@ -92,19 +93,18 @@ class AddressFactoryService implements AddressFactoryServiceInterface
         string $clientId = null
     ) {
         $address = new SimpleInRecordWSType(time());
-        $address->setPlz($postalCode);
-        $address->setOrt($city);
-        $address->setStrasse($street);
-        $address->setHausnummer($houseNumber);
-        $address->setName($lastName);
-        $address->setVorname($firstName);
+        $address->setPlz($postalCode)
+            ->setOrt($city)
+            ->setStrasse($street)
+            ->setHausnummer($houseNumber)
+            ->setName($lastName)
+            ->setVorname($firstName);
 
         $requestType = new ProcessSimpleDataRequest();
-        $requestType->setSessionId($sessionId);
-        $requestType->setConfigName($configName);
-        $requestType->setMandantId($clientId);
-
-        $requestType->setSimpleInRecord($address);
+        $requestType->setSessionId($sessionId)
+            ->setConfigName($configName)
+            ->setMandantId($clientId)
+            ->setSimpleInRecord($address);
 
         try {
             $response = $this->client->processSimpleData($requestType);
@@ -129,9 +129,9 @@ class AddressFactoryService implements AddressFactoryServiceInterface
     ) {
         try {
             $requestType = new ProcessDataRequest();
-            $requestType->setSessionId($sessionId);
-            $requestType->setConfigName($configName);
-            $requestType->setMandantId($clientId);
+            $requestType->setSessionId($sessionId)
+                ->setConfigName($configName)
+                ->setMandantId($clientId);
 
             /** @var InRecordWSType $record */
             $requestType->setInRecord($record);

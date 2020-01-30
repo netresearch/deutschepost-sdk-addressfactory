@@ -41,32 +41,10 @@ class GkbDhdnType
     }
 
     /**
-     * @param string $Rechtswert
-     *
-     * @return GkbDhdnType
-     */
-    public function setRechtswert(string $Rechtswert): GkbDhdnType
-    {
-        $this->Rechtswert = $Rechtswert;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getHochwert(): string
     {
         return $this->Hochwert;
-    }
-
-    /**
-     * @param string $Hochwert
-     *
-     * @return GkbDhdnType
-     */
-    public function setHochwert(string $Hochwert): GkbDhdnType
-    {
-        $this->Hochwert = $Hochwert;
-        return $this;
     }
 }

@@ -18,4 +18,10 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 interface RecordInterface
 {
     // TODO Add methods
+
+//    Name
+//    Adresse
+//    Telefonnummer
+//    Geo-Daten
+//    Status (Korrekturstatus)
 }

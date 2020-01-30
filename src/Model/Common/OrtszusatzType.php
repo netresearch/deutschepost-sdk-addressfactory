@@ -16,20 +16,16 @@ class OrtszusatzType
     protected $_;
 
     /**
-     * @var boolean $amtlich
+     * @var boolean $amtlich Official German short form
      */
     protected $amtlich;
 
     /**
      * @param string $value
-     * @param boolean $amtlich
      */
-    public function __construct(
-        string $value,
-        bool $amtlich
-    ) {
+    public function __construct(string $value)
+    {
         $this->_ = $value;
-        $this->amtlich = $amtlich;
     }
 
     /**
@@ -41,17 +37,6 @@ class OrtszusatzType
     }
 
     /**
-     * @param string $value
-     *
-     * @return OrtszusatzType
-     */
-    public function setValue(string $value): OrtszusatzType
-    {
-        $this->_ = $value;
-        return $this;
-    }
-
-    /**
      * @return boolean
      */
     public function getAmtlich(): bool
@@ -60,13 +45,10 @@ class OrtszusatzType
     }
 
     /**
-     * @param boolean $amtlich
-     *
-     * @return OrtszusatzType
+     * @param bool $amtlich
      */
-    public function setAmtlich(bool $amtlich): OrtszusatzType
+    public function setAmtlich(bool $amtlich): void
     {
         $this->amtlich = $amtlich;
-        return $this;
     }
 }

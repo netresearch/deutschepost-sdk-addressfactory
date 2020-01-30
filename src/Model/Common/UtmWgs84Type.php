@@ -41,32 +41,10 @@ class UtmWgs84Type
     }
 
     /**
-     * @param string $Ost
-     *
-     * @return UtmWgs84Type
-     */
-    public function setOst(string $Ost): UtmWgs84Type
-    {
-        $this->Ost = $Ost;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getNord(): string
     {
         return $this->Nord;
-    }
-
-    /**
-     * @param string $Nord
-     *
-     * @return UtmWgs84Type
-     */
-    public function setNord(string $Nord): UtmWgs84Type
-    {
-        $this->Nord = $Nord;
-        return $this;
     }
 }

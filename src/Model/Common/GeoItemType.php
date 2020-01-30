@@ -11,89 +11,65 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class GeoItemType
 {
     /**
-     * @var KoordWgs84Type $KoordWgs84
+     * @var KoordWgs84Type|null $KoordWgs84
      */
     protected $KoordWgs84;
 
     /**
-     * @var UtmWgs84Type $UtmWgs84
+     * @var UtmWgs84Type|null $UtmWgs84
      */
     protected $UtmWgs84;
 
     /**
-     * @var GkbDhdnType $GkbDhdn
+     * @var GkbDhdnType|null $GkbDhdn
      */
     protected $GkbDhdn;
 
     /**
-     * @param KoordWgs84Type $KoordWgs84
-     * @param UtmWgs84Type $UtmWgs84
-     * @param GkbDhdnType $GkbDhdn
+     * @return KoordWgs84Type|null
      */
-    public function __construct(
-        KoordWgs84Type $KoordWgs84,
-        UtmWgs84Type $UtmWgs84,
-        GkbDhdnType $GkbDhdn
-    ) {
-        $this->KoordWgs84 = $KoordWgs84;
-        $this->UtmWgs84 = $UtmWgs84;
-        $this->GkbDhdn = $GkbDhdn;
-    }
-
-    /**
-     * @return KoordWgs84Type
-     */
-    public function getKoordWgs84(): KoordWgs84Type
+    public function getKoordWgs84()
     {
         return $this->KoordWgs84;
     }
 
     /**
-     * @param KoordWgs84Type $KoordWgs84
-     *
-     * @return GeoItemType
+     * @param KoordWgs84Type|null $KoordWgs84
      */
-    public function setKoordWgs84(KoordWgs84Type $KoordWgs84): GeoItemType
+    public function setKoordWgs84(?KoordWgs84Type $KoordWgs84): void
     {
         $this->KoordWgs84 = $KoordWgs84;
-        return $this;
     }
 
     /**
-     * @return UtmWgs84Type
+     * @return UtmWgs84Type|null
      */
-    public function getUtmWgs84(): UtmWgs84Type
+    public function getUtmWgs84()
     {
         return $this->UtmWgs84;
     }
 
     /**
-     * @param UtmWgs84Type $UtmWgs84
-     *
-     * @return GeoItemType
+     * @param UtmWgs84Type|null $UtmWgs84
      */
-    public function setUtmWgs84(UtmWgs84Type $UtmWgs84): GeoItemType
+    public function setUtmWgs84(?UtmWgs84Type $UtmWgs84): void
     {
         $this->UtmWgs84 = $UtmWgs84;
-        return $this;
     }
 
     /**
-     * @return GkbDhdnType
+     * @return GkbDhdnType|null
      */
-    public function getGkbDhdn(): GkbDhdnType
+    public function getGkbDhdn()
     {
         return $this->GkbDhdn;
     }
 
     /**
-     * @param GkbDhdnType $GkbDhdn
-     *
-     * @return GeoItemType
+     * @param GkbDhdnType|null $GkbDhdn
      */
-    public function setGkbDhdn(GkbDhdnType $GkbDhdn): GeoItemType
+    public function setGkbDhdn(?GkbDhdnType $GkbDhdn): void
     {
         $this->GkbDhdn = $GkbDhdn;
-        return $this;
     }
 }

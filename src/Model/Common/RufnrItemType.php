@@ -30,15 +30,4 @@ class RufnrItemType
     {
         return $this->Rufnr;
     }
-
-    /**
-     * @param RufnrType[] $Rufnr
-     *
-     * @return RufnrItemType
-     */
-    public function setRufnr(array $Rufnr): RufnrItemType
-    {
-        $this->Rufnr = $Rufnr;
-        return $this;
-    }
 }

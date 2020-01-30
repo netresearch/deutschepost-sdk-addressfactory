@@ -41,32 +41,10 @@ class ExtFieldType
     }
 
     /**
-     * @param string $value
-     *
-     * @return ExtFieldType
-     */
-    public function setValue(string $value): ExtFieldType
-    {
-        $this->_ = $value;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return ExtFieldType
-     */
-    public function setName(string $name): ExtFieldType
-    {
-        $this->name = $name;
-        return $this;
     }
 }

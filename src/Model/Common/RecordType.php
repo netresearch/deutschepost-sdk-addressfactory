@@ -11,6 +11,28 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class RecordType
 {
     /**
+     * @var int $recordId
+     */
+    protected $recordId;
+
+    /**
+     * @var int $sequenceId
+     */
+    protected $sequenceId;
+
+    /**
+     * @var int $fileId
+     */
+    protected $fileId;
+
+    /**
+     * One of: Merge, Purge
+     *
+     * @var string $fileType
+     */
+    protected $fileType;
+
+    /**
      * @var NameItemType $NameItem
      */
     protected $NameItem;
@@ -36,43 +58,76 @@ class RecordType
     protected $ExtFieldItem;
 
     /**
-     * @var int $recordId
-     */
-    protected $recordId;
-
-    /**
-     * @var int $fileId
-     */
-    protected $fileId;
-
-    /**
-     * @var int $sequenceId
-     */
-    protected $sequenceId;
-
-    /**
-     * One of: Merge, Purge
-     *
-     * @var string $fileType
-     */
-    protected $fileType;
-
-    /**
      * @param int $recordId
-     * @param int $fileId
-     * @param int $sequenceId
-     * @param string $fileType
      */
-    public function __construct(
-        int $recordId,
-        int $fileId,
-        int $sequenceId,
-        string $fileType
-    ) {
+    public function __construct(int $recordId)
+    {
         $this->recordId = $recordId;
-        $this->fileId = $fileId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRecordId(): int
+    {
+        return $this->recordId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSequenceId(): int
+    {
+        return $this->sequenceId;
+    }
+
+    /**
+     * @param int $sequenceId
+     *
+     * @return RecordType
+     */
+    public function setSequenceId(int $sequenceId): RecordType
+    {
         $this->sequenceId = $sequenceId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFileId(): int
+    {
+        return $this->fileId;
+    }
+
+    /**
+     * @param int $fileId
+     *
+     * @return RecordType
+     */
+    public function setFileId(int $fileId): RecordType
+    {
+        $this->fileId = $fileId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileType(): string
+    {
+        return $this->fileType;
+    }
+
+    /**
+     * @param string $fileType
+     *
+     * @return RecordType
+     */
+    public function setFileType(string $fileType): RecordType
+    {
         $this->fileType = $fileType;
+        return $this;
     }
 
     /**
@@ -167,82 +222,6 @@ class RecordType
     public function setExtFieldItem(ExtFieldItemType $ExtFieldItem): RecordType
     {
         $this->ExtFieldItem = $ExtFieldItem;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRecordId(): int
-    {
-        return $this->recordId;
-    }
-
-    /**
-     * @param int $recordId
-     *
-     * @return RecordType
-     */
-    public function setRecordId(int $recordId): RecordType
-    {
-        $this->recordId = $recordId;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getFileId(): int
-    {
-        return $this->fileId;
-    }
-
-    /**
-     * @param int $fileId
-     *
-     * @return RecordType
-     */
-    public function setFileId(int $fileId): RecordType
-    {
-        $this->fileId = $fileId;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSequenceId(): int
-    {
-        return $this->sequenceId;
-    }
-
-    /**
-     * @param int $sequenceId
-     *
-     * @return RecordType
-     */
-    public function setSequenceId(int $sequenceId): RecordType
-    {
-        $this->sequenceId = $sequenceId;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileType(): string
-    {
-        return $this->fileType;
-    }
-
-    /**
-     * @param string $fileType
-     *
-     * @return RecordType
-     */
-    public function setFileType(string $fileType): RecordType
-    {
-        $this->fileType = $fileType;
         return $this;
     }
 }
