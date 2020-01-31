@@ -176,18 +176,18 @@ class RequestBuilder implements RequestBuilderInterface
         return $this;
     }
 
-    public function setCoordinatesUtm(string $rechtswert, string $hochwert): RequestBuilderInterface
+    public function setCoordinatesUtm(string $northing, string $easting): RequestBuilderInterface
     {
-        $this->data['coordinates']['utm']['rechtswert'] = $rechtswert;
-        $this->data['coordinates']['utm']['hochwert'] = $hochwert;
+        $this->data['coordinates']['utm']['northing'] = $northing;
+        $this->data['coordinates']['utm']['easting'] = $easting;
 
         return $this;
     }
 
-    public function setCoordinatesGk(string $rechtswert, string $hochwert): RequestBuilderInterface
+    public function setCoordinatesGk(string $northing, string $easting): RequestBuilderInterface
     {
-        $this->data['coordinates']['gk']['rechtswert'] = $rechtswert;
-        $this->data['coordinates']['gk']['hochwert'] = $hochwert;
+        $this->data['coordinates']['gk']['northing'] = $northing;
+        $this->data['coordinates']['gk']['easting'] = $easting;
 
         return $this;
     }
@@ -677,16 +677,16 @@ class RequestBuilder implements RequestBuilderInterface
 
             if (!empty($this->data['coordinates']['utm'])) {
                 $coordinates = new UtmWgs84Type(
-                    $this->data['coordinates']['utm']['rechtswert'],
-                    $this->data['coordinates']['utm']['hochwert']
+                    $this->data['coordinates']['utm']['easting'],
+                    $this->data['coordinates']['utm']['northing']
                 );
                 $geoItem->setUtmWgs84($coordinates);
             }
 
             if (!empty($this->data['coordinates']['utm'])) {
                 $coordinates = new GkbDhdnType(
-                    $this->data['coordinates']['gk']['rechtswert'],
-                    $this->data['coordinates']['gk']['hochwert']
+                    $this->data['coordinates']['gk']['easting'],
+                    $this->data['coordinates']['gk']['northing']
                 );
                 $geoItem->setGkbDhdn($coordinates);
             }

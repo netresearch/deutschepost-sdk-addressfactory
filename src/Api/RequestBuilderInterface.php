@@ -39,14 +39,14 @@ interface RequestBuilderInterface
     /**
      * Set record metadata (optional).
      *
+     * @see RequestBuilderInterface::FILE_TYPE_PURGE
+     * @see RequestBuilderInterface::FILE_TYPE_MERGE
+     *
      * @param int $recordId
      * @param string $fileType
      * @param int $fileId
      * @param int $sequenceId
      * @return RequestBuilderInterface
-     *@see RequestBuilderInterface::FILE_TYPE_PURGE
-     *
-     * @see RequestBuilderInterface::FILE_TYPE_MERGE
      */
     public function setMetadata(
         int $recordId,
@@ -58,6 +58,10 @@ interface RequestBuilderInterface
     /**
      * Set a name for the inquiry.
      *
+     * @see RequestBuilderInterface::GENDER_MALE
+     * @see RequestBuilderInterface::GENDER_FEMALE
+     * @see RequestBuilderInterface::GENDER_NOT_SPECIFIED
+     *
      * @param string|null $firstname
      * @param string|null $lastname
      * @param string|null $formOfAddress Examples: "Frau", "Mr"
@@ -68,10 +72,6 @@ interface RequestBuilderInterface
      * @param string|null $titleOfNobility Examples: "Graf", "Count"
      * @param string|null $gender Possible values: "M", "W", "U"
      * @return RequestBuilderInterface
-     *@see RequestBuilderInterface::GENDER_MALE
-     * @see RequestBuilderInterface::GENDER_FEMALE
-     * @see RequestBuilderInterface::GENDER_NOT_SPECIFIED
-     *
      */
     public function setPerson(
         string $firstname = null,
@@ -88,16 +88,16 @@ interface RequestBuilderInterface
     /**
      * Add a phone number to the inquiry.
      *
-     * @param string $areaCode
-     * @param string $dialNumber
-     * @param string $type
-     * @return RequestBuilderInterface
-     * @see RequestBuilderInterface::PHONE_TYPE_FAX
-     *
      * @see RequestBuilderInterface::PHONE_TYPE_UNKNOWN
      * @see RequestBuilderInterface::PHONE_TYPE_PRIVATE
      * @see RequestBuilderInterface::PHONE_TYPE_BUSINESS
      * @see RequestBuilderInterface::PHONE_TYPE_MOBILE
+     * @see RequestBuilderInterface::PHONE_TYPE_FAX
+     *
+     * @param string $areaCode
+     * @param string $dialNumber
+     * @param string $type
+     * @return RequestBuilderInterface
      */
     public function addPhoneNumber(
         string $areaCode,
@@ -130,15 +130,15 @@ interface RequestBuilderInterface
      * - ABM: Request for credit check – mobile communications
      *        (Anfrage Bonitätsprüfung Mobilfunk)
      *
-     * @param string $dateOfBirth
-     * @param string $reason
-     * @return RequestBuilderInterface
-     *@see RequestBuilderInterface::INQUIRY_REASON_ABI
-     * @see RequestBuilderInterface::INQUIRY_REASON_ABM
-     *
      * @see RequestBuilderInterface::INQUIRY_REASON_ABK
      * @see RequestBuilderInterface::INQUIRY_REASON_ABV
      * @see RequestBuilderInterface::INQUIRY_REASON_ABB
+     * @see RequestBuilderInterface::INQUIRY_REASON_ABI
+     * @see RequestBuilderInterface::INQUIRY_REASON_ABM
+     *
+     * @param string $dateOfBirth
+     * @param string $reason
+     * @return RequestBuilderInterface
      */
     public function setCreditRatingInquiry(string $dateOfBirth, string $reason): RequestBuilderInterface;
 
@@ -218,20 +218,20 @@ interface RequestBuilderInterface
     /**
      * Set address coordinates using the Universal Transverse Mercator coordinate system.
      *
-     * @param string $rechtswert Ostwert
-     * @param string $hochwert Nordwert
+     * @param string $northing Nordwert/Hochwert
+     * @param string $easting Ostwert/Rechtswert
      * @return RequestBuilderInterface
      */
-    public function setCoordinatesUtm(string $rechtswert, string $hochwert): RequestBuilderInterface;
+    public function setCoordinatesUtm(string $northing, string $easting): RequestBuilderInterface;
 
     /**
      * Set address coordinates using the Gauss-Krüger (DHDN) coordinate system.
      *
-     * @param string $rechtswert Ostwert
-     * @param string $hochwert Nordwert
+     * @param string $northing Hochwert/Nordwert
+     * @param string $easting Rechtswert/Ostwert
      * @return RequestBuilderInterface
      */
-    public function setCoordinatesGk(string $rechtswert, string $hochwert): RequestBuilderInterface;
+    public function setCoordinatesGk(string $northing, string $easting): RequestBuilderInterface;
 
     /**
      * Set a Postfach address for the inquiry.
