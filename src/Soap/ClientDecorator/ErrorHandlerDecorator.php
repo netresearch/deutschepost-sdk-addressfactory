@@ -30,15 +30,29 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
 class ErrorHandlerDecorator extends AbstractDecorator
 {
     const AUTH_ERROR_MESSAGE = 'Authentication failed. Please check your access credentials.';
+
+    const FAULT_AUTH_FAILED  = 'Failed Authentication';
     const FAULT_UNAUTHORIZED = 'Unauthorized';
 
-    public function openSession(OpenSessionRequest $request): OpenSessionResponse
+    /**
+     * Executes the passed webservice requests and processes any occurring \SoapFault.
+     *
+     * @param \Closure $request
+     *
+     * @return mixed
+     *
+     * @throws AuthenticationErrorException
+     * @throws \SoapFault
+     */
+    private function execute(\Closure $request)
     {
         try {
-            /** @var OpenSessionResponse $response */
-            $response = parent::openSession($request);
+            $response = $request();
         } catch (\SoapFault $fault) {
-            if ($fault->faultstring === self::FAULT_UNAUTHORIZED) {
+            if (
+                ($fault->faultstring === self::FAULT_UNAUTHORIZED)
+                || (strpos($fault->faultstring, self::FAULT_AUTH_FAILED) !== false)
+            ) {
                 throw new AuthenticationErrorException(self::AUTH_ERROR_MESSAGE, 401, $fault);
             }
 
@@ -46,53 +60,33 @@ class ErrorHandlerDecorator extends AbstractDecorator
         }
 
         return $response;
+    }
+
+    public function openSession(OpenSessionRequest $request): OpenSessionResponse
+    {
+        return $this->execute(function () use ($request) {
+            return parent::openSession($request);
+        });
     }
 
     public function closeSession(CloseSessionRequest $request): CloseSessionResponse
     {
-        try {
-            /** @var CloseSessionResponse $response */
-            $response = parent::closeSession($request);
-        } catch (\SoapFault $fault) {
-            if ($fault->faultstring === self::FAULT_UNAUTHORIZED) {
-                throw new AuthenticationErrorException(self::AUTH_ERROR_MESSAGE, 401, $fault);
-            }
-
-            throw $fault;
-        }
-
-        return $response;
+        return $this->execute(function () use ($request) {
+            return parent::closeSession($request);
+        });
     }
 
     public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse
     {
-        try {
-            /** @var ProcessSimpleDataResponse $response */
-            $response = parent::processSimpleData($request);
-        } catch (\SoapFault $fault) {
-            if ($fault->faultstring === self::FAULT_UNAUTHORIZED) {
-                throw new AuthenticationErrorException(self::AUTH_ERROR_MESSAGE, 401, $fault);
-            }
-
-            throw $fault;
-        }
-
-        return $response;
+        return $this->execute(function () use ($request) {
+            return parent::processSimpleData($request);
+        });
     }
 
     public function processData(ProcessDataRequest $request): ProcessDataResponse
     {
-        try {
-            /** @var ProcessDataResponse $response */
-            $response = parent::processData($request);
-        } catch (\SoapFault $fault) {
-            if ($fault->faultstring === self::FAULT_UNAUTHORIZED) {
-                throw new AuthenticationErrorException(self::AUTH_ERROR_MESSAGE, 401, $fault);
-            }
-
-            throw $fault;
-        }
-
-        return $response;
+        return $this->execute(function () use ($request) {
+            return parent::processData($request);
+        });
     }
 }

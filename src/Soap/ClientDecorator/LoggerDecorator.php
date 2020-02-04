@@ -64,7 +64,7 @@ class LoggerDecorator extends AbstractDecorator
      *
      * @param \Closure $performRequest
      *
-     * @return OpenSessionResponse|CloseSessionResponse|ProcessDataResponse|ProcessSimpleDataResponse
+     * @return mixed
      *
      * @throws AuthenticationErrorException
      * @throws DetailedErrorException
@@ -72,25 +72,10 @@ class LoggerDecorator extends AbstractDecorator
      */
     private function logCommunication(\Closure $performRequest)
     {
+        $logLevel = LogLevel::INFO;
+
         try {
-            /** @var OpenSessionResponse|CloseSessionResponse|ProcessDataResponse|ProcessSimpleDataResponse $response */
-            $response = $performRequest();
-
-//            // adjust log level on successful responses
-//            if ($response->getStatus()->getStatusCode() === 2000) {
-//                // unknown shipment number errors contained in response.
-//                $logLevel = LogLevel::ERROR;
-//            } elseif ($response->getStatus()->getStatusText() === 'Some Shipments had errors.') {
-//                // hard validation errors contained in response.
-//                $logLevel = LogLevel::ERROR;
-//            } elseif ($response->getStatus()->getStatusText() === 'Weak validation error occured.') {
-//                // weak validation errors contained in response.
-//                $logLevel = LogLevel::WARNING;
-//            } else {
-                $logLevel = LogLevel::INFO;
-//            }
-
-            return $response;
+            return $performRequest();
         } catch (AuthenticationErrorException $fault) {
             $logLevel = LogLevel::ERROR;
 
@@ -116,11 +101,6 @@ class LoggerDecorator extends AbstractDecorator
                 $this->soapClient->__getLastResponse()
             );
 
-//ini_set('xdebug.var_display_max_depth', '-1');
-//ini_set('xdebug.var_display_max_children', '-1');
-//ini_set('xdebug.var_display_max_data', '-1');
-//var_dump($lastRequest, $lastResponse);
-
             $this->logger->log($logLevel, $lastRequest);
             $this->logger->log($logLevel, $lastResponse);
 
@@ -132,45 +112,29 @@ class LoggerDecorator extends AbstractDecorator
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse
     {
-        $performRequest = function () use ($request) {
+        return $this->logCommunication(function () use ($request) {
             return parent::openSession($request);
-        };
-
-        /** @var OpenSessionResponse $response */
-        $response = $this->logCommunication($performRequest);
-        return $response;
+        });
     }
 
     public function closeSession(CloseSessionRequest $request): CloseSessionResponse
     {
-        $performRequest = function () use ($request) {
+        return $this->logCommunication(function () use ($request) {
             return parent::closeSession($request);
-        };
-
-        /** @var CloseSessionResponse $response */
-        $response = $this->logCommunication($performRequest);
-        return $response;
+        });
     }
 
     public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse
     {
-        $performRequest = function () use ($request) {
+        return $this->logCommunication(function () use ($request) {
             return parent::processSimpleData($request);
-        };
-
-        /** @var ProcessSimpleDataResponse $response */
-        $response = $this->logCommunication($performRequest);
-        return $response;
+        });
     }
 
     public function processData(ProcessDataRequest $request): ProcessDataResponse
     {
-        $performRequest = function () use ($request) {
+        return $this->logCommunication(function () use ($request) {
             return parent::processData($request);
-        };
-
-        /** @var ProcessDataResponse $response */
-        $response = $this->logCommunication($performRequest);
-        return $response;
+        });
     }
 }
