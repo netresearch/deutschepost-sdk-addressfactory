@@ -8,17 +8,19 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Service;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressFactoryServiceInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressVerificationServiceInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\AuthenticationErrorException;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedErrorException;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceExceptionFactory;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionRequest;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper\RecordResponseMapper;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\OpenSessionRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessDataRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\SimpleInRecordWSType;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\Record;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 
 /**
@@ -27,7 +29,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class AddressFactoryService implements AddressFactoryServiceInterface
+class AddressVerificationService implements AddressVerificationServiceInterface
 {
     /**
      * @var AbstractClient
@@ -35,14 +37,22 @@ class AddressFactoryService implements AddressFactoryServiceInterface
     private $client;
 
     /**
+     * @var RecordResponseMapper
+     */
+    private $recordResponseMapper;
+
+    /**
      * AddressFactoryService constructor.
      *
      * @param AbstractClient $client
+     * @param RecordResponseMapper $recordResponseMapper
      */
     public function __construct(
-        AbstractClient $client
+        AbstractClient $client,
+        RecordResponseMapper $recordResponseMapper
     ) {
         $this->client = $client;
+        $this->recordResponseMapper = $recordResponseMapper;
     }
 
     public function openSession(string $configName = null, string $clientId = null): string
@@ -91,7 +101,7 @@ class AddressFactoryService implements AddressFactoryServiceInterface
         string $sessionId = null,
         string $configName = null,
         string $clientId = null
-    ) {
+    ): RecordInterface {
         $address = new SimpleInRecordWSType(time());
         $address->setPlz($postalCode)
             ->setOrt($city)
@@ -108,9 +118,7 @@ class AddressFactoryService implements AddressFactoryServiceInterface
 
         try {
             $response = $this->client->processSimpleData($requestType);
-
-            // TODO Add response mapper
-            return new Record();
+            return $this->recordResponseMapper->map($response->getOutRecord());
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
         } catch (DetailedErrorException $exception) {
@@ -121,25 +129,26 @@ class AddressFactoryService implements AddressFactoryServiceInterface
         }
     }
 
-    public function getRecord(
-        $record,
+    public function getRecords(
+        array $records,
         string $sessionId = null,
         string $configName = null,
         string $clientId = null
-    ) {
+    ): array {
+        $requestType = new ProcessDataRequest();
+        $requestType->setSessionId($sessionId)
+                    ->setConfigName($configName)
+                    ->setMandantId($clientId)
+                    ->setInRecord($records);
+
         try {
-            $requestType = new ProcessDataRequest();
-            $requestType->setSessionId($sessionId)
-                ->setConfigName($configName)
-                ->setMandantId($clientId);
-
-            /** @var InRecordWSType $record */
-            $requestType->setInRecord($record);
-
             $response = $this->client->processData($requestType);
-
-            // TODO Add response mapper
-            return new Record();
+            return array_map(
+                function (OutRecordWSType $outRecord) {
+                    return $this->recordResponseMapper->map($outRecord);
+                },
+                $response->getOutRecord()
+            );
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
         } catch (DetailedErrorException $exception) {

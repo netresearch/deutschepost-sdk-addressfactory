@@ -11,7 +11,9 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 class ModuleCodesType
 {
     /**
-     * @var string[] $StatusCode
+     * Depending on the SOAP_SINGLE_ELEMENT_ARRAYS setting, this may either be a string or an array of string(s).
+     *
+     * @var string[]|string $StatusCode
      */
     protected $StatusCode;
 
@@ -25,6 +27,10 @@ class ModuleCodesType
      */
     public function getStatusCode(): array
     {
+        if (is_string($this->StatusCode)) {
+            return [$this->StatusCode];
+        }
+
         return $this->StatusCode;
     }
 

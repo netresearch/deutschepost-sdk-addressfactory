@@ -8,9 +8,10 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Soap;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressFactoryServiceInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressVerificationServiceInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\ServiceFactoryInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper\RecordResponseMapper;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator\AuthenticationDecorator;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator\ErrorHandlerDecorator;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator\LoggerDecorator;
@@ -44,17 +45,17 @@ class SoapServiceFactory implements ServiceFactoryInterface
         string $password,
         LoggerInterface $logger,
         bool $sandboxMode = false
-    ): AddressFactoryServiceInterface {
-        //$responseMapper = new RecordResponseMapper();
-
+    ): AddressVerificationServiceInterface {
         $pluginClient = new Client($this->soapClient);
         $pluginClient = new ErrorHandlerDecorator($pluginClient);
         $pluginClient = new LoggerDecorator($pluginClient, $this->soapClient, $logger);
         $pluginClient = new AuthenticationDecorator($pluginClient, $this->soapClient, $username, $password);
 
-        return new AddressFactoryService(
-            $pluginClient//,
-            //$responseMapper
+        $responseMapper = new RecordResponseMapper();
+
+        return new AddressVerificationService(
+            $pluginClient,
+            $responseMapper
         );
     }
 }

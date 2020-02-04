@@ -11,47 +11,47 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class GEType
 {
     /**
-     * @var string $Name
+     * @var string|null $Name
      */
     protected $Name;
 
     /**
-     * @var string $Plz
+     * @var string|null $Plz
      */
     protected $Plz;
 
     /**
-     * @var OrtType $Ort
+     * @var OrtType|null $Ort
      */
     protected $Ort;
 
     /**
-     * @var OrtszusatzType $Ortszusatz
+     * @var OrtszusatzType|null $Ortszusatz
      */
     protected $Ortszusatz;
 
     /**
-     * @var string $Gemeinde
+     * @var string|null $Gemeinde
      */
     protected $Gemeinde;
 
     /**
-     * @var string $Kreis
+     * @var string|null $Kreis
      */
     protected $Kreis;
 
     /**
-     * @var string $RegBezirk
+     * @var string|null $RegBezirk
      */
     protected $RegBezirk;
 
     /**
-     * @var string $Bundesland
+     * @var string|null $Bundesland
      */
     protected $Bundesland;
 
     /**
-     * @var LeitdatenType $Leitdaten
+     * @var LeitdatenType|null $Leitdaten
      */
     protected $Leitdaten;
 
@@ -60,7 +60,7 @@ class GEType
      */
     public function getName(): string
     {
-        return $this->Name;
+        return (string) $this->Name;
     }
 
     /**
@@ -79,7 +79,7 @@ class GEType
      */
     public function getPlz(): string
     {
-        return $this->Plz;
+        return (string) $this->Plz;
     }
 
     /**
@@ -94,9 +94,9 @@ class GEType
     }
 
     /**
-     * @return OrtType
+     * @return OrtType|null
      */
-    public function getOrt(): OrtType
+    public function getOrt(): ?OrtType
     {
         return $this->Ort;
     }
@@ -113,9 +113,9 @@ class GEType
     }
 
     /**
-     * @return OrtszusatzType
+     * @return OrtszusatzType|null
      */
-    public function getOrtszusatz(): OrtszusatzType
+    public function getOrtszusatz(): ?OrtszusatzType
     {
         return $this->Ortszusatz;
     }
@@ -136,7 +136,7 @@ class GEType
      */
     public function getGemeinde(): string
     {
-        return $this->Gemeinde;
+        return (string) $this->Gemeinde;
     }
 
     /**
@@ -155,7 +155,7 @@ class GEType
      */
     public function getKreis(): string
     {
-        return $this->Kreis;
+        return (string) $this->Kreis;
     }
 
     /**
@@ -174,7 +174,7 @@ class GEType
      */
     public function getRegBezirk(): string
     {
-        return $this->RegBezirk;
+        return (string) $this->RegBezirk;
     }
 
     /**
@@ -193,7 +193,7 @@ class GEType
      */
     public function getBundesland(): string
     {
-        return $this->Bundesland;
+        return (string) $this->Bundesland;
     }
 
     /**
@@ -208,9 +208,9 @@ class GEType
     }
 
     /**
-     * @return LeitdatenType
+     * @return LeitdatenType|null
      */
-    public function getLeitdaten(): LeitdatenType
+    public function getLeitdaten(): ?LeitdatenType
     {
         return $this->Leitdaten;
     }

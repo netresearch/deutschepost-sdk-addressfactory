@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Service;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressFactoryServiceInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressVerificationServiceInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\ServiceFactoryInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceExceptionFactory;
 use PostDirekt\Sdk\AddressfactoryDirect\Serializer\ClassMap;
@@ -28,7 +28,7 @@ class ServiceFactory implements ServiceFactoryInterface
         string $password,
         LoggerInterface $logger,
         bool $sandboxMode = false
-    ): AddressFactoryServiceInterface {
+    ): AddressVerificationServiceInterface {
         $wsdl = $sandboxMode
             ? 'https://service-afdirect.postdirekt.de/sapouni/AF-Direct-TestServer/AF-Direct?wsdl'
             : 'https://service-afdirect.postdirekt.de/sapouni/AF-Direct-Service/AF-Direct?wsdl';

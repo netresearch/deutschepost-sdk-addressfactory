@@ -11,12 +11,12 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class GkbDhdnType
 {
     /**
-     * @var string $Rechtswert
+     * @var string
      */
     protected $Rechtswert;
 
     /**
-     * @var string $Hochwert
+     * @var string
      */
     protected $Hochwert;
 

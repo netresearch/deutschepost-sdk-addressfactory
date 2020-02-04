@@ -11,74 +11,74 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class HausanschriftType
 {
     /**
-     * @var StrasseType $Strasse
+     * @var StrasseType|null
      */
     protected $Strasse;
 
     /**
-     * @var string $Hausnr
+     * @var string|null $Hausnr
      */
     protected $Hausnr;
 
     /**
-     * @var string $HausnrZusatz
+     * @var string|null $HausnrZusatz
      */
     protected $HausnrZusatz;
 
     /**
-     * @var string $Plz
+     * @var string|null $Plz
      */
     protected $Plz;
 
     /**
-     * @var OrtType $Ort
+     * @var OrtType|null
      */
     protected $Ort;
 
     /**
-     * @var OrtszusatzType $Ortszusatz
+     * @var OrtszusatzType|null
      */
     protected $Ortszusatz;
 
     /**
-     * @var string $Ortsteil
+     * @var string|null $Ortsteil
      */
     protected $Ortsteil;
 
     /**
-     * @var string $Gemeinde
+     * @var string|null $Gemeinde
      */
     protected $Gemeinde;
 
     /**
-     * @var string $Kreis
+     * @var string|null $Kreis
      */
     protected $Kreis;
 
     /**
-     * @var string $RegBezirk
+     * @var string|null $RegBezirk
      */
     protected $RegBezirk;
 
     /**
-     * @var string $Bundesland
+     * @var string|null $Bundesland
      */
     protected $Bundesland;
 
     /**
-     * @var string $Land
+     * @var string|null $Land
      */
     protected $Land;
 
     /**
-     * @var LeitdatenType $Leitdaten
+     * @var LeitdatenType|null $Leitdaten
      */
     protected $Leitdaten;
 
     /**
-     * @return StrasseType
+     * @return StrasseType|null
      */
-    public function getStrasse(): StrasseType
+    public function getStrasse(): ?StrasseType
     {
         return $this->Strasse;
     }
@@ -99,7 +99,7 @@ class HausanschriftType
      */
     public function getHausnr(): string
     {
-        return $this->Hausnr;
+        return (string) $this->Hausnr;
     }
 
     /**
@@ -118,7 +118,7 @@ class HausanschriftType
      */
     public function getHausnrZusatz(): string
     {
-        return $this->HausnrZusatz;
+        return (string) $this->HausnrZusatz;
     }
 
     /**
@@ -137,7 +137,7 @@ class HausanschriftType
      */
     public function getPlz(): string
     {
-        return $this->Plz;
+        return (string) $this->Plz;
     }
 
     /**
@@ -152,9 +152,9 @@ class HausanschriftType
     }
 
     /**
-     * @return OrtType
+     * @return OrtType|null
      */
-    public function getOrt(): OrtType
+    public function getOrt(): ?OrtType
     {
         return $this->Ort;
     }
@@ -171,9 +171,9 @@ class HausanschriftType
     }
 
     /**
-     * @return OrtszusatzType
+     * @return OrtszusatzType|null
      */
-    public function getOrtszusatz(): OrtszusatzType
+    public function getOrtszusatz(): ?OrtszusatzType
     {
         return $this->Ortszusatz;
     }
@@ -194,7 +194,7 @@ class HausanschriftType
      */
     public function getOrtsteil(): string
     {
-        return $this->Ortsteil;
+        return (string) $this->Ortsteil;
     }
 
     /**
@@ -213,7 +213,7 @@ class HausanschriftType
      */
     public function getGemeinde(): string
     {
-        return $this->Gemeinde;
+        return (string) $this->Gemeinde;
     }
 
     /**
@@ -232,7 +232,7 @@ class HausanschriftType
      */
     public function getKreis(): string
     {
-        return $this->Kreis;
+        return (string) $this->Kreis;
     }
 
     /**
@@ -251,7 +251,7 @@ class HausanschriftType
      */
     public function getRegBezirk(): string
     {
-        return $this->RegBezirk;
+        return (string) $this->RegBezirk;
     }
 
     /**
@@ -270,7 +270,7 @@ class HausanschriftType
      */
     public function getBundesland(): string
     {
-        return $this->Bundesland;
+        return (string) $this->Bundesland;
     }
 
     /**
@@ -289,7 +289,7 @@ class HausanschriftType
      */
     public function getLand(): string
     {
-        return $this->Land;
+        return (string) $this->Land;
     }
 
     /**
@@ -304,9 +304,9 @@ class HausanschriftType
     }
 
     /**
-     * @return LeitdatenType
+     * @return LeitdatenType|null
      */
-    public function getLeitdaten(): LeitdatenType
+    public function getLeitdaten(): ?LeitdatenType
     {
         return $this->Leitdaten;
     }

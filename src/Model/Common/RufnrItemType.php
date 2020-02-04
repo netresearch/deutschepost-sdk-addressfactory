@@ -11,7 +11,7 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class RufnrItemType
 {
     /**
-     * @var RufnrType[] $Rufnr
+     * @var RufnrType[]|null $Rufnr
      */
     protected $Rufnr;
 
@@ -28,6 +28,6 @@ class RufnrItemType
      */
     public function getRufnr(): array
     {
-        return $this->Rufnr;
+        return is_array($this->Rufnr) ? $this->Rufnr : [];
     }
 }

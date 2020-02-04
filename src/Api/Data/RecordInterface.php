@@ -17,11 +17,43 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
  */
 interface RecordInterface
 {
-    // TODO Add methods
+    /**
+     * @return int
+     */
+    public function getRecordId(): int;
 
-//    Name
-//    Adresse
-//    Telefonnummer
-//    Geo-Daten
-//    Status (Korrekturstatus)
+    /**
+     * @return PersonInterface|null
+     */
+    public function getPerson(): ?PersonInterface;
+
+    /**
+     * @return AddressInterface|null
+     */
+    public function getAddress(): ?AddressInterface;
+
+    /**
+     * @return GeoDataInterface|null
+     */
+    public function getGeoData(): ?GeoDataInterface;
+
+    /**
+     * @return GeoDataUtmInterface|null
+     */
+    public function getGeoDataUtm(): ?GeoDataUtmInterface;
+
+    /**
+     * @return GeoDataGkInterface|null
+     */
+    public function getGeoDataGk(): ?GeoDataGkInterface;
+
+    /**
+     * @return PhoneNumberInterface[]
+     */
+    public function getPhoneNumbers(): array;
+
+    /**
+     * @return string[]
+     */
+    public function getStatusCodes(): array;
 }

@@ -14,13 +14,13 @@ use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedServiceException;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceException;
 
 /**
- * Interface ShipmentServiceInterface
+ * Interface AddressVerificationServiceInterface
  *
  * @api
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-interface AddressFactoryServiceInterface
+interface AddressVerificationServiceInterface
 {
     /**
      * The "openSession" operation is used to generate a new session id used within any subsequent webservice call.
@@ -79,28 +79,28 @@ interface AddressFactoryServiceInterface
         string $sessionId = null,
         string $configName = null,
         string $clientId = null
-    );
+    ): RecordInterface;
 
     /**
-     * Perform an address search based on a complex address parameter.
+     * Perform a verification for one or multiple complex address definitions.
      *
      * @see RequestBuilderInterface
      *
-     * @param mixed $record
+     * @param mixed[] $records
      * @param string|null $sessionId The id of the session to close
      * @param string|null $configName
      * @param string|null $clientId
      *
-     * @return RecordInterface
+     * @return RecordInterface[]
      *
      * @throws AuthenticationException
      * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function getRecord(
-        $record,
+    public function getRecords(
+        array $records,
         string $sessionId = null,
         string $configName = null,
         string $clientId = null
-    );
+    ): array;
 }

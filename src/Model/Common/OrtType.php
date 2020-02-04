@@ -16,7 +16,7 @@ class OrtType
     protected $_;
 
     /**
-     * @var string $kurz
+     * @var string|null $kurz
      */
     protected $kurz;
 
@@ -41,14 +41,17 @@ class OrtType
      */
     public function getKurz(): string
     {
-        return $this->kurz;
+        return (string) $this->kurz;
     }
 
     /**
      * @param string $kurz
+     *
+     * @return OrtType
      */
-    public function setKurz(string $kurz): void
+    public function setKurz(string $kurz): OrtType
     {
         $this->kurz = $kurz;
+        return $this;
     }
 }

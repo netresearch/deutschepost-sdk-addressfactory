@@ -43,7 +43,7 @@ class ProcessDataRequest
     /**
      * The input data record to be compared.
      *
-     * @var InRecordWSType
+     * @var InRecordWSType[]
      */
     private $inRecord;
 
@@ -78,12 +78,12 @@ class ProcessDataRequest
     }
 
     /**
-     * @param InRecordWSType $inRecord
+     * @param InRecordWSType[] $inRecords
      * @return ProcessDataRequest
      */
-    public function setInRecord(InRecordWSType $inRecord): self
+    public function setInRecord(array $inRecords): self
     {
-        $this->inRecord = $inRecord;
+        $this->inRecord = $inRecords;
         return $this;
     }
 }

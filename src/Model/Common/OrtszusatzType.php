@@ -16,7 +16,7 @@ class OrtszusatzType
     protected $_;
 
     /**
-     * @var boolean $amtlich Official German short form
+     * @var boolean|null $amtlich Official German short form
      */
     protected $amtlich;
 
@@ -41,14 +41,17 @@ class OrtszusatzType
      */
     public function getAmtlich(): bool
     {
-        return $this->amtlich;
+        return (bool) $this->amtlich;
     }
 
     /**
      * @param bool $amtlich
+     *
+     * @return OrtszusatzType
      */
-    public function setAmtlich(bool $amtlich): void
+    public function setAmtlich(bool $amtlich): OrtszusatzType
     {
         $this->amtlich = $amtlich;
+        return $this;
     }
 }

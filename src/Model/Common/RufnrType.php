@@ -11,18 +11,16 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class RufnrType
 {
     /**
-     * @var string $Ortsvorwahl
+     * @var string|null $Ortsvorwahl
      */
     protected $Ortsvorwahl;
 
     /**
-     * @var string $Durchwahl
+     * @var string|null $Durchwahl
      */
     protected $Durchwahl;
 
     /**
-     * One of the TYPE_ - constants
-     *
      * @var string
      */
     protected $typ;
@@ -40,7 +38,7 @@ class RufnrType
      */
     public function getOrtsvorwahl(): string
     {
-        return $this->Ortsvorwahl;
+        return (string) $this->Ortsvorwahl;
     }
 
     /**
@@ -59,7 +57,7 @@ class RufnrType
      */
     public function getDurchwahl(): string
     {
-        return $this->Durchwahl;
+        return (string) $this->Durchwahl;
     }
 
     /**

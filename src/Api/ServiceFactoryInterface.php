@@ -21,14 +21,15 @@ use Psr\Log\LoggerInterface;
 interface ServiceFactoryInterface
 {
     /**
-     * Create the address factory service able to perform operations.
+     * Create the address verification service to have address data corrected,
+     * enhanced, and any duplicates removed.
      *
      * @param string $username
      * @param string $password
      * @param LoggerInterface $logger
      * @param bool $sandboxMode
      *
-     * @return AddressFactoryServiceInterface
+     * @return AddressVerificationServiceInterface
      * @throws ServiceException
      */
     public function createAddressFactoryService(
@@ -36,5 +37,5 @@ interface ServiceFactoryInterface
         string $password,
         LoggerInterface $logger,
         bool $sandboxMode = false
-    ): AddressFactoryServiceInterface;
+    ): AddressVerificationServiceInterface;
 }

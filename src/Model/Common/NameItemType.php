@@ -11,72 +11,72 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class NameItemType
 {
     /**
-     * @var string $Geschlecht
+     * @var string|null $Geschlecht
      */
     protected $Geschlecht;
 
     /**
-     * @var string $Anrede
+     * @var string|null $Anrede
      */
     protected $Anrede;
 
     /**
-     * @var string $Titel
+     * @var string|null $Titel
      */
     protected $Titel;
 
     /**
-     * @var string $Adel
+     * @var string|null $Adel
      */
     protected $Adel;
 
     /**
-     * @var string $Vorname
+     * @var string|null $Vorname
      */
     protected $Vorname;
 
     /**
-     * @var string $Vorsatzwort
+     * @var string|null $Vorsatzwort
      */
     protected $Vorsatzwort;
 
     /**
-     * @var string $Name
+     * @var string|null $Name
      */
     protected $Name;
 
     /**
-     * @var string $Namenszusatz
+     * @var string|null $Namenszusatz
      */
     protected $Namenszusatz;
 
     /**
-     * @var string $Firma1
+     * @var string|null $Firma1
      */
     protected $Firma1;
 
     /**
-     * @var string $Firma2
+     * @var string|null $Firma2
      */
     protected $Firma2;
 
     /**
-     * @var string $Firma3
+     * @var string|null $Firma3
      */
     protected $Firma3;
 
     /**
-     * @var string $Adresszusatz
+     * @var string|null $Adresszusatz
      */
     protected $Adresszusatz;
 
     /**
-     * @var string $Zustellhinweis
+     * @var string|null $Zustellhinweis
      */
     protected $Zustellhinweis;
 
     /**
-     * @var string $PsPostNr
+     * @var string|null $PsPostNr
      */
     protected $PsPostNr;
 
@@ -85,7 +85,7 @@ class NameItemType
      */
     public function getGeschlecht(): string
     {
-        return $this->Geschlecht;
+        return (string) $this->Geschlecht;
     }
 
     /**
@@ -104,7 +104,7 @@ class NameItemType
      */
     public function getAnrede(): string
     {
-        return $this->Anrede;
+        return (string) $this->Anrede;
     }
 
     /**
@@ -123,7 +123,7 @@ class NameItemType
      */
     public function getTitel(): string
     {
-        return $this->Titel;
+        return (string) $this->Titel;
     }
 
     /**
@@ -142,7 +142,7 @@ class NameItemType
      */
     public function getAdel(): string
     {
-        return $this->Adel;
+        return (string) $this->Adel;
     }
 
     /**
@@ -161,7 +161,7 @@ class NameItemType
      */
     public function getVorname(): string
     {
-        return $this->Vorname;
+        return (string) $this->Vorname;
     }
 
     /**
@@ -180,7 +180,7 @@ class NameItemType
      */
     public function getVorsatzwort(): string
     {
-        return $this->Vorsatzwort;
+        return (string) $this->Vorsatzwort;
     }
 
     /**
@@ -199,7 +199,7 @@ class NameItemType
      */
     public function getName(): string
     {
-        return $this->Name;
+        return (string) $this->Name;
     }
 
     /**
@@ -218,7 +218,7 @@ class NameItemType
      */
     public function getNamenszusatz(): string
     {
-        return $this->Namenszusatz;
+        return (string) $this->Namenszusatz;
     }
 
     /**
@@ -237,7 +237,7 @@ class NameItemType
      */
     public function getFirma1(): string
     {
-        return $this->Firma1;
+        return (string) $this->Firma1;
     }
 
     /**
@@ -256,7 +256,7 @@ class NameItemType
      */
     public function getFirma2(): string
     {
-        return $this->Firma2;
+        return (string) $this->Firma2;
     }
 
     /**
@@ -275,7 +275,7 @@ class NameItemType
      */
     public function getFirma3(): string
     {
-        return $this->Firma3;
+        return (string) $this->Firma3;
     }
 
     /**
@@ -294,7 +294,7 @@ class NameItemType
      */
     public function getAdresszusatz(): string
     {
-        return $this->Adresszusatz;
+        return (string) $this->Adresszusatz;
     }
 
     /**
@@ -313,7 +313,7 @@ class NameItemType
      */
     public function getZustellhinweis(): string
     {
-        return $this->Zustellhinweis;
+        return (string) $this->Zustellhinweis;
     }
 
     /**
@@ -332,7 +332,7 @@ class NameItemType
      */
     public function getPsPostNr(): string
     {
-        return $this->PsPostNr;
+        return (string) $this->PsPostNr;
     }
 
     /**

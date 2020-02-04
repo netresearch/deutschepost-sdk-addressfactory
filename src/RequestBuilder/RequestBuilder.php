@@ -60,9 +60,9 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPerson(
-        string $firstname = null,
-        string $lastname = null,
-        string $formOfAddress = null,
+        string $firstName = null,
+        string $lastName = null,
+        string $salutation = null,
         array $company = [],
         string $prefix = null,
         string $suffix = null,
@@ -70,9 +70,9 @@ class RequestBuilder implements RequestBuilderInterface
         string $titleOfNobility = null,
         string $gender = null
     ): RequestBuilderInterface {
-        $this->data['person']['firstname'] = $firstname;
-        $this->data['person']['lastname'] = $lastname;
-        $this->data['person']['formOfAddress'] = $formOfAddress;
+        $this->data['person']['firstName'] = $firstName;
+        $this->data['person']['lastName'] = $lastName;
+        $this->data['person']['salutation'] = $salutation;
         $this->data['person']['company'] = $company;
         $this->data['person']['prefix'] = $prefix;
         $this->data['person']['suffix'] = $suffix;
@@ -356,7 +356,7 @@ class RequestBuilder implements RequestBuilderInterface
             $record->setFileType(self::FILE_TYPE_MERGE);
         }
         if (isset($this->data['meta']['fileId'])) {
-            $record->setFileType($this->data['meta']['fileId']);
+            $record->setFileId($this->data['meta']['fileId']);
         } else {
             $record->setFileId(0);
         }
@@ -367,14 +367,14 @@ class RequestBuilder implements RequestBuilderInterface
         // Name, all fields are optional
         $nameItem = new NameItemType();
 
-        if (!empty($this->data['person']['firstname'])) {
-            $nameItem->setVorname($this->data['person']['firstname']);
+        if (!empty($this->data['person']['firstName'])) {
+            $nameItem->setVorname($this->data['person']['firstName']);
         }
-        if (!empty($this->data['person']['lastname'])) {
-            $nameItem->setName($this->data['person']['lastname']);
+        if (!empty($this->data['person']['lastName'])) {
+            $nameItem->setName($this->data['person']['lastName']);
         }
-        if (!empty($this->data['person']['formOfAddress'])) {
-            $nameItem->setAnrede($this->data['person']['formOfAddress']);
+        if (!empty($this->data['person']['salutation'])) {
+            $nameItem->setAnrede($this->data['person']['salutation']);
         }
         if (!empty($this->data['person']['company'][0])) {
             $nameItem->setFirma1($this->data['person']['company'][0]);

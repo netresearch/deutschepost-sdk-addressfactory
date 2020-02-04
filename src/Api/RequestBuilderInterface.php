@@ -17,24 +17,24 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api;
  */
 interface RequestBuilderInterface
 {
-    const FILE_TYPE_MERGE = 'Merge';
-    const FILE_TYPE_PURGE = 'Purge';
+    public const FILE_TYPE_MERGE = 'Merge';
+    public const FILE_TYPE_PURGE = 'Purge';
 
-    const INQUIRY_REASON_ABK = 'ABK';
-    const INQUIRY_REASON_ABV = 'ABV';
-    const INQUIRY_REASON_ABB = 'ABB';
-    const INQUIRY_REASON_ABI = 'ABI';
-    const INQUIRY_REASON_ABM = 'ABM';
+    public const INQUIRY_REASON_ABK = 'ABK';
+    public const INQUIRY_REASON_ABV = 'ABV';
+    public const INQUIRY_REASON_ABB = 'ABB';
+    public const INQUIRY_REASON_ABI = 'ABI';
+    public const INQUIRY_REASON_ABM = 'ABM';
 
-    const GENDER_MALE = 'M';
-    const GENDER_FEMALE = 'W';
-    const GENDER_NOT_SPECIFIED = 'U';
+    public const GENDER_MALE = 'M';
+    public const GENDER_FEMALE = 'W';
+    public const GENDER_NOT_SPECIFIED = 'U';
 
-    const PHONE_TYPE_UNKNOWN = 'Unbekannt';
-    const PHONE_TYPE_PRIVATE = 'Privat';
-    const PHONE_TYPE_BUSINESS = 'Geschaeftlich';
-    const PHONE_TYPE_MOBILE = 'Mobil';
-    const PHONE_TYPE_FAX = 'Fax';
+    public const PHONE_TYPE_UNKNOWN = 'Unbekannt';
+    public const PHONE_TYPE_PRIVATE = 'Privat';
+    public const PHONE_TYPE_BUSINESS = 'Geschaeftlich';
+    public const PHONE_TYPE_MOBILE = 'Mobil';
+    public const PHONE_TYPE_FAX = 'Fax';
 
     /**
      * Set record metadata (optional).
@@ -62,9 +62,9 @@ interface RequestBuilderInterface
      * @see RequestBuilderInterface::GENDER_FEMALE
      * @see RequestBuilderInterface::GENDER_NOT_SPECIFIED
      *
-     * @param string|null $firstname
-     * @param string|null $lastname
-     * @param string|null $formOfAddress Examples: "Frau", "Mr"
+     * @param string|null $firstName
+     * @param string|null $lastName
+     * @param string|null $salutation Examples: "Frau", "Mr"
      * @param string[] $company Company, up to three lines
      * @param string|null $prefix Name prefix. e.g.: "von"
      * @param string|null $suffix Name suffix, e.g.: "MdB", "PhD", "Sr."
@@ -74,9 +74,9 @@ interface RequestBuilderInterface
      * @return RequestBuilderInterface
      */
     public function setPerson(
-        string $firstname = null,
-        string $lastname = null,
-        string $formOfAddress = null,
+        string $firstName = null,
+        string $lastName = null,
+        string $salutation = null,
         array $company = [],
         string $prefix = null,
         string $suffix = null,

@@ -16,44 +16,44 @@ class RecordType
     protected $recordId;
 
     /**
-     * @var int $sequenceId
+     * @var int|null $sequenceId
      */
     protected $sequenceId;
 
     /**
-     * @var int $fileId
+     * @var int|null $fileId
      */
     protected $fileId;
 
     /**
      * One of: Merge, Purge
      *
-     * @var string $fileType
+     * @var string|null $fileType
      */
     protected $fileType;
 
     /**
-     * @var NameItemType $NameItem
+     * @var NameItemType|null $NameItem
      */
     protected $NameItem;
 
     /**
-     * @var AdrItemType $AdrItem
+     * @var AdrItemType|null $AdrItem
      */
     protected $AdrItem;
 
     /**
-     * @var RufnrItemType $RufnrItem
+     * @var RufnrItemType|null $RufnrItem
      */
     protected $RufnrItem;
 
     /**
-     * @var GeoItemType $GeoItem
+     * @var GeoItemType|null $GeoItem
      */
     protected $GeoItem;
 
     /**
-     * @var ExtFieldItemType $ExtFieldItem
+     * @var ExtFieldItemType|null $ExtFieldItem
      */
     protected $ExtFieldItem;
 
@@ -74,9 +74,9 @@ class RecordType
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSequenceId(): int
+    public function getSequenceId(): ?int
     {
         return $this->sequenceId;
     }
@@ -93,9 +93,9 @@ class RecordType
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getFileId(): int
+    public function getFileId(): ?int
     {
         return $this->fileId;
     }
@@ -116,7 +116,7 @@ class RecordType
      */
     public function getFileType(): string
     {
-        return $this->fileType;
+        return (string) $this->fileType;
     }
 
     /**
@@ -131,9 +131,9 @@ class RecordType
     }
 
     /**
-     * @return NameItemType
+     * @return NameItemType|null
      */
-    public function getNameItem(): NameItemType
+    public function getNameItem(): ?NameItemType
     {
         return $this->NameItem;
     }
@@ -150,9 +150,9 @@ class RecordType
     }
 
     /**
-     * @return AdrItemType
+     * @return AdrItemType|null
      */
-    public function getAdrItem(): AdrItemType
+    public function getAdrItem(): ?AdrItemType
     {
         return $this->AdrItem;
     }
@@ -169,9 +169,9 @@ class RecordType
     }
 
     /**
-     * @return RufnrItemType
+     * @return RufnrItemType|null
      */
-    public function getRufnrItem(): RufnrItemType
+    public function getRufnrItem(): ?RufnrItemType
     {
         return $this->RufnrItem;
     }
@@ -188,9 +188,9 @@ class RecordType
     }
 
     /**
-     * @return GeoItemType
+     * @return GeoItemType|null
      */
-    public function getGeoItem(): GeoItemType
+    public function getGeoItem(): ?GeoItemType
     {
         return $this->GeoItem;
     }
@@ -207,9 +207,9 @@ class RecordType
     }
 
     /**
-     * @return ExtFieldItemType
+     * @return ExtFieldItemType|null
      */
-    public function getExtFieldItem(): ExtFieldItemType
+    public function getExtFieldItem(): ?ExtFieldItemType
     {
         return $this->ExtFieldItem;
     }

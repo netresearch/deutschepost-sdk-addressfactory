@@ -11,12 +11,12 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class KoordWgs84Type
 {
     /**
-     * @var string $Breite
+     * @var string
      */
     protected $Breite;
 
     /**
-     * @var string $Laenge
+     * @var string
      */
     protected $Laenge;
 

@@ -11,7 +11,7 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class ExtFieldItemType
 {
     /**
-     * @var ExtFieldType[] $ExtField
+     * @var ExtFieldType[]|null $ExtField
      */
     protected $ExtField;
 
@@ -28,6 +28,6 @@ class ExtFieldItemType
      */
     public function getExtField(): array
     {
-        return $this->ExtField;
+        return is_array($this->ExtField) ? $this->ExtField : [];
     }
 }

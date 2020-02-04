@@ -11,27 +11,27 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class PostfachType
 {
     /**
-     * @var string $Nr
+     * @var string|null $Nr
      */
     protected $Nr;
 
     /**
-     * @var string $Plz
+     * @var string|null $Plz
      */
     protected $Plz;
 
     /**
-     * @var OrtType $Ort
+     * @var OrtType|null $Ort
      */
     protected $Ort;
 
     /**
-     * @var OrtszusatzType $Ortszusatz
+     * @var OrtszusatzType|null $Ortszusatz
      */
     protected $Ortszusatz;
 
     /**
-     * @var LeitdatenType $Leitdaten
+     * @var LeitdatenType|null $Leitdaten
      */
     protected $Leitdaten;
 
@@ -40,7 +40,7 @@ class PostfachType
      */
     public function getNr(): string
     {
-        return $this->Nr;
+        return (string) $this->Nr;
     }
 
     /**
@@ -59,7 +59,7 @@ class PostfachType
      */
     public function getPlz(): string
     {
-        return $this->Plz;
+        return (string) $this->Plz;
     }
 
     /**
@@ -74,9 +74,9 @@ class PostfachType
     }
 
     /**
-     * @return OrtType
+     * @return OrtType|null
      */
-    public function getOrt(): OrtType
+    public function getOrt(): ?OrtType
     {
         return $this->Ort;
     }
@@ -93,9 +93,9 @@ class PostfachType
     }
 
     /**
-     * @return OrtszusatzType
+     * @return OrtszusatzType|null
      */
-    public function getOrtszusatz(): OrtszusatzType
+    public function getOrtszusatz(): ?OrtszusatzType
     {
         return $this->Ortszusatz;
     }
@@ -112,9 +112,9 @@ class PostfachType
     }
 
     /**
-     * @return LeitdatenType
+     * @return LeitdatenType|null
      */
-    public function getLeitdaten()
+    public function getLeitdaten(): ?LeitdatenType
     {
         return $this->Leitdaten;
     }

@@ -11,47 +11,47 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class PostfilialeType
 {
     /**
-     * @var string $Nr
+     * @var string|null $Nr
      */
     protected $Nr;
 
     /**
-     * @var string $Plz
+     * @var string|null $Plz
      */
     protected $Plz;
 
     /**
-     * @var OrtType $Ort
+     * @var OrtType|null $Ort
      */
     protected $Ort;
 
     /**
-     * @var OrtszusatzType $Ortszusatz
+     * @var OrtszusatzType|null $Ortszusatz
      */
     protected $Ortszusatz;
 
     /**
-     * @var string $Gemeinde
+     * @var string|null $Gemeinde
      */
     protected $Gemeinde;
 
     /**
-     * @var string $Kreis
+     * @var string|null $Kreis
      */
     protected $Kreis;
 
     /**
-     * @var string $RegBezirk
+     * @var string|null $RegBezirk
      */
     protected $RegBezirk;
 
     /**
-     * @var string $Bundesland
+     * @var string|null $Bundesland
      */
     protected $Bundesland;
 
     /**
-     * @var LeitdatenType $Leitdaten
+     * @var LeitdatenType|null $Leitdaten
      */
     protected $Leitdaten;
 
@@ -60,7 +60,7 @@ class PostfilialeType
      */
     public function getNr(): string
     {
-        return $this->Nr;
+        return (string) $this->Nr;
     }
 
     /**
@@ -79,7 +79,7 @@ class PostfilialeType
      */
     public function getPlz(): string
     {
-        return $this->Plz;
+        return (string) $this->Plz;
     }
 
     /**
@@ -94,9 +94,9 @@ class PostfilialeType
     }
 
     /**
-     * @return OrtType
+     * @return OrtType|null
      */
-    public function getOrt(): OrtType
+    public function getOrt(): ?OrtType
     {
         return $this->Ort;
     }
@@ -113,9 +113,9 @@ class PostfilialeType
     }
 
     /**
-     * @return OrtszusatzType
+     * @return OrtszusatzType|null
      */
-    public function getOrtszusatz(): OrtszusatzType
+    public function getOrtszusatz(): ?OrtszusatzType
     {
         return $this->Ortszusatz;
     }
@@ -136,7 +136,7 @@ class PostfilialeType
      */
     public function getGemeinde(): string
     {
-        return $this->Gemeinde;
+        return (string) $this->Gemeinde;
     }
 
     /**
@@ -155,7 +155,7 @@ class PostfilialeType
      */
     public function getKreis(): string
     {
-        return $this->Kreis;
+        return (string) $this->Kreis;
     }
 
     /**
@@ -163,7 +163,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setKreis($Kreis)
+    public function setKreis($Kreis): PostfilialeType
     {
         $this->Kreis = $Kreis;
         return $this;
@@ -174,7 +174,7 @@ class PostfilialeType
      */
     public function getRegBezirk(): string
     {
-        return $this->RegBezirk;
+        return (string) $this->RegBezirk;
     }
 
     /**
@@ -182,7 +182,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setRegBezirk($RegBezirk)
+    public function setRegBezirk($RegBezirk): PostfilialeType
     {
         $this->RegBezirk = $RegBezirk;
         return $this;
@@ -191,9 +191,9 @@ class PostfilialeType
     /**
      * @return string
      */
-    public function getBundesland()
+    public function getBundesland(): string
     {
-        return $this->Bundesland;
+        return (string) $this->Bundesland;
     }
 
     /**
@@ -201,16 +201,16 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setBundesland($Bundesland)
+    public function setBundesland(string $Bundesland): PostfilialeType
     {
         $this->Bundesland = $Bundesland;
         return $this;
     }
 
     /**
-     * @return LeitdatenType
+     * @return LeitdatenType|null
      */
-    public function getLeitdaten()
+    public function getLeitdaten(): ?LeitdatenType
     {
         return $this->Leitdaten;
     }
@@ -220,7 +220,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setLeitdaten($Leitdaten)
+    public function setLeitdaten(LeitdatenType $Leitdaten)
     {
         $this->Leitdaten = $Leitdaten;
         return $this;

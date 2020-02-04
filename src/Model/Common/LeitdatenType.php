@@ -11,27 +11,27 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class LeitdatenType
 {
     /**
-     * @var string $Leitcode
+     * @var string|null $Leitcode
      */
     protected $Leitcode;
 
     /**
-     * @var string $Alort
+     * @var string|null $Alort
      */
     protected $Alort;
 
     /**
-     * @var string $Frachtzentrum
+     * @var string|null $Frachtzentrum
      */
     protected $Frachtzentrum;
 
     /**
-     * @var string $StrSchluessel
+     * @var string|null $StrSchluessel
      */
     protected $StrSchluessel;
 
     /**
-     * @var string $Kgs
+     * @var string|null $Kgs
      */
     protected $Kgs;
 
@@ -40,7 +40,7 @@ class LeitdatenType
      */
     public function getLeitcode(): string
     {
-        return $this->Leitcode;
+        return (string) $this->Leitcode;
     }
 
     /**
@@ -59,7 +59,7 @@ class LeitdatenType
      */
     public function getAlort(): string
     {
-        return $this->Alort;
+        return (string) $this->Alort;
     }
 
     /**
@@ -78,7 +78,7 @@ class LeitdatenType
      */
     public function getFrachtzentrum(): string
     {
-        return $this->Frachtzentrum;
+        return (string) $this->Frachtzentrum;
     }
 
     /**
@@ -97,7 +97,7 @@ class LeitdatenType
      */
     public function getStrSchluessel(): string
     {
-        return $this->StrSchluessel;
+        return (string) $this->StrSchluessel;
     }
 
     /**
@@ -116,7 +116,7 @@ class LeitdatenType
      */
     public function getKgs(): string
     {
-        return $this->Kgs;
+        return (string) $this->Kgs;
     }
 
     /**

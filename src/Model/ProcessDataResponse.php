@@ -19,7 +19,9 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 class ProcessDataResponse
 {
     /**
-     * @var OutRecordWSType[]
+     * Depending on the SOAP_SINGLE_ELEMENT_ARRAYS setting, this may either be an object or an array of object(s).
+     *
+     * @var OutRecordWSType[]|OutRecordWSType
      */
     private $outRecord;
 
@@ -28,6 +30,10 @@ class ProcessDataResponse
      */
     public function getOutRecord(): array
     {
+        if ($this->outRecord instanceof OutRecordWSType) {
+            return [$this->outRecord];
+        }
+
         return $this->outRecord;
     }
 }

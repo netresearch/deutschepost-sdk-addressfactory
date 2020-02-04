@@ -16,7 +16,7 @@ class StrasseType
     protected $_;
 
     /**
-     * @var string $kurz
+     * @var string|null $kurz
      */
     protected $kurz;
 
@@ -41,14 +41,17 @@ class StrasseType
      */
     public function getKurz(): string
     {
-        return $this->kurz;
+        return (string) $this->kurz;
     }
 
     /**
      * @param string $kurz
+     *
+     * @return StrasseType
      */
-    public function setKurz(string $kurz): void
+    public function setKurz(string $kurz): StrasseType
     {
         $this->kurz = $kurz;
+        return $this;
     }
 }

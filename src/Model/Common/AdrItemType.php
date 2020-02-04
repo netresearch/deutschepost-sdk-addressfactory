@@ -11,34 +11,34 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 class AdrItemType
 {
     /**
-     * @var HausanschriftType $Hausanschrift
+     * @var HausanschriftType|null $Hausanschrift
      */
     protected $Hausanschrift;
 
     /**
-     * @var PostfachType $Postfach
+     * @var PostfachType|null $Postfach
      */
     protected $Postfach;
 
     /**
-     * @var PackstationType $Packstation
+     * @var PackstationType|null $Packstation
      */
     protected $Packstation;
 
     /**
-     * @var PostfilialeType $Postfiliale
+     * @var PostfilialeType|null $Postfiliale
      */
     protected $Postfiliale;
 
     /**
-     * @var GEType $GE
+     * @var GEType|null $GE
      */
     protected $GE;
 
     /**
-     * @return HausanschriftType
+     * @return HausanschriftType|null
      */
-    public function getHausanschrift(): HausanschriftType
+    public function getHausanschrift(): ?HausanschriftType
     {
         return $this->Hausanschrift;
     }
@@ -55,9 +55,9 @@ class AdrItemType
     }
 
     /**
-     * @return PostfachType
+     * @return PostfachType|null
      */
-    public function getPostfach(): PostfachType
+    public function getPostfach(): ?PostfachType
     {
         return $this->Postfach;
     }
@@ -74,9 +74,9 @@ class AdrItemType
     }
 
     /**
-     * @return PackstationType
+     * @return PackstationType|null
      */
-    public function getPackstation(): PackstationType
+    public function getPackstation(): ?PackstationType
     {
         return $this->Packstation;
     }
@@ -93,9 +93,9 @@ class AdrItemType
     }
 
     /**
-     * @return PostfilialeType
+     * @return PostfilialeType|null
      */
-    public function getPostfiliale(): PostfilialeType
+    public function getPostfiliale(): ?PostfilialeType
     {
         return $this->Postfiliale;
     }
@@ -112,9 +112,9 @@ class AdrItemType
     }
 
     /**
-     * @return GEType
+     * @return GEType|null
      */
-    public function getGE(): GEType
+    public function getGE(): ?GEType
     {
         return $this->GE;
     }
