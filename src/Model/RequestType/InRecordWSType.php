@@ -39,15 +39,12 @@ class InRecordWSType extends RecordType
     }
 
     /**
-     * @param \DateTime $birthDate
+     * @param string $dateOfBirth
      * @return InRecordWSType
      */
-    public function setGeburtsdatum(\DateTime $birthDate): self
+    public function setGeburtsdatum(string $dateOfBirth): self
     {
-        $timezone    = new \DateTimeZone('Europe/Berlin');
-        $convertDate = $birthDate->setTimezone($timezone)->format(\DateTime::ATOM);
-
-        $this->geburtsdatum = $convertDate;
+        $this->geburtsdatum = $dateOfBirth;
         return $this;
     }
 }

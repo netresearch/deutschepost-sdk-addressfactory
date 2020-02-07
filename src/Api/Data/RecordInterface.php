@@ -48,6 +48,11 @@ interface RecordInterface
     public function getGeoDataGk(): ?GeoDataGkInterface;
 
     /**
+     * @return RoutingDataInterface|null
+     */
+    public function getRoutingData(): ?RoutingDataInterface;
+
+    /**
      * @return PhoneNumberInterface[]
      */
     public function getPhoneNumbers(): array;

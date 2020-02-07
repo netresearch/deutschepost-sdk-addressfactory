@@ -100,16 +100,6 @@ class SimpleInRecordWSType
     }
 
     /**
-     * @param int $recordId
-     * @return SimpleInRecordWSType
-     */
-    public function setRecordId(int $recordId): self
-    {
-        $this->recordId = $recordId;
-        return $this;
-    }
-
-    /**
      * @param string $firstName
      * @return SimpleInRecordWSType
      */
@@ -180,15 +170,12 @@ class SimpleInRecordWSType
     }
 
     /**
-     * @param \DateTime $birthDate
+     * @param string $dateOfBirth
      * @return SimpleInRecordWSType
      */
-    public function setGeburtsdatum(\DateTime $birthDate): self
+    public function setGeburtsdatum(string $dateOfBirth): self
     {
-        $timezone    = new \DateTimeZone('Europe/Berlin');
-        $convertDate = $birthDate->setTimezone($timezone)->format(\DateTime::ATOM);
-
-        $this->geburtsdatum = $convertDate;
+        $this->geburtsdatum = $dateOfBirth;
         return $this;
     }
 }

@@ -30,17 +30,6 @@ class ServiceExceptionFactory
     }
 
     /**
-     * Create a detailed service exception.
-     *
-     * @param \Throwable $exception
-     * @return DetailedServiceException
-     */
-    public static function createDetailedServiceException(\Throwable $exception): DetailedServiceException
-    {
-        return new DetailedServiceException($exception->getMessage(), $exception->getCode(), $exception);
-    }
-
-    /**
      * Create an authentication exception.
      *
      * @param \Throwable $exception

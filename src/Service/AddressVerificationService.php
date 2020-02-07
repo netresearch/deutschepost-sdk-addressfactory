@@ -11,20 +11,18 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Service;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\AddressVerificationServiceInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\AuthenticationErrorException;
-use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedErrorException;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceExceptionFactory;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper\RecordResponseMapper;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\OpenSessionRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessDataRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataRequest;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\SimpleInRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 
 /**
- * AddressFactoryService
+ * AddressVerificationService
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
@@ -55,7 +53,7 @@ class AddressVerificationService implements AddressVerificationServiceInterface
         $this->recordResponseMapper = $recordResponseMapper;
     }
 
-    public function openSession(string $configName = null, string $clientId = null): string
+    public function openSession(string $configName, string $clientId = null): string
     {
         $request = new OpenSessionRequest();
         $request->setConfigName($configName);
@@ -66,15 +64,13 @@ class AddressVerificationService implements AddressVerificationServiceInterface
             return $response->getSessionId();
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
-        } catch (DetailedErrorException $exception) {
-            throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (\Throwable $exception) {
             // Catch all leftovers, e.g. \SoapFault, \Exception, ...
             throw ServiceExceptionFactory::createServiceException($exception);
         }
     }
 
-    public function closeSession(string $sessionId = null)
+    public function closeSession(string $sessionId): void
     {
         $request = new CloseSessionRequest();
         $request->setSessionId($sessionId);
@@ -83,8 +79,6 @@ class AddressVerificationService implements AddressVerificationServiceInterface
             $this->client->closeSession($request);
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
-        } catch (DetailedErrorException $exception) {
-            throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (\Throwable $exception) {
             // Catch all leftovers, e.g. \SoapFault, \Exception, ...
             throw ServiceExceptionFactory::createServiceException($exception);
@@ -111,18 +105,16 @@ class AddressVerificationService implements AddressVerificationServiceInterface
             ->setVorname($firstName);
 
         $requestType = new ProcessSimpleDataRequest();
-        $requestType->setSessionId($sessionId)
-            ->setConfigName($configName)
-            ->setMandantId($clientId)
-            ->setSimpleInRecord($address);
+        $requestType->setSessionId($sessionId);
+        $requestType->setConfigName($configName);
+        $requestType->setMandantId($clientId);
+        $requestType->setSimpleInRecord($address);
 
         try {
             $response = $this->client->processSimpleData($requestType);
             return $this->recordResponseMapper->map($response->getOutRecord());
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
-        } catch (DetailedErrorException $exception) {
-            throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (\Throwable $exception) {
             // Catch all leftovers, e.g. \SoapFault, \Exception, ...
             throw ServiceExceptionFactory::createServiceException($exception);
@@ -136,10 +128,10 @@ class AddressVerificationService implements AddressVerificationServiceInterface
         string $clientId = null
     ): array {
         $requestType = new ProcessDataRequest();
-        $requestType->setSessionId($sessionId)
-                    ->setConfigName($configName)
-                    ->setMandantId($clientId)
-                    ->setInRecord($records);
+        $requestType->setSessionId($sessionId);
+        $requestType->setConfigName($configName);
+        $requestType->setMandantId($clientId);
+        $requestType->setInRecord(array_filter($records));
 
         try {
             $response = $this->client->processData($requestType);
@@ -151,8 +143,6 @@ class AddressVerificationService implements AddressVerificationServiceInterface
             );
         } catch (AuthenticationErrorException $exception) {
             throw ServiceExceptionFactory::createAuthenticationException($exception);
-        } catch (DetailedErrorException $exception) {
-            throw ServiceExceptionFactory::createDetailedServiceException($exception);
         } catch (\Throwable $exception) {
             // Catch all leftovers, e.g. \SoapFault, \Exception, ...
             throw ServiceExceptionFactory::createServiceException($exception);

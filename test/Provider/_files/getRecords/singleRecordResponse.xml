@@ -1,0 +1,91 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns3:processDataResponse xmlns:af="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns3="http://service.v_1_1.direct.af.postdirekt.de/">
+            <outRecord recordId="1580213265" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Titel>Dr.</af:Titel>
+                    <af:Adel/>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Vorsatzwort/>
+                    <af:Name>Mustermann</af:Name>
+                    <af:Namenszusatz/>
+                    <af:Firma1/>
+                    <af:Firma2/>
+                    <af:Firma3/>
+                    <af:Adresszusatz/>
+                    <af:Zustellhinweis/>
+                    <af:PsPostNr/>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Hausanschrift>
+                        <af:Strasse kurz="">Sträßchensweg</af:Strasse>
+                        <af:Hausnr>10</af:Hausnr>
+                        <af:HausnrZusatz/>
+                        <af:Plz>53113</af:Plz>
+                        <af:Ort kurz="">Bonn</af:Ort>
+                        <af:Ortszusatz amtlich="true"/>
+                        <af:Ortsteil>Zentrum</af:Ortsteil>
+                        <af:Gemeinde>Bonn, Stadt</af:Gemeinde>
+                        <af:Kreis>Bonn, Stadt</af:Kreis>
+                        <af:RegBezirk>Reg.-Bez. Köln</af:RegBezirk>
+                        <af:Bundesland>Nordrhein-Westfalen</af:Bundesland>
+                        <af:Land>DE</af:Land>
+                        <af:Leitdaten>
+                            <af:Leitcode/>
+                            <af:Alort/>
+                            <af:Frachtzentrum/>
+                            <af:StrSchluessel/>
+                            <af:Kgs/>
+                        </af:Leitdaten>
+                    </af:Hausanschrift>
+                </af:AdrItem>
+                <af:GeoItem>
+                    <af:KoordWgs84>
+                        <af:Laenge>7.1204</af:Laenge>
+                        <af:Breite>50.7214</af:Breite>
+                    </af:KoordWgs84>
+                    <af:UtmWgs84>
+                        <af:Ost>5620529.081787705</af:Ost>
+                        <af:Nord>367325.64648770774</af:Nord>
+                    </af:UtmWgs84>
+                    <af:GkbDhdn>
+                        <af:Rechtswert>2579160.87986511</af:Rechtswert>
+                        <af:Hochwert>5621252.89057518</af:Hochwert>
+                    </af:GkbDhdn>
+                </af:GeoItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC100103</af:StatusCode>
+                            <af:StatusCode>BAC101104</af:StatusCode>
+                            <af:StatusCode>BAC102104</af:StatusCode>
+                            <af:StatusCode>BAC010103</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC050102</af:StatusCode>
+                            <af:StatusCode>FNC401107</af:StatusCode>
+                            <af:StatusCode>FNC402107</af:StatusCode>
+                            <af:StatusCode>FNC050107</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="MOV">
+                            <af:StatusCode>MOV000500</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC050105</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="GEO">
+                            <af:StatusCode>GEO030107</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="MDL">
+                            <af:StatusCode>MDL713107</af:StatusCode>
+                            <af:StatusCode>MDL000107</af:StatusCode>
+                            <af:StatusCode>MDL714107</af:StatusCode>
+                            <af:StatusCode>MDL712107</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+        </ns3:processDataResponse>
+    </soap:Body>
+</soap:Envelope>

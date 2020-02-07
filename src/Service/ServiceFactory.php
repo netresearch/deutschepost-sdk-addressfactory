@@ -23,7 +23,7 @@ use Psr\Log\LoggerInterface;
  */
 class ServiceFactory implements ServiceFactoryInterface
 {
-    public function createAddressFactoryService(
+    public function createAddressVerificationService(
         string $username,
         string $password,
         LoggerInterface $logger,
@@ -50,6 +50,6 @@ class ServiceFactory implements ServiceFactoryInterface
         }
 
         $soapServiceFactory = new SoapServiceFactory($soapClient);
-        return $soapServiceFactory->createAddressFactoryService($username, $password, $logger, $sandboxMode);
+        return $soapServiceFactory->createAddressVerificationService($username, $password, $logger, $sandboxMode);
     }
 }

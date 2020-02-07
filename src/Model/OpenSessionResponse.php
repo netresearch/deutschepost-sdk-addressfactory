@@ -24,7 +24,7 @@ class OpenSessionResponse
     /**
      * @return string
      */
-    public function getSessionId()
+    public function getSessionId(): string
     {
         return $this->sessionId;
     }

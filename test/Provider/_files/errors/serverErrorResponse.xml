@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <soap:Fault>
+            <faultcode>soap:Server</faultcode>
+            <faultstring>Internal Server Error</faultstring>
+            <detail>
+                <ns1:AFDirectException xmlns:ns1="http://service.v_1_1.direct.af.postdirekt.de/"/>
+            </detail>
+        </soap:Fault>
+    </soap:Body>
+</soap:Envelope>

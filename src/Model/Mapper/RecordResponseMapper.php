@@ -10,6 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GeoItemType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\HausanschriftType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\NameItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtszusatzType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtType;
@@ -17,13 +19,14 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\StrasseType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ModuleCodesType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\Address;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\GeoData;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\GeoDataGk;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\GeoDataUtm;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\Person;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\PhoneNumber;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService\Record;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Address;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoData;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataGk;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataUtm;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Person;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PhoneNumber;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Record;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\RoutingData;
 
 /**
  * Class RecordResponseMapper
@@ -40,22 +43,24 @@ class RecordResponseMapper
      */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
-        $person = $address = $coords = $utm = $gk = null;
+        $person = $address = $coords = $utm = $gk = $routingData = null;
         $phoneNumbers = [];
 
         // Person
         if ($outRecord->getNameItem() !== null) {
+            /** @var NameItemType $name */
             $name = $outRecord->getNameItem();
+            $company = [
+                $name->getFirma1(),
+                $name->getFirma2(),
+                $name->getFirma3()
+            ];
 
             $person = new Person(
                 $name->getAnrede(),
                 $name->getVorname(),
                 $name->getName(),
-                [
-                    $name->getFirma1(),
-                    $name->getFirma2(),
-                    $name->getFirma3()
-                ],
+                array_filter($company),
                 $name->getVorsatzwort(),
                 $name->getNamenszusatz(),
                 $name->getTitel(),
@@ -67,11 +72,13 @@ class RecordResponseMapper
 
         // Address
         if ($outRecord->getAdrItem() !== null && $outRecord->getAdrItem()->getHausanschrift() !== null) {
+            /** @var HausanschriftType $adr */
             $adr = $outRecord->getAdrItem()->getHausanschrift();
 
             $city = $adr->getOrt();
             $cityAddition = $adr->getOrtszusatz();
             $street = $adr->getStrasse();
+            $routing = $adr->getLeitdaten();
             $name = $outRecord->getNameItem();
 
             $address = new Address(
@@ -90,10 +97,21 @@ class RecordResponseMapper
                 $name instanceof NameItemType ? $name->getAdresszusatz() : '',
                 $name instanceof NameItemType ? $name->getZustellhinweis() : ''
             );
+
+            if ($routing !== null) {
+                $routingData = new RoutingData(
+                    $routing->getLeitcode(),
+                    $routing->getAlort(),
+                    $routing->getFrachtzentrum(),
+                    $routing->getStrSchluessel(),
+                    $routing->getKgs()
+                );
+            }
         }
 
         // Geo Data
         if ($outRecord->getGeoItem() !== null) {
+            /** @var GeoItemType $geo */
             $geo = $outRecord->getGeoItem();
             if ($geo->getKoordWgs84() !== null) {
                 $coords = new GeoData($geo->getKoordWgs84()->getLaenge(), $geo->getKoordWgs84()->getBreite());
@@ -146,6 +164,7 @@ class RecordResponseMapper
             $coords,
             $utm,
             $gk,
+            $routingData,
             $phoneNumbers,
             $statusCodes
         );

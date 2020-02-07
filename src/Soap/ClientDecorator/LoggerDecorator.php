@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\AuthenticationErrorException;
-use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedErrorException;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionResponse;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\OpenSessionRequest;
@@ -67,7 +66,6 @@ class LoggerDecorator extends AbstractDecorator
      * @return mixed
      *
      * @throws AuthenticationErrorException
-     * @throws DetailedErrorException
      * @throws \SoapFault
      */
     private function logCommunication(\Closure $performRequest)
@@ -77,10 +75,6 @@ class LoggerDecorator extends AbstractDecorator
         try {
             return $performRequest();
         } catch (AuthenticationErrorException $fault) {
-            $logLevel = LogLevel::ERROR;
-
-            throw $fault;
-        } catch (DetailedErrorException $fault) {
             $logLevel = LogLevel::ERROR;
 
             throw $fault;

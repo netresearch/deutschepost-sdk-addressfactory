@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Soap;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\AuthenticationErrorException;
-use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedErrorException;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\CloseSessionResponse;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\OpenSessionRequest;
@@ -36,7 +35,6 @@ abstract class AbstractClient
      * @return OpenSessionResponse
      *
      * @throws AuthenticationErrorException
-     * @throws DetailedErrorException
      * @throws \SoapFault
      */
     abstract public function openSession(OpenSessionRequest $request): OpenSessionResponse;
@@ -50,7 +48,6 @@ abstract class AbstractClient
      * @return CloseSessionResponse
      *
      * @throws AuthenticationErrorException
-     * @throws DetailedErrorException
      * @throws \SoapFault
      */
     abstract public function closeSession(CloseSessionRequest $request): CloseSessionResponse;
@@ -63,7 +60,6 @@ abstract class AbstractClient
      * @return ProcessSimpleDataResponse
      *
      * @throws AuthenticationErrorException
-     * @throws DetailedErrorException
      * @throws \SoapFault
      */
     abstract public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse;
@@ -76,7 +72,6 @@ abstract class AbstractClient
      * @return ProcessDataResponse
      *
      * @throws AuthenticationErrorException
-     * @throws DetailedErrorException
      * @throws \SoapFault
      */
     abstract public function processData(ProcessDataRequest $request): ProcessDataResponse;

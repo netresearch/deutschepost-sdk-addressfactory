@@ -1,0 +1,7 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Body>
+        <ns3:openSessionResponse xmlns:af="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns3="http://service.v_1_1.direct.af.postdirekt.de/">
+            <sessionId>YWJjZGVmIyMj</sessionId>
+        </ns3:openSessionResponse>
+    </soap:Body>
+</soap:Envelope>

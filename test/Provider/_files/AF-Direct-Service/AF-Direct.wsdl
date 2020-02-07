@@ -1,0 +1,1161 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.v_1_1.direct.af.postdirekt.de/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AF-Direct-Service" targetNamespace="http://service.v_1_1.direct.af.postdirekt.de/">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.postdirekt.de/schema/af/data/v_1_1" targetNamespace="http://www.postdirekt.de/schema/af/wsdata/v_1_1" version="1.0">
+
+      <xs:import namespace="http://www.postdirekt.de/schema/af/data/v_1_1"/>
+
+      <xs:complexType name="SimpleInRecordWSType">
+        <xs:sequence>
+          <xs:element name="recordId" type="xs:int"/>
+          <xs:element minOccurs="0" name="vorname" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="strasse" type="xs:string"/>
+          <xs:element minOccurs="0" name="hausnummer" type="xs:string"/>
+          <xs:element minOccurs="0" name="plz" type="xs:string"/>
+          <xs:element minOccurs="0" name="ort" type="xs:string"/>
+          <xs:element minOccurs="0" name="anfragegrund" type="xs:string"/>
+          <xs:element minOccurs="0" name="geburtsdatum" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="InRecordWSType">
+        <xs:complexContent>
+          <xs:extension base="ns1:InRecordType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="anfragegrund" type="xs:string"/>
+              <xs:element minOccurs="0" name="geburtsdatum" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="OutRecordWSType">
+        <xs:complexContent>
+          <xs:extension base="ns1:OutRecordType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="icdTrefferKz" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+    </xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.postdirekt.de/schema/af/data/v_1_1" targetNamespace="http://www.postdirekt.de/schema/af/data/v_1_1" version="1.0">
+
+      <xs:element name="AFInData" type="tns:AFInDataType"/>
+
+      <xs:element name="AFJobInput" type="tns:AFJobInputType"/>
+
+      <xs:element name="AFJobOutput" type="tns:AFJobOutputType"/>
+
+      <xs:element name="AFOutData" type="tns:AFOutDataType"/>
+
+      <xs:element name="AFStatusList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element form="qualified" maxOccurs="unbounded" name="StatusItem" type="tns:StatusItemType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="AdrItem" type="tns:AdrItemType"/>
+
+      <xs:element name="Anreicherung" type="tns:AnreicherungType"/>
+
+      <xs:element name="AttributRef" type="tns:AttributRefType"/>
+
+      <xs:element name="Bonitaetspruefung" type="tns:BonitaetspruefungType"/>
+
+      <xs:element name="Bundesland" type="xs:string"/>
+
+      <xs:element name="CustomStatusCodeItem" type="tns:StatusCodeItemType"/>
+
+      <xs:element name="Dienst" type="tns:DienstType"/>
+
+      <xs:element name="Dublettenpruefung" type="tns:DublettenpruefungType"/>
+
+      <xs:element name="ElementRef" type="tns:ElementRefType"/>
+
+      <xs:element name="Entfernung" type="tns:EntfernungType"/>
+
+      <xs:element name="ExtFieldItem" type="tns:ExtFieldItemType"/>
+
+      <xs:element name="Fehler">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="tns:FehlerType">
+              <xs:sequence/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="Fehltreffer" type="tns:FehltrefferType"/>
+
+      <xs:element name="GE" type="tns:GEType"/>
+
+      <xs:element name="Gemeinde" type="xs:string"/>
+
+      <xs:element name="GeoItem" type="tns:GeoItemType"/>
+
+      <xs:element name="GkbDhdn" type="tns:GkbDhdnType"/>
+
+      <xs:element name="Gruppeninfo" type="tns:GruppeninfoType"/>
+
+      <xs:element name="Gueltigkeitspruefung" type="tns:GueltigkeitspruefungType"/>
+
+      <xs:element name="Hausanschrift" type="tns:HausanschriftType"/>
+
+      <xs:element name="Hausnr" type="xs:string"/>
+
+      <xs:element name="HausnrZusatz" type="xs:string"/>
+
+      <xs:element name="Header" type="tns:HeaderType"/>
+
+      <xs:element name="Identifizierung" type="tns:IdentifizierungType"/>
+
+      <xs:element name="InRecord" type="tns:InRecordType"/>
+
+      <xs:element name="InitialAufloesung" type="tns:InitialAufloesungType"/>
+
+      <xs:element name="JobHeader" type="tns:JobHeaderType"/>
+
+      <xs:element name="Kategorie" type="tns:KategorieType"/>
+
+      <xs:element name="KoordWgs84" type="tns:KoordWgs84Type"/>
+
+      <xs:element name="Korrektur" type="tns:KorrekturType"/>
+
+      <xs:element name="Kreis" type="xs:string"/>
+
+      <xs:element name="Leitdaten" type="tns:LeitdatenType"/>
+
+      <xs:element name="MicrodialogItem" type="tns:MicrodialogItemType"/>
+
+      <xs:element name="ModuleCodes" type="tns:ModuleCodesType"/>
+
+      <xs:element name="ModuleStatus" type="tns:ModuleStatusType"/>
+
+      <xs:element name="MoveSource" type="tns:MoveSourceType"/>
+
+      <xs:element name="NameItem" type="tns:NameItemType"/>
+
+      <xs:element name="Ort" type="tns:OrtType"/>
+
+      <xs:element name="Ortszusatz" type="tns:OrtszusatzType"/>
+
+      <xs:element name="OutRecord" type="tns:OutRecordType"/>
+
+      <xs:element name="PDStatusCodeItem" type="tns:StatusCodeItemType"/>
+
+      <xs:element name="Packstation" type="tns:PackstationType"/>
+
+      <xs:element name="Plz" type="xs:string"/>
+
+      <xs:element name="Postfach" type="tns:PostfachType"/>
+
+      <xs:element name="Postfiliale" type="tns:PostfilialeType"/>
+
+      <xs:element name="Preis" type="tns:PreisType"/>
+
+      <xs:element name="RegBezirk" type="xs:string"/>
+
+      <xs:element name="Rufnr" type="tns:RufnrType"/>
+
+      <xs:element name="RufnrItem" type="tns:RufnrItemType"/>
+
+      <xs:element name="SchemaInfo" type="tns:SchemaInfoType"/>
+
+      <xs:element name="Separation" type="tns:SeparationType"/>
+
+      <xs:element name="SonstigeTaetigkeit" type="tns:SonstigeTaetigkeitType"/>
+
+      <xs:element name="StatusItem" type="tns:StatusItemType"/>
+
+      <xs:element name="Strasse" type="tns:StrasseType"/>
+
+      <xs:element name="Taetigkeit" type="tns:TaetigkeitType"/>
+
+      <xs:element name="TechStatus" type="tns:TechStatusType"/>
+
+      <xs:element name="TypAenderung" type="tns:TypAenderungType"/>
+
+      <xs:element name="Umstrukturierung" type="tns:UmstrukturierungType"/>
+
+      <xs:element name="Umzugspruefung" type="tns:UmzugspruefungType"/>
+
+      <xs:element name="UtmWgs84" type="tns:UtmWgs84Type"/>
+
+      <xs:element name="Verschiebung" type="tns:VerschiebungType"/>
+
+      <xs:element name="VersionInfo" type="tns:VersionInfoType"/>
+
+      <xs:element name="ZusatzInfo" type="tns:ZusatzInfoType"/>
+
+      <xs:element name="Zustellbarkeitspruefung" type="tns:ZustellbarkeitspruefungType"/>
+
+      <xs:complexType name="OutRecordType">
+        <xs:complexContent>
+          <xs:extension base="tns:RecordType">
+            <xs:sequence>
+              <xs:element form="qualified" minOccurs="0" name="MicrodialogItem" type="tns:MicrodialogItemType"/>
+              <xs:element form="qualified" minOccurs="0" name="MoveSource" type="tns:MoveSourceType"/>
+              <xs:element form="qualified" name="StatusItem" type="tns:StatusItemType"/>
+              <xs:element form="qualified" minOccurs="0" name="Preis" type="tns:PreisType"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="RecordType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="NameItem" type="tns:NameItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="AdrItem" type="tns:AdrItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="RufnrItem" type="tns:RufnrItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="GeoItem" type="tns:GeoItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="ExtFieldItem" type="tns:ExtFieldItemType"/>
+        </xs:sequence>
+        <xs:attribute name="recordId" type="xs:int" use="required"/>
+        <xs:attribute name="fileId" type="xs:int"/>
+        <xs:attribute name="sequenceId" type="xs:int"/>
+        <xs:attribute name="fileType" type="tns:fileTypeType"/>
+      </xs:complexType>
+
+      <xs:complexType name="MicrodialogItemType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="Element" type="tns:MicrodialogElementType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="MicrodialogElementType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="Attribut" type="tns:MicrodialogAttributType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="MicrodialogAttributType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="MoveSourceType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="NameItem" type="tns:NameItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="AdrItem" type="tns:AdrItemType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="NameItemType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Geschlecht" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Anrede" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Titel" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Adel" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Vorname" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Vorsatzwort" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Namenszusatz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Firma1" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Firma2" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Firma3" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Adresszusatz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Zustellhinweis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="PsPostNr" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="AdrItemType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Hausanschrift" type="tns:HausanschriftType"/>
+          <xs:element form="qualified" minOccurs="0" name="Postfach" type="tns:PostfachType"/>
+          <xs:element form="qualified" minOccurs="0" name="Packstation" type="tns:PackstationType"/>
+          <xs:element form="qualified" minOccurs="0" name="Postfiliale" type="tns:PostfilialeType"/>
+          <xs:element form="qualified" minOccurs="0" name="GE" type="tns:GEType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="HausanschriftType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Strasse" type="tns:StrasseType"/>
+          <xs:element form="qualified" minOccurs="0" name="Hausnr" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="HausnrZusatz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Plz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Ort" type="tns:OrtType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortszusatz" type="tns:OrtszusatzType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortsteil" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Gemeinde" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Kreis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="RegBezirk" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Bundesland" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Land" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Leitdaten" type="tns:LeitdatenType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StrasseType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="kurz" type="xs:string"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="OrtType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="kurz" type="xs:string"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="OrtszusatzType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="amtlich" type="xs:boolean"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="LeitdatenType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Leitcode" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Alort" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Frachtzentrum" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="StrSchluessel" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Kgs" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="PostfachType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Nr" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Plz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Ort" type="tns:OrtType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortszusatz" type="tns:OrtszusatzType"/>
+          <xs:element form="qualified" minOccurs="0" name="Leitdaten" type="tns:LeitdatenType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="PackstationType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Nr" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Plz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Ort" type="tns:OrtType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortszusatz" type="tns:OrtszusatzType"/>
+          <xs:element form="qualified" minOccurs="0" name="Gemeinde" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Kreis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="RegBezirk" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Bundesland" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Leitdaten" type="tns:LeitdatenType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="PostfilialeType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Nr" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Plz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Ort" type="tns:OrtType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortszusatz" type="tns:OrtszusatzType"/>
+          <xs:element form="qualified" minOccurs="0" name="Gemeinde" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Kreis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="RegBezirk" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Bundesland" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Leitdaten" type="tns:LeitdatenType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="GEType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Plz" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Ort" type="tns:OrtType"/>
+          <xs:element form="qualified" minOccurs="0" name="Ortszusatz" type="tns:OrtszusatzType"/>
+          <xs:element form="qualified" minOccurs="0" name="Gemeinde" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Kreis" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="RegBezirk" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Bundesland" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Leitdaten" type="tns:LeitdatenType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="StatusItemType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="TechStatus" type="tns:TechStatusType"/>
+          <xs:element form="qualified" minOccurs="0" name="PDStatusCodeItem" type="tns:StatusCodeItemType"/>
+          <xs:element form="qualified" minOccurs="0" name="CustomStatusCodeItem" type="tns:StatusCodeItemType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="TechStatusType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="ModuleStatus" type="tns:ModuleStatusType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="ModuleStatusType">
+        <xs:complexContent>
+          <xs:extension base="tns:Durchfuehrbares">
+            <xs:sequence>
+              <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="Dienst" type="tns:DienstType"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="Durchfuehrbares">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:Fehler"/>
+        </xs:sequence>
+        <xs:attribute name="durchgefuehrt" type="xs:boolean" use="required"/>
+        <xs:attribute name="erfolg" type="xs:boolean" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="DienstType">
+        <xs:complexContent>
+          <xs:extension base="tns:Durchfuehrbares">
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="tns:Taetigkeit"/>
+                <xs:element ref="tns:Separation"/>
+                <xs:element ref="tns:Zustellbarkeitspruefung"/>
+                <xs:element ref="tns:Umzugspruefung"/>
+                <xs:element ref="tns:Gueltigkeitspruefung"/>
+                <xs:element ref="tns:Bonitaetspruefung"/>
+                <xs:element ref="tns:Dublettenpruefung"/>
+                <xs:element ref="tns:SonstigeTaetigkeit"/>
+                <xs:element ref="tns:Entfernung"/>
+                <xs:element ref="tns:Identifizierung"/>
+                <xs:element ref="tns:Anreicherung"/>
+                <xs:element ref="tns:Korrektur"/>
+                <xs:element ref="tns:InitialAufloesung"/>
+                <xs:element ref="tns:Verschiebung"/>
+                <xs:element ref="tns:TypAenderung"/>
+                <xs:element ref="tns:Umstrukturierung"/>
+              </xs:choice>
+              <xs:element form="qualified" minOccurs="0" name="Log" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="AFOutDataType">
+        <xs:sequence>
+          <xs:element form="qualified" name="Header" type="tns:HeaderType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" name="OutRecord" type="tns:OutRecordType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="HeaderType">
+        <xs:sequence>
+          <xs:element form="qualified" name="SchemaInfo" type="tns:SchemaInfoType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="SchemaInfoType">
+        <xs:sequence>
+          <xs:element form="qualified" name="VersionInfo" type="tns:VersionInfoType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="VersionInfoType">
+        <xs:sequence/>
+        <xs:attribute name="version" type="xs:int"/>
+        <xs:attribute name="release" type="xs:int"/>
+        <xs:attribute name="build" type="xs:int"/>
+        <xs:attribute name="revision" type="xs:string"/>
+      </xs:complexType>
+
+      <xs:complexType name="SeparationType">
+        <xs:complexContent>
+          <xs:extension base="tns:SeparationRestriction">
+            <xs:sequence>
+              <xs:element form="qualified" maxOccurs="unbounded" name="Quelle">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="tns:AttributRefType">
+                      <xs:sequence>
+                        <xs:element form="qualified" maxOccurs="unbounded" name="Ziel" type="tns:AttributRefType"/>
+                      </xs:sequence>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="SeparationRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:UmstrukturierungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="UmstrukturierungType">
+        <xs:complexContent>
+          <xs:extension base="tns:AttributBearbeitungRestriction">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="AttributBearbeitungRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="BearbeitungType">
+        <xs:complexContent>
+          <xs:extension base="tns:TaetigkeitType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="TaetigkeitType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AttributRef" type="tns:AttributRefType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ZusatzInfo" type="tns:ZusatzInfoType"/>
+        </xs:sequence>
+        <xs:attribute name="elementRef" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="AttributRefType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ZusatzInfo" type="tns:ZusatzInfoType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="ZusatzInfoType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="IdentifizierungType">
+        <xs:complexContent>
+          <xs:extension base="tns:TaetigkeitType">
+            <xs:sequence>
+              <xs:element form="qualified" minOccurs="0" name="Kategorie" type="tns:KategorieType"/>
+              <xs:element form="qualified" minOccurs="0" name="Fehltreffer" type="tns:FehltrefferType"/>
+            </xs:sequence>
+            <xs:attribute name="erfolg" type="xs:boolean" use="required"/>
+            <xs:attribute name="genauigkeit" type="tns:GenauigkeitType"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="KategorieType">
+        <xs:sequence/>
+        <xs:attribute name="indiz" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="FehltrefferType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="AttributRef" type="tns:AttributRefType"/>
+        </xs:sequence>
+        <xs:attribute name="mehrdeutig" type="xs:boolean"/>
+        <xs:attribute name="code" type="xs:int"/>
+      </xs:complexType>
+
+      <xs:complexType name="SonstigeTaetigkeitType">
+        <xs:complexContent>
+          <xs:extension base="tns:TaetigkeitType">
+            <xs:sequence>
+              <xs:element form="qualified" minOccurs="0" name="ExtFieldItem" type="tns:ExtFieldItemType"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="ExtFieldItemType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="ExtField" type="tns:ExtFieldType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="ExtFieldType">
+        <xs:simpleContent>
+          <xs:extension base="xs:string">
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="AnreicherungType">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="BonitaetspruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+            <xs:attribute name="art" type="xs:string" use="required"/>
+            <xs:attribute name="erfolg" type="xs:boolean" use="required"/>
+            <xs:attribute name="ampelwert" type="tns:AmpelType"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="EntfernungType">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="VerschiebungRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="VerschiebungType">
+        <xs:complexContent>
+          <xs:extension base="tns:VerschiebungRestriction">
+            <xs:sequence>
+              <xs:element form="qualified" maxOccurs="unbounded" name="Quelle">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="tns:AttributRefType">
+                      <xs:sequence>
+                        <xs:element form="qualified" name="Ziel" type="tns:AttributRefType"/>
+                      </xs:sequence>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="TypAenderungRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="TypAenderungType">
+        <xs:complexContent>
+          <xs:extension base="tns:TypAenderungRestriction">
+            <xs:sequence>
+              <xs:element form="qualified" name="Ziel">
+                <xs:complexType>
+                  <xs:sequence/>
+                  <xs:attribute name="elementRef" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="PruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:BearbeitungType">
+            <xs:sequence/>
+            <xs:attribute name="ergebnis" type="tns:PruefergebnisType" use="required"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="ZustellbarkeitspruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:PruefungType">
+            <xs:sequence/>
+            <xs:attribute name="ebene" type="tns:AdrEbeneType" use="required"/>
+            <xs:attribute name="grund" type="xs:string"/>
+            <xs:attribute name="letzteBeauskunftung" type="xs:date"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="UmzugspruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:PruefungType">
+            <xs:sequence>
+              <xs:element form="qualified" minOccurs="0" name="Kategorie" type="tns:KategorieType"/>
+              <xs:element form="qualified" minOccurs="0" name="GueltigkeitNachsendeauftrag" type="tns:GeschlossenerZeitraumType"/>
+            </xs:sequence>
+            <xs:attribute name="quelle" type="xs:string"/>
+            <xs:attribute name="widerspruch" type="xs:int"/>
+            <xs:attribute name="los" type="xs:boolean"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="GeschlossenerZeitraumType">
+        <xs:sequence/>
+        <xs:attribute name="von" type="xs:date" use="required"/>
+        <xs:attribute name="bis" type="xs:date" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="GueltigkeitspruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:PruefungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="DublettenpruefungRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:PruefungType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="DublettenpruefungType">
+        <xs:complexContent>
+          <xs:extension base="tns:DublettenpruefungRestriction">
+            <xs:sequence>
+              <xs:element form="qualified" minOccurs="0" name="Gruppeninfo" type="tns:GruppeninfoType"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="GruppeninfoType">
+        <xs:sequence>
+          <xs:element form="qualified" name="Kopfdublette" type="tns:KopfdubletteType"/>
+        </xs:sequence>
+        <xs:attribute name="gruppe" type="xs:int" use="required"/>
+        <xs:attribute name="sequenceId" type="xs:int" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="KopfdubletteType">
+        <xs:sequence/>
+        <xs:attribute name="fileId" type="xs:int" use="required"/>
+        <xs:attribute name="recordId" type="xs:int" use="required"/>
+        <xs:attribute name="sequenceId" type="xs:int" use="required"/>
+        <xs:attribute name="fileType" type="xs:string"/>
+      </xs:complexType>
+
+      <xs:complexType name="KorrekturType">
+        <xs:complexContent>
+          <xs:extension base="tns:AttributBearbeitungRestriction">
+            <xs:sequence/>
+            <xs:attribute name="signifikant" type="xs:boolean" use="required"/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType abstract="true" name="InitialAufloesungRestriction">
+        <xs:complexContent>
+          <xs:extension base="tns:KorrekturType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="InitialAufloesungType">
+        <xs:complexContent>
+          <xs:extension base="tns:InitialAufloesungRestriction">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="StatusCodeItemType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="ModuleCodes" type="tns:ModuleCodesType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="ModuleCodesType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="StatusCode" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="AFInDataType">
+        <xs:sequence>
+          <xs:element form="qualified" name="Header" type="tns:HeaderType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" name="InRecord" type="tns:InRecordType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="InRecordType">
+        <xs:complexContent>
+          <xs:extension base="tns:RecordType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="RufnrItemType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" name="Rufnr" type="tns:RufnrType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="RufnrType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="Ortsvorwahl" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="Durchwahl" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="typ" type="tns:RufnrTypType"/>
+      </xs:complexType>
+
+      <xs:complexType name="GeoItemType">
+        <xs:sequence>
+          <xs:element form="qualified" name="KoordWgs84" type="tns:KoordWgs84Type"/>
+          <xs:element form="qualified" name="UtmWgs84" type="tns:UtmWgs84Type"/>
+          <xs:element form="qualified" name="GkbDhdn" type="tns:GkbDhdnType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="KoordWgs84Type">
+        <xs:sequence>
+          <xs:element form="qualified" name="Laenge" type="xs:string"/>
+          <xs:element form="qualified" name="Breite" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="UtmWgs84Type">
+        <xs:sequence>
+          <xs:element form="qualified" name="Ost" type="xs:string"/>
+          <xs:element form="qualified" name="Nord" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="GkbDhdnType">
+        <xs:sequence>
+          <xs:element form="qualified" name="Rechtswert" type="xs:string"/>
+          <xs:element form="qualified" name="Hochwert" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="AFJobInputType">
+        <xs:sequence>
+          <xs:element form="qualified" name="JobHeader" type="tns:JobHeaderType"/>
+          <xs:element form="qualified" name="AFInData" type="tns:AFInDataType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="JobHeaderType">
+        <xs:sequence>
+          <xs:element form="qualified" name="configId" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="userDefinedData" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="AFJobOutputType">
+        <xs:sequence>
+          <xs:element form="qualified" name="JobHeader" type="tns:JobHeaderType"/>
+          <xs:element form="qualified" name="AFOutData" type="tns:AFOutDataType"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="PreisType">
+        <xs:simpleContent>
+          <xs:extension base="xs:float">
+            <xs:attribute name="currencyCode" type="xs:string"/>
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+
+      <xs:complexType name="ElementRefType">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:complexType name="FehlerType">
+        <xs:sequence/>
+        <xs:attribute name="code" type="xs:unsignedInt" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:complexType>
+
+      <xs:simpleType name="GeschlechtType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="M"/>
+          <xs:enumeration value="W"/>
+          <xs:enumeration value="U"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="GenauigkeitType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Haerte0"/>
+          <xs:enumeration value="Haerte1"/>
+          <xs:enumeration value="Haerte2"/>
+          <xs:enumeration value="Haerte3"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="AmpelType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="gruen"/>
+          <xs:enumeration value="gelb"/>
+          <xs:enumeration value="rot"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="PruefergebnisType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="positiv"/>
+          <xs:enumeration value="negativ"/>
+          <xs:enumeration value="unbestimmt"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="AdrEbeneType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Person"/>
+          <xs:enumeration value="Haushalt"/>
+          <xs:enumeration value="Gebaeude"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="RufnrTypType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Unbekannt"/>
+          <xs:enumeration value="Privat"/>
+          <xs:enumeration value="Geschaeftlich"/>
+          <xs:enumeration value="Mobil"/>
+          <xs:enumeration value="Fax"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+      <xs:simpleType name="fileTypeType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Merge"/>
+          <xs:enumeration value="Purge"/>
+        </xs:restriction>
+      </xs:simpleType>
+
+    </xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.v_1_1.direct.af.postdirekt.de/" xmlns:ns2="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns1="http://www.postdirekt.de/schema/af/wsdata/v_1_1" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.v_1_1.direct.af.postdirekt.de/">
+      <xs:import namespace="http://www.postdirekt.de/schema/af/wsdata/v_1_1"/>
+      <xs:import namespace="http://www.postdirekt.de/schema/af/data/v_1_1"/>
+      <xs:element name="closeSession" type="tns:closeSession"/>
+      <xs:element name="closeSessionResponse" type="tns:closeSessionResponse"/>
+      <xs:element name="openSession" type="tns:openSession"/>
+      <xs:element name="openSessionResponse" type="tns:openSessionResponse"/>
+      <xs:element name="processData" type="tns:processData"/>
+      <xs:element name="processDataResponse" type="tns:processDataResponse"/>
+      <xs:element name="processSimpleData" type="tns:processSimpleData"/>
+      <xs:element name="processSimpleDataResponse" type="tns:processSimpleDataResponse"/>
+      <xs:complexType name="processSimpleData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="configName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mandantId" type="xs:string"/>
+          <xs:element minOccurs="0" name="simpleInRecord" type="ns1:SimpleInRecordWSType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processSimpleDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="outRecord" type="ns2:OutRecordType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="openSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="configName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mandantId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="openSessionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="closeSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="closeSessionResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="processData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="configName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mandantId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="inRecord" type="ns1:InRecordWSType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processDataResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="outRecord" type="ns1:OutRecordWSType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AFDirectException" type="tns:AFDirectException"/>
+      <xs:complexType name="AFDirectException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AFDirectException">
+    <wsdl:part element="tns:AFDirectException" name="AFDirectException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="openSessionResponse">
+    <wsdl:part element="tns:openSessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processSimpleDataResponse">
+    <wsdl:part element="tns:processSimpleDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="openSession">
+    <wsdl:part element="tns:openSession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeSession">
+    <wsdl:part element="tns:closeSession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processSimpleData">
+    <wsdl:part element="tns:processSimpleData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processDataResponse">
+    <wsdl:part element="tns:processDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeSessionResponse">
+    <wsdl:part element="tns:closeSessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processData">
+    <wsdl:part element="tns:processData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AF-Direct">
+    <wsdl:operation name="processSimpleData">
+      <wsdl:input message="tns:processSimpleData" name="processSimpleData">
+      </wsdl:input>
+      <wsdl:output message="tns:processSimpleDataResponse" name="processSimpleDataResponse">
+      </wsdl:output>
+      <wsdl:fault message="tns:AFDirectException" name="AFDirectException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="openSession">
+      <wsdl:input message="tns:openSession" name="openSession">
+      </wsdl:input>
+      <wsdl:output message="tns:openSessionResponse" name="openSessionResponse">
+      </wsdl:output>
+      <wsdl:fault message="tns:AFDirectException" name="AFDirectException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeSession">
+      <wsdl:input message="tns:closeSession" name="closeSession">
+      </wsdl:input>
+      <wsdl:output message="tns:closeSessionResponse" name="closeSessionResponse">
+      </wsdl:output>
+      <wsdl:fault message="tns:AFDirectException" name="AFDirectException">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processData">
+      <wsdl:input message="tns:processData" name="processData">
+      </wsdl:input>
+      <wsdl:output message="tns:processDataResponse" name="processDataResponse">
+      </wsdl:output>
+      <wsdl:fault message="tns:AFDirectException" name="AFDirectException">
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AF-Direct-ServiceSoapBinding" type="tns:AF-Direct">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#SecureServiceUsernameUnsecureTransportPolicy"/>
+    <wsdl:operation name="processSimpleData">
+      <soap12:operation soapAction="processSimpleData" style="document"/>
+      <wsdl:input name="processSimpleData">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processSimpleDataResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AFDirectException">
+        <soap12:fault name="AFDirectException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="openSession">
+      <soap12:operation soapAction="openSession" style="document"/>
+      <wsdl:input name="openSession">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="openSessionResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AFDirectException">
+        <soap12:fault name="AFDirectException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeSession">
+      <soap12:operation soapAction="closeSession" style="document"/>
+      <wsdl:input name="closeSession">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="closeSessionResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AFDirectException">
+        <soap12:fault name="AFDirectException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processData">
+      <soap12:operation soapAction="processData" style="document"/>
+      <wsdl:input name="processData">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processDataResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AFDirectException">
+        <soap12:fault name="AFDirectException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AF-Direct-Service">
+    <wsdl:port binding="tns:AF-Direct-ServiceSoapBinding" name="AF-Direct-Port">
+      <soap12:address location="https://service-afdirect.postdirekt.de:443/sapouni/AF-Direct-Service/AF-Direct"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" wsu:Id="SecureServiceUsernameUnsecureTransportPolicy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10/>
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+</wsdl:definitions>

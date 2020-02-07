@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService;
+namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
@@ -15,6 +15,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 
 /**
  * Record
@@ -55,6 +56,11 @@ class Record implements RecordInterface
     private $geoDataGk;
 
     /**
+     * @var RoutingDataInterface|null
+     */
+    private $routingData;
+
+    /**
      * @var PhoneNumberInterface[]
      */
     private $phoneNumbers;
@@ -73,6 +79,7 @@ class Record implements RecordInterface
      * @param GeoDataInterface|null $geoData
      * @param GeoDataUtmInterface|null $geoDataUtm
      * @param GeoDataGkInterface|null $geoDataGk
+     * @param RoutingDataInterface|null $routingData
      * @param PhoneNumberInterface[] $phoneNumbers
      * @param string[] $statusCodes
      */
@@ -83,6 +90,7 @@ class Record implements RecordInterface
         GeoDataInterface $geoData = null,
         GeoDataUtmInterface $geoDataUtm = null,
         GeoDataGkInterface $geoDataGk = null,
+        RoutingDataInterface $routingData = null,
         array $phoneNumbers = [],
         array $statusCodes = []
     ) {
@@ -92,13 +100,14 @@ class Record implements RecordInterface
         $this->geoData = $geoData;
         $this->geoDataUtm = $geoDataUtm;
         $this->geoDataGk = $geoDataGk;
+        $this->routingData = $routingData;
         $this->phoneNumbers = $phoneNumbers;
         $this->statusCodes = $statusCodes;
     }
 
     public function getRecordId(): int
     {
-        // TODO: Implement getRecordId() method.
+        return $this->recordId;
     }
 
     public function getPerson(): ?PersonInterface
@@ -124,6 +133,11 @@ class Record implements RecordInterface
     public function getGeoDataGk(): ?GeoDataGkInterface
     {
         return $this->geoDataGk;
+    }
+
+    public function getRoutingData(): ?RoutingDataInterface
+    {
+        return $this->routingData;
     }
 
     public function getPhoneNumbers(): array

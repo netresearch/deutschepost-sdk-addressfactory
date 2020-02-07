@@ -6,17 +6,17 @@
 
 declare(strict_types=1);
 
-namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService;
+namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 
 /**
- * GeoDataUtm
+ * GeoDataGk
  *
  * @author Rico Sonntag <rico.sonntag@netresearch.de>
  * @link   https://www.netresearch.de/
  */
-class GeoDataUtm implements GeoDataUtmInterface
+class GeoDataGk implements GeoDataGkInterface
 {
     /**
      * @var string

@@ -19,7 +19,7 @@ class OpenSessionRequest
     /**
      * The configuration name. You can get the name of the configuration from Deutsche Post Direkt.
      *
-     * @var string|null
+     * @var string
      */
     private $configName;
 
@@ -32,10 +32,10 @@ class OpenSessionRequest
     private $mandantId;
 
     /**
-     * @param string|null $configName
+     * @param string $configName
      * @return OpenSessionRequest
      */
-    public function setConfigName(string $configName = null): self
+    public function setConfigName(string $configName): self
     {
         $this->configName = $configName;
         return $this;
@@ -45,7 +45,7 @@ class OpenSessionRequest
      * @param string|null $clientId
      * @return OpenSessionRequest
      */
-    public function setMandantId(string $clientId = null): self
+    public function setMandantId(?string $clientId): self
     {
         $this->mandantId = $clientId;
         return $this;

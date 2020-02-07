@@ -40,7 +40,7 @@ class SoapServiceFactory implements ServiceFactoryInterface
         $this->soapClient = $soapClient;
     }
 
-    public function createAddressFactoryService(
+    public function createAddressVerificationService(
         string $username,
         string $password,
         LoggerInterface $logger,

@@ -1,0 +1,127 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns3:processDataResponse xmlns:af="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns3="http://service.v_1_1.direct.af.postdirekt.de/">
+            <outRecord recordId="1" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Titel>Dr.</af:Titel>
+                    <af:Adel/>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Vorsatzwort/>
+                    <af:Name>Mustermann</af:Name>
+                    <af:Namenszusatz/>
+                    <af:Firma1/>
+                    <af:Firma2/>
+                    <af:Firma3/>
+                    <af:Adresszusatz/>
+                    <af:Zustellhinweis/>
+                    <af:PsPostNr/>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Hausanschrift>
+                        <af:Strasse>Strusen</af:Strasse>
+                        <af:Hausnr>36</af:Hausnr>
+                        <af:Plz>33729</af:Plz>
+                        <af:Ort>Bielefeld</af:Ort>
+                        <af:Ortsteil>Altenhagen</af:Ortsteil>
+                        <af:Gemeinde>Bielefeld, Stadt</af:Gemeinde>
+                        <af:Kreis>Bielefeld, Stadt</af:Kreis>
+                        <af:RegBezirk>Reg.-Bez. Detmold</af:RegBezirk>
+                        <af:Bundesland>Nordrhein-Westfalen</af:Bundesland>
+                        <af:Land>DE</af:Land>
+                    </af:Hausanschrift>
+                </af:AdrItem>
+                <af:RufnrItem>
+                    <af:Rufnr typ="Geschaeftlich">
+                        <af:Ortsvorwahl>1234</af:Ortsvorwahl>
+                        <af:Durchwahl>567890</af:Durchwahl>
+                    </af:Rufnr>
+                    <af:Rufnr typ="Mobil">
+                        <af:Ortsvorwahl>0987</af:Ortsvorwahl>
+                        <af:Durchwahl>654321</af:Durchwahl>
+                    </af:Rufnr>
+                </af:RufnrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC144103</af:StatusCode>
+                            <af:StatusCode>BAC101103</af:StatusCode>
+                            <af:StatusCode>BAC100103</af:StatusCode>
+                            <af:StatusCode>BAC102103</af:StatusCode>
+                            <af:StatusCode>BAC010103</af:StatusCode>
+                            <af:StatusCode>BAC140107</af:StatusCode>
+                            <af:StatusCode>BAC010107</af:StatusCode>
+                            <af:StatusCode>BAC104107</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC400501</af:StatusCode>
+                            <af:StatusCode>FNC050501</af:StatusCode>
+                            <af:StatusCode>FNC300501</af:StatusCode>
+                            <af:StatusCode>FNC030102</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC030105</af:StatusCode>
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+            <outRecord recordId="2" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Titel>Dr.</af:Titel>
+                    <af:Adel/>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Vorsatzwort/>
+                    <af:Name>Mustermann</af:Name>
+                    <af:Namenszusatz/>
+                    <af:Firma1/>
+                    <af:Firma2/>
+                    <af:Firma3/>
+                    <af:Adresszusatz/>
+                    <af:Zustellhinweis/>
+                    <af:PsPostNr/>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Hausanschrift>
+                        <af:Strasse>Sträßchensweg</af:Strasse>
+                        <af:Hausnr>10</af:Hausnr>
+                        <af:Plz>53113</af:Plz>
+                        <af:Ort>Bonn</af:Ort>
+                        <af:Ortsteil>Zentrum</af:Ortsteil>
+                        <af:Gemeinde>Bonn, Stadt</af:Gemeinde>
+                        <af:Kreis>Bonn, Stadt</af:Kreis>
+                        <af:RegBezirk>Reg.-Bez. Köln</af:RegBezirk>
+                        <af:Bundesland>Nordrhein-Westfalen</af:Bundesland>
+                        <af:Land>DE</af:Land>
+                    </af:Hausanschrift>
+                </af:AdrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC100103</af:StatusCode>
+                            <af:StatusCode>BAC010103</af:StatusCode>
+                            <af:StatusCode>BAC144104</af:StatusCode>
+                            <af:StatusCode>BAC102104</af:StatusCode>
+                            <af:StatusCode>BAC140107</af:StatusCode>
+                            <af:StatusCode>BAC010107</af:StatusCode>
+                            <af:StatusCode>BAC104107</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC400501</af:StatusCode>
+                            <af:StatusCode>FNC050501</af:StatusCode>
+                            <af:StatusCode>FNC300501</af:StatusCode>
+                            <af:StatusCode>FNC030102</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC030105</af:StatusCode>
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+        </ns3:processDataResponse>
+    </soap:Body>
+</soap:Envelope>

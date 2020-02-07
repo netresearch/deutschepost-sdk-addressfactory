@@ -10,7 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\AuthenticationException;
-use PostDirekt\Sdk\AddressfactoryDirect\Exception\DetailedServiceException;
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceException;
 
 /**
@@ -25,30 +24,28 @@ interface AddressVerificationServiceInterface
     /**
      * The "openSession" operation is used to generate a new session id used within any subsequent webservice call.
      *
-     * @param string|null $configName The name of a configuration created by Deutsche Post Direkt
+     * @param string $configName    The name of a configuration created by Deutsche Post Direkt
      * @param string|null $clientId Optionally, the client id parameter can be used to determine which clients are
      *                              to be compared. You receive the client id from Deutsche Post Direkt GmbH.
      *
      * @return string
      *
      * @throws AuthenticationException
-     * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function openSession(string $configName = null, string $clientId = null): string;
+    public function openSession(string $configName, string $clientId = null): string;
 
     /**
      * The operation "closeSession" closes a previously with "openSession" created session instance.
      *
-     * @param string|null $sessionId The id of the session to close
+     * @param string $sessionId The id of the session to close
      *
      * @return void
      *
      * @throws AuthenticationException
-     * @throws DetailedServiceException
      * @throws ServiceException
      */
-    public function closeSession(string $sessionId = null);
+    public function closeSession(string $sessionId): void;
 
     /**
      * Perform an address search based on flat address parameters.
@@ -66,7 +63,6 @@ interface AddressVerificationServiceInterface
      * @return RecordInterface
      *
      * @throws AuthenticationException
-     * @throws DetailedServiceException
      * @throws ServiceException
      */
     public function getRecordByAddress(
@@ -94,7 +90,6 @@ interface AddressVerificationServiceInterface
      * @return RecordInterface[]
      *
      * @throws AuthenticationException
-     * @throws DetailedServiceException
      * @throws ServiceException
      */
     public function getRecords(

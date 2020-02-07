@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressFactoryService;
+namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 

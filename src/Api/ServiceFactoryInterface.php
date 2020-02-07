@@ -32,7 +32,7 @@ interface ServiceFactoryInterface
      * @return AddressVerificationServiceInterface
      * @throws ServiceException
      */
-    public function createAddressFactoryService(
+    public function createAddressVerificationService(
         string $username,
         string $password,
         LoggerInterface $logger,

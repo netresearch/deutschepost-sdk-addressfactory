@@ -116,7 +116,10 @@ interface RequestBuilderInterface
     /**
      * Set parameters required for personal credit rating inquiries (date of birth, inquiry reason).
      *
-     * Date of Birth format: YYYYMMDD
+     * Web service accepts different formats, although only the last one conforms to the schema:
+     * - YYYYMMDD
+     * - YYYY-MM-DD
+     * - YYYY-MM-DDTHH:MM:SS
      *
      * Possible reasons for inquiry:
      * - ABK: Request for credit check – purchase
