@@ -42,34 +42,72 @@ $ ./vendor/bin/phpunit -c test/phpunit.xml
 The Postdirekt Addressfactory API SDK supports the following features:
 
 * Get address record by flat address data
-* Get address record by complex address data
+* Get address record(s) by complex address data
 
-### Get Record
+### Get Record By Address
 
-TODO: explain `ProcessSimpleDataRequest` web service call:
-* public api services
-* public api data exchange types
-* usage
+Verify a single address record by passing name and street address.
 
 #### Public API
 
-t.b.d.
+The library's components suitable for consumption comprise of
+
+* service:
+  * service factory
+  * address verification service
+* data transfer objects:
+  * response record with corrections and status codes indicating issues with the input data
 
 #### Usage
 
-t.b.d.
+```php
+$logger = new \Psr\Log\NullLogger();
+$configName = 'default';
 
-### Get Record By Complex Address
+$serviceFactory = new \PostDirekt\Sdk\AddressfactoryDirect\Service\ServiceFactory();
+$service = $serviceFactory->createAddressVerificationService('user', 'pass', $logger);
 
-TODO: explain `ProcessDataRequest` web service call:
-* public api services
-* public api data exchange types
-* usage
+$record = $service->getRecordByAddress('53114', 'Bonn', 'Sträßchenweg', '10', 'Mustermann', 'Hans', null, $configName);
+
+echo $record->getAddress()->getPostalCode(); // "53113"
+echo $record->getAddress()->getStreetName(); // "Sträßchensweg"
+echo $record->getStatusCodes(); // ['BAC100103', 'FNC400501', 'PDC030105', '…']
+```
+
+### Get Records By Complex Address
+
+Verify address records by passing in a complex request objects.
 
 #### Public API
 
-t.b.d.
+The library's components suitable for consumption comprise of
+
+* service:
+  * service factory
+  * address verification service
+  * data transfer object builder
+* data transfer objects:
+  * response record with corrections and status codes indicating issues with the input data
 
 #### Usage
 
-t.b.d.
+```php
+$logger = new \Psr\Log\NullLogger();
+$configName = 'default';
+
+$serviceFactory = new \PostDirekt\Sdk\AddressfactoryDirect\Service\ServiceFactory();
+$service = $serviceFactory->createAddressVerificationService('user', 'pass', $logger);
+
+$requestBuilder = new \PostDirekt\Sdk\AddressfactoryDirect\RequestBuilder\RequestBuilder();
+$requestBuilder->setMetadata($recordId = 1);
+$requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Sträßchenweg', '10');
+$request = $requestBuilder->create();
+
+$records = $service->getRecords([$request], null, $configName);
+foreach ($records as $record) {
+    echo $record->getRecordId(); // 1
+    echo $record->getAddress()->getPostalCode(); // "53113"
+    echo $record->getAddress()->getStreetName(); // "Sträßchensweg"
+    echo $record->getStatusCodes(); // ['BAC100103', 'FNC400501', 'PDC030105', '…']
+}
+```
