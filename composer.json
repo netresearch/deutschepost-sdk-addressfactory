@@ -32,5 +32,10 @@
         "psr-4": {
             "PostDirekt\\Sdk\\AddressfactoryDirect\\Test\\": "test/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.0.x-dev"
+        }
     }
 }
