@@ -22,13 +22,13 @@ ADDRESSFACTORY DIRECT web service which allows to correct and enrich address dat
 ## Installation
 
 ```bash
-$ composer require postdirekt/sdk-api-addressfactory
+$ composer require deutschepost/sdk-api-addressfactory
 ```
 
 ## Uninstallation
 
 ```bash
-$ composer remove postdirekt/sdk-api-addressfactory
+$ composer remove deutschepost/sdk-api-addressfactory
 ```
 
 ## Testing
