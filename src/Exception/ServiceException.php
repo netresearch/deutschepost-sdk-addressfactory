@@ -16,8 +16,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Exception;
  * are suitable for logging.
  *
  * @api
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class ServiceException extends \Exception
 {

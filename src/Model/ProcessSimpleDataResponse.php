@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 
-/**
- * ProcessSimpleDataResponse
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class ProcessSimpleDataResponse
 {
     /**

@@ -12,12 +12,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\RequestBuilderInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
 
-/**
- * Class RequestBuilder
- *
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RequestFactory
 {
     /**

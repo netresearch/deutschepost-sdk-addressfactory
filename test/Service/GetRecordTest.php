@@ -20,12 +20,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\Provider\GetRecordTestProvider;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\SoapClientTestCase;
 use Psr\Log\Test\TestLogger;
 
-/**
- * Class GetRecordTest
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class GetRecordTest extends SoapClientTestCase
 {
     /**

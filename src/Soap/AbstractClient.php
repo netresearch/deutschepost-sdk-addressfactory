@@ -18,12 +18,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessDataResponse;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataRequest;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataResponse;
 
-/**
- * AbstractClient
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 abstract class AbstractClient
 {
     /**

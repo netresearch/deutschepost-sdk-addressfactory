@@ -89,12 +89,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\Ziel;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ZusatzInfoType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ZustellbarkeitspruefungType;
 
-/**
- * ClassMap
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class ClassMap
 {
     /**

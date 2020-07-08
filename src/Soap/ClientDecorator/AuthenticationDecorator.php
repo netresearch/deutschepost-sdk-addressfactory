@@ -19,12 +19,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataResponse;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
 
-/**
- * AuthenticationDecorator
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class AuthenticationDecorator extends AbstractDecorator
 {
     const WSSE_NS            = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';

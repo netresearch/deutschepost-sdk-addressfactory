@@ -11,12 +11,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Expectation;
 use PHPUnit\Framework\Assert;
 use Psr\Log\Test\TestLogger;
 
-/**
- * Class CommunicationExpectation
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class CommunicationExpectation
 {
     /**

@@ -13,12 +13,6 @@ use PHPUnit\Framework\TestCase;
 use PostDirekt\Sdk\AddressfactoryDirect\Serializer\ClassMap;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\SoapClientFake;
 
-/**
- * Class SoapClientTestCase
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class SoapClientTestCase extends TestCase
 {
     /**

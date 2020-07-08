@@ -24,9 +24,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataResponse;
  * - add authentication
  * - transform errors into exceptions
  * - log communication
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class Client extends AbstractClient
 {

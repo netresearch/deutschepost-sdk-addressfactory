@@ -22,12 +22,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
-/**
- * LoggerDecorator
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class LoggerDecorator extends AbstractDecorator
 {
     /**

@@ -18,12 +18,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\Provider\FailureTestProvider;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\SoapClientTestCase;
 use Psr\Log\Test\TestLogger;
 
-/**
- * Class CloseSessionTest
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class CloseSessionTest extends SoapClientTestCase
 {
     /**

@@ -8,9 +8,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble;
 
 /**
  * Fake SOAP client used in tests.
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class SoapClientFake extends \SoapClient
 {

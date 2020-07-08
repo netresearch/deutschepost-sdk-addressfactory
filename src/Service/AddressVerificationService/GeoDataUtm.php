@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
 
-/**
- * GeoDataUtm
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class GeoDataUtm implements GeoDataUtmInterface
 {
     /**

@@ -10,9 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType;
 
 /**
  * The SimpleInRecordWSType enables you to easily construct an object for your input data record.
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class SimpleInRecordWSType
 {

@@ -17,12 +17,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator\ErrorHandlerDecorat
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\ClientDecorator\LoggerDecorator;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class SoapServiceFactory
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class SoapServiceFactory implements ServiceFactoryInterface
 {
     /**

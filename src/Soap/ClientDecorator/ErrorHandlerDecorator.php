@@ -23,9 +23,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
  * ErrorHandlerDecorator
  *
  * Handle errors when a response was received, i.e. no soap fault occurred.
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class ErrorHandlerDecorator extends AbstractDecorator
 {

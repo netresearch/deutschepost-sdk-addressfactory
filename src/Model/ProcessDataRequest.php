@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 
-/**
- * ProcessDataRequest
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class ProcessDataRequest
 {
     /**

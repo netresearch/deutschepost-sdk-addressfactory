@@ -12,8 +12,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api;
  * RequestBuilderInterface
  *
  * @api
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 interface RequestBuilderInterface
 {

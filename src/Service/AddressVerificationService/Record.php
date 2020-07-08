@@ -17,12 +17,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 
-/**
- * Record
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class Record implements RecordInterface
 {
     /**

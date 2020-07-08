@@ -12,9 +12,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Exception;
  * Class ServiceExceptionFactory
  *
  * A service exception factory to create specific exception instances.
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class ServiceExceptionFactory
 {

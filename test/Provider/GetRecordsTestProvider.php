@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Provider;
 
 use PostDirekt\Sdk\AddressfactoryDirect\RequestBuilder\RequestBuilder;
 
-/**
- * Class GetRecordsTestProvider
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class GetRecordsTestProvider
 {
     /**

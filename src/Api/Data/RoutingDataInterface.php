@@ -12,8 +12,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
  * Interface RoutingDataInterface
  *
  * @api
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 interface RoutingDataInterface
 {

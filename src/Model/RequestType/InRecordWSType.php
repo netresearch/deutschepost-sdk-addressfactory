@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RecordType;
 
-/**
- * InRecordWSType
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class InRecordWSType extends RecordType
 {
     /**

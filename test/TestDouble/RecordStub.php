@@ -9,12 +9,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\RequestBuilderInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\RequestBuilder\RequestBuilder;
 
-/**
- * Request record with pre-defined data.
- *
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RecordStub
 {
     public function getRecordId(): int

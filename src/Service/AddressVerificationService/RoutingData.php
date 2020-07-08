@@ -10,12 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 
-/**
- * RoutingData
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RoutingData implements RoutingDataInterface
 {
     /**

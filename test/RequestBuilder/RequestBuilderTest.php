@@ -18,12 +18,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\SoapClientTestCase;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
 use Psr\Log\Test\TestLogger;
 
-/**
- * Class RequestBuilderTest
- *
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RequestBuilderTest extends SoapClientTestCase
 {
     /**

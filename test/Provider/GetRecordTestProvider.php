@@ -8,12 +8,6 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Provider;
 
-/**
- * Class GetRecordTestProvider
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class GetRecordTestProvider
 {
     /**

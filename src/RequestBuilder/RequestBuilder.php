@@ -30,12 +30,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\StrasseType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\UtmWgs84Type;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 
-/**
- * RecordRequestBuilder
- *
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RequestBuilder implements RequestBuilderInterface
 {
     /**

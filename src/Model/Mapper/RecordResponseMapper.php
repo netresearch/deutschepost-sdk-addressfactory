@@ -28,12 +28,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Phone
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Record;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\RoutingData;
 
-/**
- * Class RecordResponseMapper
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class RecordResponseMapper
 {
     /**

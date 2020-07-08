@@ -17,8 +17,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
  *
  * phpcs:disable Generic.Files.LineLength.TooLong
  *
- * @author Christoph Aßmann <christoph.assmann@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class RequestBuilderExpectation
 {

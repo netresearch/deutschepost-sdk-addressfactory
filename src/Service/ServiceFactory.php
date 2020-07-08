@@ -15,12 +15,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Serializer\ClassMap;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\SoapServiceFactory;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class ServiceFactory
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class ServiceFactory implements ServiceFactoryInterface
 {
     public function createAddressVerificationService(

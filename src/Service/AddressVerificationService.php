@@ -21,12 +21,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\SimpleInRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 
-/**
- * AddressVerificationService
- *
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
- */
 class AddressVerificationService implements AddressVerificationServiceInterface
 {
     /**

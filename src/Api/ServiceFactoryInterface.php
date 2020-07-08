@@ -15,8 +15,6 @@ use Psr\Log\LoggerInterface;
  * ServiceFactoryInterface
  *
  * @api
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 interface ServiceFactoryInterface
 {

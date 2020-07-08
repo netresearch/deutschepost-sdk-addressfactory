@@ -12,8 +12,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Exception;
  * Class AuthenticationException
  *
  * @api
- * @author Rico Sonntag <rico.sonntag@netresearch.de>
- * @link   https://www.netresearch.de/
  */
 class AuthenticationException extends ServiceException
 {
