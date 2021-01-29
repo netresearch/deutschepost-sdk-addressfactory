@@ -12,6 +12,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackingStationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
@@ -71,6 +72,11 @@ class Record implements RecordInterface
     private $statusCodes;
 
     /**
+     * @var PackingStationInterface|null
+     */
+    private $packingStation;
+
+    /**
      * Record constructor.
      *
      * @param int $recordId
@@ -92,7 +98,8 @@ class Record implements RecordInterface
         GeoDataGkInterface $geoDataGk = null,
         RoutingDataInterface $routingData = null,
         array $phoneNumbers = [],
-        array $statusCodes = []
+        array $statusCodes = [],
+        PackingStationInterface $packingStation = null
     ) {
         $this->recordId = $recordId;
         $this->person = $person;
@@ -103,6 +110,7 @@ class Record implements RecordInterface
         $this->routingData = $routingData;
         $this->phoneNumbers = $phoneNumbers;
         $this->statusCodes = $statusCodes;
+        $this->packingStation = $packingStation;
     }
 
     public function getRecordId(): int
@@ -148,5 +156,10 @@ class Record implements RecordInterface
     public function getStatusCodes(): array
     {
         return $this->statusCodes;
+    }
+
+    public function getPackingStation(): ?PackingStationInterface
+    {
+        return $this->packingStation;
     }
 }

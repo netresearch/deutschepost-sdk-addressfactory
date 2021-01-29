@@ -61,4 +61,9 @@ interface RecordInterface
      * @return string[]
      */
     public function getStatusCodes(): array;
+
+    /**
+     * @return PackingStationInterface|null
+     */
+    public function getPackingStation(): ?PackingStationInterface;
 }

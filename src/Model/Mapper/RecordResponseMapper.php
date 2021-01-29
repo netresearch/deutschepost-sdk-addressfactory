@@ -15,6 +15,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\HausanschriftType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\NameItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtszusatzType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PackstationType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\StrasseType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ModuleCodesType;
@@ -23,6 +24,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Addre
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoData;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataGk;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataUtm;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PackingStation;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Person;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PhoneNumber;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Record;
@@ -43,7 +45,7 @@ class RecordResponseMapper
      */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
-        $person = $address = $coords = $utm = $gk = $routingData = null;
+        $person = $address = $coords = $utm = $gk = $routingData = $routing = $packingStation = null;
         $phoneNumbers = [];
 
         // Person
@@ -71,32 +73,54 @@ class RecordResponseMapper
         }
 
         // Address
-        if ($outRecord->getAdrItem() !== null && $outRecord->getAdrItem()->getHausanschrift() !== null) {
-            /** @var HausanschriftType $adr */
-            $adr = $outRecord->getAdrItem()->getHausanschrift();
+        if ($outRecord->getAdrItem() !== null) {
+            if ($outRecord->getAdrItem()->getHausanschrift() !== null) {
+                /** @var HausanschriftType $adr */
+                $adr = $outRecord->getAdrItem()->getHausanschrift();
 
-            $city = $adr->getOrt();
-            $cityAddition = $adr->getOrtszusatz();
-            $street = $adr->getStrasse();
-            $routing = $adr->getLeitdaten();
-            $name = $outRecord->getNameItem();
+                $city         = $adr->getOrt();
+                $cityAddition = $adr->getOrtszusatz();
+                $street       = $adr->getStrasse();
+                $routing      = $adr->getLeitdaten();
+                $name         = $outRecord->getNameItem();
 
-            $address = new Address(
-                $adr->getLand(),
-                $adr->getPlz(),
-                $adr->getBundesland(),
-                $adr->getRegBezirk(),
-                $adr->getKreis(),
-                $adr->getGemeinde(),
-                $city instanceof OrtType ? $city->getValue() : '',
-                $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : '',
-                $adr->getOrtsteil(),
-                $street instanceof StrasseType ? $street->getValue() : '',
-                $adr->getHausnr(),
-                $adr->getHausnrZusatz(),
-                $name instanceof NameItemType ? $name->getAdresszusatz() : '',
-                $name instanceof NameItemType ? $name->getZustellhinweis() : ''
-            );
+                $address = new Address(
+                    $adr->getLand(),
+                    $adr->getPlz(),
+                    $adr->getBundesland(),
+                    $adr->getRegBezirk(),
+                    $adr->getKreis(),
+                    $adr->getGemeinde(),
+                    $city instanceof OrtType ? $city->getValue() : '',
+                    $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : '',
+                    $adr->getOrtsteil(),
+                    $street instanceof StrasseType ? $street->getValue() : '',
+                    $adr->getHausnr(),
+                    $adr->getHausnrZusatz(),
+                    $name instanceof NameItemType ? $name->getAdresszusatz() : '',
+                    $name instanceof NameItemType ? $name->getZustellhinweis() : ''
+                );
+            }
+
+            if ($outRecord->getAdrItem()->getPackstation() !== null) {
+                /** @var PackstationType $packingStationResult */
+                $packingStationResult = $outRecord->getAdrItem()->getPackstation();
+
+                $city         = $packingStationResult->getOrt();
+                $cityAddition = $packingStationResult->getOrtszusatz();
+                $routing      = $packingStationResult->getLeitdaten();
+
+                $packingStation = new PackingStation(
+                    $packingStationResult->getNr(),
+                    $packingStationResult->getPlz(),
+                    $packingStationResult->getBundesland(),
+                    $packingStationResult->getRegBezirk(),
+                    $packingStationResult->getKreis(),
+                    $packingStationResult->getGemeinde(),
+                    $city instanceof OrtType ? $city->getValue() : '',
+                    $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : ''
+                );
+            }
 
             if ($routing !== null) {
                 $routingData = new RoutingData(
@@ -166,7 +190,8 @@ class RecordResponseMapper
             $gk,
             $routingData,
             $phoneNumbers,
-            $statusCodes
+            $statusCodes,
+            $packingStation
         );
     }
 }
