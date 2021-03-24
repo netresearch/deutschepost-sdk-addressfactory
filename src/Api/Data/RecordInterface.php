@@ -33,6 +33,11 @@ interface RecordInterface
     public function getAddress(): ?AddressInterface;
 
     /**
+     * @return PackingStationInterface|null
+     */
+    public function getPackingStation(): ?PackingStationInterface;
+
+    /**
      * @return GeoDataInterface|null
      */
     public function getGeoData(): ?GeoDataInterface;
@@ -61,9 +66,4 @@ interface RecordInterface
      * @return string[]
      */
     public function getStatusCodes(): array;
-
-    /**
-     * @return PackingStationInterface|null
-     */
-    public function getPackingStation(): ?PackingStationInterface;
 }

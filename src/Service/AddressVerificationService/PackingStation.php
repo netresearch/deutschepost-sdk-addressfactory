@@ -10,9 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackingStationInterface;
 
-/**
- * PackingStation
- */
 class PackingStation implements PackingStationInterface
 {
     /**
@@ -56,7 +53,7 @@ class PackingStation implements PackingStationInterface
     private $cityAddition;
 
     /**
-     * Address constructor.
+     * PackingStation constructor.
      *
      * @param string $number
      * @param string $postalCode

@@ -45,7 +45,7 @@ class RecordResponseMapper
      */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
-        $person = $address = $coords = $utm = $gk = $routingData = $routing = $packingStation = null;
+        $person = $address = $coords = $utm = $gk = $routingData = $packingStation = null;
         $phoneNumbers = [];
 
         // Person
@@ -74,15 +74,17 @@ class RecordResponseMapper
 
         // Address
         if ($outRecord->getAdrItem() !== null) {
+            $routing = null;
+
             if ($outRecord->getAdrItem()->getHausanschrift() !== null) {
                 /** @var HausanschriftType $adr */
                 $adr = $outRecord->getAdrItem()->getHausanschrift();
 
-                $city         = $adr->getOrt();
+                $city = $adr->getOrt();
                 $cityAddition = $adr->getOrtszusatz();
-                $street       = $adr->getStrasse();
-                $routing      = $adr->getLeitdaten();
-                $name         = $outRecord->getNameItem();
+                $street = $adr->getStrasse();
+                $routing = $adr->getLeitdaten();
+                $name = $outRecord->getNameItem();
 
                 $address = new Address(
                     $adr->getLand(),
@@ -106,9 +108,9 @@ class RecordResponseMapper
                 /** @var PackstationType $packingStationResult */
                 $packingStationResult = $outRecord->getAdrItem()->getPackstation();
 
-                $city         = $packingStationResult->getOrt();
+                $city = $packingStationResult->getOrt();
                 $cityAddition = $packingStationResult->getOrtszusatz();
-                $routing      = $packingStationResult->getLeitdaten();
+                $routing = $packingStationResult->getLeitdaten();
 
                 $packingStation = new PackingStation(
                     $packingStationResult->getNr(),
@@ -185,13 +187,13 @@ class RecordResponseMapper
             $outRecord->getRecordId(),
             $person,
             $address,
+            $packingStation,
             $coords,
             $utm,
             $gk,
             $routingData,
             $phoneNumbers,
-            $statusCodes,
-            $packingStation
+            $statusCodes
         );
     }
 }

@@ -42,6 +42,11 @@ class Record implements RecordInterface
     private $address;
 
     /**
+     * @var PackingStationInterface|null
+     */
+    private $packingStation;
+
+    /**
      * @var GeoDataInterface|null
      */
     private $geoData;
@@ -72,16 +77,12 @@ class Record implements RecordInterface
     private $statusCodes;
 
     /**
-     * @var PackingStationInterface|null
-     */
-    private $packingStation;
-
-    /**
      * Record constructor.
      *
      * @param int $recordId
      * @param PersonInterface|null $person
      * @param AddressInterface|null $address
+     * @param PackingStationInterface|null $packingStation
      * @param GeoDataInterface|null $geoData
      * @param GeoDataUtmInterface|null $geoDataUtm
      * @param GeoDataGkInterface|null $geoDataGk
@@ -93,13 +94,13 @@ class Record implements RecordInterface
         int $recordId,
         PersonInterface $person = null,
         AddressInterface $address = null,
+        PackingStationInterface $packingStation = null,
         GeoDataInterface $geoData = null,
         GeoDataUtmInterface $geoDataUtm = null,
         GeoDataGkInterface $geoDataGk = null,
         RoutingDataInterface $routingData = null,
         array $phoneNumbers = [],
-        array $statusCodes = [],
-        PackingStationInterface $packingStation = null
+        array $statusCodes = []
     ) {
         $this->recordId = $recordId;
         $this->person = $person;
