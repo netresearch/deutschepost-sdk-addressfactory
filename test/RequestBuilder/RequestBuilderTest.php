@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Service;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceException;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\RequestType\InRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\RequestBuilder\RequestBuilder;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\SoapServiceFactory;
 use PostDirekt\Sdk\AddressfactoryDirect\Test\Expectation\RequestBuilderExpectation;

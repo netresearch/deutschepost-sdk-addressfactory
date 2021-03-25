@@ -17,13 +17,29 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Provider;
 class GetRecordTestProvider
 {
     /**
-     * Provide request and response for the test case.
+     * Provide request and response for regular address validation.
      *
      * @return mixed[]
      */
-    public static function processSimpleDataSuccess(): array
+    public static function processAddressSuccess(): array
     {
-        $responseXml = \file_get_contents(__DIR__ . '/_files/getRecord/response.xml');
+        $responseXml = \file_get_contents(__DIR__ . '/_files/getRecord/addressResponse.xml');
+
+        return [
+            'success_with_session' => ['session-id', null, null, $responseXml],
+            'success_with_config' => [null, 'config-name', null, $responseXml],
+            'success_with_client' => [null, 'config-name', 'client-id', $responseXml],
+        ];
+    }
+
+    /**
+     * Provide request and response for Packstation validation.
+     *
+     * @return mixed[]
+     */
+    public static function processPackingStationSuccess(): array
+    {
+        $responseXml = \file_get_contents(__DIR__ . '/_files/getRecord/packstationResponse.xml');
 
         return [
             'success_with_session' => ['session-id', null, null, $responseXml],

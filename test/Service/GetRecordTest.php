@@ -31,9 +31,17 @@ class GetRecordTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function dataProvider(): array
+    public function addressDataProvider(): array
     {
-        return GetRecordTestProvider::processSimpleDataSuccess();
+        return GetRecordTestProvider::processAddressSuccess();
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function packingStationDataProvider(): array
+    {
+        return GetRecordTestProvider::processPackingStationSuccess();
     }
 
     /**
@@ -61,7 +69,7 @@ class GetRecordTest extends SoapClientTestCase
      * - communication gets logged
      *
      * @test
-     * @dataProvider dataProvider
+     * @dataProvider addressDataProvider
      *
      * @param string|null $sessionId
      * @param string|null $configName
@@ -69,7 +77,7 @@ class GetRecordTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function getRecordSuccess(
+    public function getAddressRecordSuccess(
         ?string $sessionId,
         ?string $configName,
         ?string $clientId,
@@ -95,9 +103,66 @@ class GetRecordTest extends SoapClientTestCase
         self::assertInstanceOf(RecordInterface::class, $record);
 
         $requestXml = $soapClient->__getLastRequest();
-        self::assertContains((string) $sessionId, $requestXml);
-        self::assertContains((string) $configName, $requestXml);
-        self::assertContains((string) $clientId, $requestXml);
+        self::assertStringContainsString((string) $sessionId, $requestXml);
+        self::assertStringContainsString((string) $configName, $requestXml);
+        self::assertStringContainsString((string) $clientId, $requestXml);
+
+        ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * Scenario: Request a data set using the `getRecordByAddress` service call.
+     *
+     * Assert that
+     * - an instance of RecordInterface is returned
+     * - different combinations of session id/config name/client id are processed properly
+     * - communication gets logged
+     *
+     * @test
+     * @dataProvider packingStationDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param string $responseXml
+     * @throws ServiceException
+     */
+    public function getPackingStationRecordSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        string $responseXml
+    ): void {
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $record = $service->getRecordByAddress(
+            '53114',
+            'Bonn',
+            'Packstation',
+            '150',
+            'Hans',
+            'Mustermann',
+            $sessionId,
+            $configName,
+            $clientId
+        );
+
+        self::assertInstanceOf(RecordInterface::class, $record);
+
+        $requestXml = $soapClient->__getLastRequest();
+        self::assertStringContainsString((string) $sessionId, $requestXml);
+        self::assertStringContainsString((string) $configName, $requestXml);
+        self::assertStringContainsString((string) $clientId, $requestXml);
 
         ResponseRecordExpectation::assertDataPresent($record, $responseXml);
 
@@ -159,7 +224,7 @@ class GetRecordTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function getRecordServerError($responseXml): void
+    public function getRecordServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);
         $this->expectExceptionMessage('Internal Server Error');
