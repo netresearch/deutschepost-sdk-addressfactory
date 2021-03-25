@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 
 /**
- * Interface PackingStationInterface
+ * Interface PackstationInterface
  *
  * @api
  */
-interface PackingStationInterface
+interface PackstationInterface
 {
     /**
      * @return string

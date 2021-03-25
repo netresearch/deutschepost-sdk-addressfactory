@@ -24,7 +24,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Addre
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoData;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataGk;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataUtm;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PackingStation;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Packstation;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Person;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PhoneNumber;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Record;
@@ -45,7 +45,7 @@ class RecordResponseMapper
      */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
-        $person = $address = $coords = $utm = $gk = $routingData = $packingStation = null;
+        $person = $address = $coords = $utm = $gk = $routingData = $packstation = null;
         $phoneNumbers = [];
 
         // Person
@@ -105,20 +105,20 @@ class RecordResponseMapper
             }
 
             if ($outRecord->getAdrItem()->getPackstation() !== null) {
-                /** @var PackstationType $packingStationResult */
-                $packingStationResult = $outRecord->getAdrItem()->getPackstation();
+                /** @var PackstationType $adr */
+                $adr = $outRecord->getAdrItem()->getPackstation();
 
-                $city = $packingStationResult->getOrt();
-                $cityAddition = $packingStationResult->getOrtszusatz();
-                $routing = $packingStationResult->getLeitdaten();
+                $city = $adr->getOrt();
+                $cityAddition = $adr->getOrtszusatz();
+                $routing = $adr->getLeitdaten();
 
-                $packingStation = new PackingStation(
-                    $packingStationResult->getNr(),
-                    $packingStationResult->getPlz(),
-                    $packingStationResult->getBundesland(),
-                    $packingStationResult->getRegBezirk(),
-                    $packingStationResult->getKreis(),
-                    $packingStationResult->getGemeinde(),
+                $packstation = new Packstation(
+                    $adr->getNr(),
+                    $adr->getPlz(),
+                    $adr->getBundesland(),
+                    $adr->getRegBezirk(),
+                    $adr->getKreis(),
+                    $adr->getGemeinde(),
                     $city instanceof OrtType ? $city->getValue() : '',
                     $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : ''
                 );
@@ -187,7 +187,7 @@ class RecordResponseMapper
             $outRecord->getRecordId(),
             $person,
             $address,
-            $packingStation,
+            $packstation,
             $coords,
             $utm,
             $gk,

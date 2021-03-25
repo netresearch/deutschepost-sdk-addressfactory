@@ -12,7 +12,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackingStationInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackstationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
@@ -42,9 +42,9 @@ class Record implements RecordInterface
     private $address;
 
     /**
-     * @var PackingStationInterface|null
+     * @var PackstationInterface|null
      */
-    private $packingStation;
+    private $packstation;
 
     /**
      * @var GeoDataInterface|null
@@ -82,7 +82,7 @@ class Record implements RecordInterface
      * @param int $recordId
      * @param PersonInterface|null $person
      * @param AddressInterface|null $address
-     * @param PackingStationInterface|null $packingStation
+     * @param PackstationInterface|null $packstation
      * @param GeoDataInterface|null $geoData
      * @param GeoDataUtmInterface|null $geoDataUtm
      * @param GeoDataGkInterface|null $geoDataGk
@@ -94,7 +94,7 @@ class Record implements RecordInterface
         int $recordId,
         PersonInterface $person = null,
         AddressInterface $address = null,
-        PackingStationInterface $packingStation = null,
+        PackstationInterface $packstation = null,
         GeoDataInterface $geoData = null,
         GeoDataUtmInterface $geoDataUtm = null,
         GeoDataGkInterface $geoDataGk = null,
@@ -111,7 +111,7 @@ class Record implements RecordInterface
         $this->routingData = $routingData;
         $this->phoneNumbers = $phoneNumbers;
         $this->statusCodes = $statusCodes;
-        $this->packingStation = $packingStation;
+        $this->packstation = $packstation;
     }
 
     public function getRecordId(): int
@@ -159,8 +159,8 @@ class Record implements RecordInterface
         return $this->statusCodes;
     }
 
-    public function getPackingStation(): ?PackingStationInterface
+    public function getPackstation(): ?PackstationInterface
     {
-        return $this->packingStation;
+        return $this->packstation;
     }
 }

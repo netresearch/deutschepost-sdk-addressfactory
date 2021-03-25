@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackingStationInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackstationInterface;
 
-class PackingStation implements PackingStationInterface
+class Packstation implements PackstationInterface
 {
     /**
      * @var string
@@ -53,7 +53,7 @@ class PackingStation implements PackingStationInterface
     private $cityAddition;
 
     /**
-     * PackingStation constructor.
+     * Packstation constructor.
      *
      * @param string $number
      * @param string $postalCode

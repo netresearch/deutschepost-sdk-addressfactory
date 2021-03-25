@@ -37,7 +37,7 @@ class GetRecordTestProvider
      *
      * @return mixed[]
      */
-    public static function processPackingStationSuccess(): array
+    public static function processPackstationSuccess(): array
     {
         $responseXml = \file_get_contents(__DIR__ . '/_files/getRecord/packstationResponse.xml');
 

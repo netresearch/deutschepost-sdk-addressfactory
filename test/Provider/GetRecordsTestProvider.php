@@ -58,7 +58,7 @@ class GetRecordsTestProvider
      *
      * @return mixed[]
      */
-    public static function processPackingStationSuccess(): array
+    public static function processPackstationSuccess(): array
     {
         $requestBuilder = new RequestBuilder();
 

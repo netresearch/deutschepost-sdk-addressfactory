@@ -33,9 +33,9 @@ interface RecordInterface
     public function getAddress(): ?AddressInterface;
 
     /**
-     * @return PackingStationInterface|null
+     * @return PackstationInterface|null
      */
-    public function getPackingStation(): ?PackingStationInterface;
+    public function getPackstation(): ?PackstationInterface;
 
     /**
      * @return GeoDataInterface|null

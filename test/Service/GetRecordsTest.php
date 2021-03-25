@@ -39,9 +39,9 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function packingStationDataProvider(): array
+    public function packstationDataProvider(): array
     {
-        return GetRecordsTestProvider::processPackingStationSuccess();
+        return GetRecordsTestProvider::processPackstationSuccess();
     }
 
     /**
@@ -128,7 +128,7 @@ class GetRecordsTest extends SoapClientTestCase
      * - some important response properties are set
      *
      * @test
-     * @dataProvider packingStationDataProvider
+     * @dataProvider packstationDataProvider
      *
      * @param string|null $sessionId
      * @param string|null $configName
@@ -137,7 +137,7 @@ class GetRecordsTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function getPackingStationRecordsSuccess(
+    public function getPackstationRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
         ?string $clientId,
