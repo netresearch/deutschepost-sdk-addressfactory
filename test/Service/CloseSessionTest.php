@@ -127,7 +127,7 @@ class CloseSessionTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function closeSessionServerError($responseXml): void
+    public function closeSessionServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);
         $this->expectExceptionMessage('Internal Server Error');

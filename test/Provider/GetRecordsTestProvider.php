@@ -13,11 +13,11 @@ use PostDirekt\Sdk\AddressfactoryDirect\RequestBuilder\RequestBuilder;
 class GetRecordsTestProvider
 {
     /**
-     * Provide request and response for the test case.
+     * Provide request and response for regular address validation.
      *
      * @return mixed[]
      */
-    public static function processDataSuccess(): array
+    public static function processAddressSuccess(): array
     {
         $requestBuilder = new RequestBuilder();
 
@@ -25,7 +25,7 @@ class GetRecordsTestProvider
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Sträßchenweg', '10');
         $recordRequest = $requestBuilder->create();
-        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/singleRecordResponse.xml');
+        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/addressResponse.xml');
 
         $recordRequests = [];
 
@@ -39,7 +39,51 @@ class GetRecordsTestProvider
         $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Sträßchenweg', '10');
         $recordRequests[] = $requestBuilder->create();
 
-        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/multiRecordResponse.xml');
+        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/addressMultiResponse.xml');
+
+        return [
+            'single_record' => ['session-id', 'config-name', 'client-id', [$recordRequest], $singleResponseXml],
+            'multi_record' => ['session-id', 'config-name', 'client-id', $recordRequests, $multiResponseXml],
+        ];
+    }
+
+    /**
+     * Provide request and response for Packstation validation.
+     *
+     * @return mixed[]
+     */
+    public static function processPackstationSuccess(): array
+    {
+        $requestBuilder = new RequestBuilder();
+
+        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPackstation('150', '53114', 'Bonn');
+
+        $recordRequest = $requestBuilder->create();
+        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/packstationResponse.xml');
+
+        $recordRequests = [];
+
+        $requestBuilder->setMetadata(1);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPackstation('142', '04229', 'Leipzge');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(2);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPackstation('150', '53114', 'Bonn');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(3);
+        $requestBuilder->setPerson('Hans', 'Mustermann', null, ['12345678']);
+        $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Packstation', '150');
+        $recordRequests[] = $requestBuilder->create();
+
+        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/packstationMultiResponse.xml');
 
         return [
             'single_record' => ['session-id', 'config-name', 'client-id', [$recordRequest], $singleResponseXml],

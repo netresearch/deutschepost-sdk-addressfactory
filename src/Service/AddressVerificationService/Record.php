@@ -12,6 +12,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackstationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
@@ -33,6 +34,11 @@ class Record implements RecordInterface
      * @var AddressInterface|null
      */
     private $address;
+
+    /**
+     * @var PackstationInterface|null
+     */
+    private $packstation;
 
     /**
      * @var GeoDataInterface|null
@@ -70,6 +76,7 @@ class Record implements RecordInterface
      * @param int $recordId
      * @param PersonInterface|null $person
      * @param AddressInterface|null $address
+     * @param PackstationInterface|null $packstation
      * @param GeoDataInterface|null $geoData
      * @param GeoDataUtmInterface|null $geoDataUtm
      * @param GeoDataGkInterface|null $geoDataGk
@@ -81,6 +88,7 @@ class Record implements RecordInterface
         int $recordId,
         PersonInterface $person = null,
         AddressInterface $address = null,
+        PackstationInterface $packstation = null,
         GeoDataInterface $geoData = null,
         GeoDataUtmInterface $geoDataUtm = null,
         GeoDataGkInterface $geoDataGk = null,
@@ -97,6 +105,7 @@ class Record implements RecordInterface
         $this->routingData = $routingData;
         $this->phoneNumbers = $phoneNumbers;
         $this->statusCodes = $statusCodes;
+        $this->packstation = $packstation;
     }
 
     public function getRecordId(): int
@@ -142,5 +151,10 @@ class Record implements RecordInterface
     public function getStatusCodes(): array
     {
         return $this->statusCodes;
+    }
+
+    public function getPackstation(): ?PackstationInterface
+    {
+        return $this->packstation;
     }
 }

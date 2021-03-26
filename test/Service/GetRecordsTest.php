@@ -25,9 +25,17 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function successDataProvider(): array
+    public function addressDataProvider(): array
     {
-        return GetRecordsTestProvider::processDataSuccess();
+        return GetRecordsTestProvider::processAddressSuccess();
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function packstationDataProvider(): array
+    {
+        return GetRecordsTestProvider::processPackstationSuccess();
     }
 
     /**
@@ -55,7 +63,7 @@ class GetRecordsTest extends SoapClientTestCase
      * - some important response properties are set
      *
      * @test
-     * @dataProvider successDataProvider
+     * @dataProvider addressDataProvider
      *
      * @param string|null $sessionId
      * @param string|null $configName
@@ -64,7 +72,7 @@ class GetRecordsTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function getRecordsSuccess(
+    public function getAddressRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
         ?string $clientId,
@@ -85,14 +93,73 @@ class GetRecordsTest extends SoapClientTestCase
         $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
         $records = $service->getRecords($inRecords, $sessionId, $configName, $clientId);
 
-        self::assertInternalType('array', $records);
+        self::assertIsArray($records);
         self::assertNotEmpty($records);
         self::assertContainsOnlyInstancesOf(RecordInterface::class, $records);
         self::assertCount(count($inRecords), $records);
 
         foreach ($records as $record) {
             self::assertContains($record->getRecordId(), $recordIds);
-            self::assertInternalType('array', $record->getStatusCodes());
+            self::assertIsArray($record->getStatusCodes());
+            self::assertContainsOnly('string', $record->getStatusCodes());
+
+            ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+        }
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+    /**
+     * Scenario: Request a data set using the `getRecords` service call.
+     *
+     * Assert that
+     * - instances of RecordInterface are returned
+     * - communication gets logged
+     * - some important response properties are set
+     *
+     * @test
+     * @dataProvider packstationDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param InRecordWSType[] $inRecords
+     * @param string $responseXml
+     * @throws ServiceException
+     */
+    public function getPackstationRecordsSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        array $inRecords,
+        string $responseXml
+    ): void {
+        $recordIds = array_map(
+            function (InRecordWSType $inRecord) {
+                return $inRecord->getRecordId();
+            },
+            $inRecords
+        );
+
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $records = $service->getRecords($inRecords, $sessionId, $configName, $clientId);
+
+        self::assertIsArray($records);
+        self::assertNotEmpty($records);
+        self::assertContainsOnlyInstancesOf(RecordInterface::class, $records);
+        self::assertCount(count($inRecords), $records);
+
+        foreach ($records as $record) {
+            self::assertContains($record->getRecordId(), $recordIds);
+            self::assertIsArray($record->getStatusCodes());
             self::assertContainsOnly('string', $record->getStatusCodes());
 
             ResponseRecordExpectation::assertDataPresent($record, $responseXml);

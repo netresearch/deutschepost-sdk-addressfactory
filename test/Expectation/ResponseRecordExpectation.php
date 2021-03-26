@@ -12,7 +12,6 @@ use PHPUnit\Framework\Assert;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\RequestBuilderInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
 
 /**
  * Class ResponseRecordExpectation
@@ -29,7 +28,7 @@ class ResponseRecordExpectation
     {
         $company = $response->getPerson() ? $response->getPerson()->getCompany() : [];
 
-        $xPaths = [
+        return [
             new RequestXPath('./af:NameItem/af:Anrede', $response->getPerson() ? $response->getPerson()->getSalutation() : ''),
             new RequestXPath('./af:NameItem/af:Vorname', $response->getPerson() ? $response->getPerson()->getFirstName() : ''),
             new RequestXPath('./af:NameItem/af:Name', $response->getPerson() ? $response->getPerson()->getLastName() : ''),
@@ -73,8 +72,6 @@ class ResponseRecordExpectation
             new RequestXPath('./af:AdrItem/af:Hausanschrift/af:Leitdaten/af:StrSchluessel', $response->getRoutingData() ? $response->getRoutingData()->getStreetKey() : ''),
             new RequestXPath('./af:AdrItem/af:Hausanschrift/af:Leitdaten/af:Kgs', $response->getRoutingData() ? $response->getRoutingData()->getDistrictKey() : ''),
         ];
-
-        return $xPaths;
     }
 
     public static function assertDataPresent(RecordInterface $response, string $responseXml): void

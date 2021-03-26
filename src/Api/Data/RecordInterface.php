@@ -31,6 +31,11 @@ interface RecordInterface
     public function getAddress(): ?AddressInterface;
 
     /**
+     * @return PackstationInterface|null
+     */
+    public function getPackstation(): ?PackstationInterface;
+
+    /**
      * @return GeoDataInterface|null
      */
     public function getGeoData(): ?GeoDataInterface;
