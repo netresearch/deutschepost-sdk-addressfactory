@@ -153,7 +153,7 @@ class OpenSessionTest extends SoapClientTestCase
      * @param string $responseXml
      * @throws ServiceException
      */
-    public function openSessionServerError($responseXml): void
+    public function openSessionServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);
         $this->expectExceptionMessage('Internal Server Error');

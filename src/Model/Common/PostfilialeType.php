@@ -163,7 +163,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setKreis($Kreis): PostfilialeType
+    public function setKreis(string $Kreis): PostfilialeType
     {
         $this->Kreis = $Kreis;
         return $this;
@@ -182,7 +182,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setRegBezirk($RegBezirk): PostfilialeType
+    public function setRegBezirk(string $RegBezirk): PostfilialeType
     {
         $this->RegBezirk = $RegBezirk;
         return $this;
@@ -220,7 +220,7 @@ class PostfilialeType
      *
      * @return PostfilialeType
      */
-    public function setLeitdaten(LeitdatenType $Leitdaten)
+    public function setLeitdaten(LeitdatenType $Leitdaten): PostfilialeType
     {
         $this->Leitdaten = $Leitdaten;
         return $this;
