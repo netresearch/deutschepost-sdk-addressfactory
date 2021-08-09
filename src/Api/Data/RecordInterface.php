@@ -9,50 +9,24 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 
 /**
- * Interface RecordInterface
- *
  * @api
  */
 interface RecordInterface
 {
-    /**
-     * @return int
-     */
     public function getRecordId(): int;
 
-    /**
-     * @return PersonInterface|null
-     */
     public function getPerson(): ?PersonInterface;
 
-    /**
-     * @return AddressInterface|null
-     */
     public function getAddress(): ?AddressInterface;
 
-    /**
-     * @return PackstationInterface|null
-     */
-    public function getPackstation(): ?PackstationInterface;
+    public function getParcelStation(): ?ParcelStationInterface;
 
-    /**
-     * @return GeoDataInterface|null
-     */
     public function getGeoData(): ?GeoDataInterface;
 
-    /**
-     * @return GeoDataUtmInterface|null
-     */
     public function getGeoDataUtm(): ?GeoDataUtmInterface;
 
-    /**
-     * @return GeoDataGkInterface|null
-     */
     public function getGeoDataGk(): ?GeoDataGkInterface;
 
-    /**
-     * @return RoutingDataInterface|null
-     */
     public function getRoutingData(): ?RoutingDataInterface;
 
     /**
@@ -64,4 +38,10 @@ interface RecordInterface
      * @return string[]
      */
     public function getStatusCodes(): array;
+
+    public function getPostOffice(): ?PostOfficeInterface;
+
+    public function getPostalBox(): ?PostalBoxInterface;
+
+    public function getBulkReceiver(): ?BulkReceiverInterface;
 }

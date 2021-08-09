@@ -1,0 +1,41 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns3:processSimpleDataResponse xmlns:af="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns3="http://service.v_1_1.direct.af.postdirekt.de/">
+            <outRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.postdirekt.de/schema/af/wsdata/v_1_1" xsi:type="ns5:OutRecordWSType" recordId="1616711395" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Name>Mustermann</af:Name>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Postfiliale>
+                        <af:Nr>540</af:Nr>
+                        <af:Plz>53113</af:Plz>
+                        <af:Ort>Bonn</af:Ort>
+                    </af:Postfiliale>
+                </af:AdrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC130103</af:StatusCode>
+                            <af:StatusCode>BAC013103</af:StatusCode>
+                            <af:StatusCode>BAC013113</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC300103</af:StatusCode>
+                            <af:StatusCode>FNC400103</af:StatusCode>
+                            <af:StatusCode>FNC401107</af:StatusCode>
+                            <af:StatusCode>FNC050107</af:StatusCode>
+                            <af:StatusCode>FNC000500</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                            <af:StatusCode>PDC030500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+        </ns3:processSimpleDataResponse>
+    </soap:Body>
+</soap:Envelope>

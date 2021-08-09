@@ -39,6 +39,30 @@ class GetRecordTest extends SoapClientTestCase
     }
 
     /**
+     * @return array
+     */
+    public function postfilialeDataProvider(): array
+    {
+        return GetRecordTestProvider::processPostfilialeSuccess();
+    }
+
+    /**
+     * @return array
+     */
+    public function postfachDataProvider(): array
+    {
+        return GetRecordTestProvider::processPostfachSuccess();
+    }
+
+    /**
+     * @return array
+     */
+    public function geDataProvider(): array
+    {
+        return GetRecordTestProvider::processGeSuccess();
+    }
+
+    /**
      * @return string[][]
      */
     public function authFailureDataProvider(): array
@@ -143,6 +167,108 @@ class GetRecordTest extends SoapClientTestCase
             '53114',
             'Bonn',
             'Packstation',
+            '150',
+            'Hans',
+            'Mustermann',
+            $sessionId,
+            $configName,
+            $clientId
+        );
+
+        self::assertInstanceOf(RecordInterface::class, $record);
+
+        $requestXml = $soapClient->__getLastRequest();
+        self::assertStringContainsString((string) $sessionId, $requestXml);
+        self::assertStringContainsString((string) $configName, $requestXml);
+        self::assertStringContainsString((string) $clientId, $requestXml);
+
+        ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider postfilialeDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param string $responseXml
+     * @throws AuthenticationException
+     * @throws ServiceException
+     */
+    public function getPostfilialeRecordSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        string $responseXml
+    ): void {
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $record = $service->getRecordByAddress(
+            '53114',
+            'Bonn',
+            'Postfiliale',
+            '540',
+            'Hans',
+            'Mustermann',
+            $sessionId,
+            $configName,
+            $clientId
+        );
+
+        self::assertInstanceOf(RecordInterface::class, $record);
+
+        $requestXml = $soapClient->__getLastRequest();
+        self::assertStringContainsString((string) $sessionId, $requestXml);
+        self::assertStringContainsString((string) $configName, $requestXml);
+        self::assertStringContainsString((string) $clientId, $requestXml);
+
+        ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider postfachDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param string $responseXml
+     * @throws AuthenticationException
+     * @throws ServiceException
+     */
+    public function getPostfachRecordSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        string $responseXml
+    ): void {
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $record = $service->getRecordByAddress(
+            '53114',
+            'Bonn',
+            'Postfach',
             '150',
             'Hans',
             'Mustermann',

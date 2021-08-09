@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackstationInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\ParcelStationInterface;
 
-class Packstation implements PackstationInterface
+class ParcelStation implements ParcelStationInterface
 {
     /**
      * @var string

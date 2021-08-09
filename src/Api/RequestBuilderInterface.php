@@ -9,8 +9,6 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Api;
 
 /**
- * RequestBuilderInterface
- *
  * @api
  */
 interface RequestBuilderInterface
@@ -40,11 +38,6 @@ interface RequestBuilderInterface
      * @see RequestBuilderInterface::FILE_TYPE_PURGE
      * @see RequestBuilderInterface::FILE_TYPE_MERGE
      *
-     * @param int $recordId
-     * @param string $fileType
-     * @param int $fileId
-     * @param int $sequenceId
-     * @return RequestBuilderInterface
      */
     public function setMetadata(
         int $recordId,
@@ -56,10 +49,6 @@ interface RequestBuilderInterface
     /**
      * Set a name for the inquiry.
      *
-     * @see RequestBuilderInterface::GENDER_MALE
-     * @see RequestBuilderInterface::GENDER_FEMALE
-     * @see RequestBuilderInterface::GENDER_NOT_SPECIFIED
-     *
      * @param string|null $firstName
      * @param string|null $lastName
      * @param string|null $salutation Examples: "Frau", "Mr"
@@ -69,7 +58,10 @@ interface RequestBuilderInterface
      * @param string|null $academicTitle Examples: "Dr.", "Prof. Dr.", "Prof."
      * @param string|null $titleOfNobility Examples: "Graf", "Count"
      * @param string|null $gender Possible values: "M", "W", "U"
-     * @return RequestBuilderInterface
+     * @see RequestBuilderInterface::GENDER_MALE
+     * @see RequestBuilderInterface::GENDER_FEMALE
+     * @see RequestBuilderInterface::GENDER_NOT_SPECIFIED
+     *
      */
     public function setPerson(
         string $firstName = null,
@@ -92,10 +84,6 @@ interface RequestBuilderInterface
      * @see RequestBuilderInterface::PHONE_TYPE_MOBILE
      * @see RequestBuilderInterface::PHONE_TYPE_FAX
      *
-     * @param string $areaCode
-     * @param string $dialNumber
-     * @param string $type
-     * @return RequestBuilderInterface
      */
     public function addPhoneNumber(
         string $areaCode,
@@ -104,10 +92,7 @@ interface RequestBuilderInterface
     ): RequestBuilderInterface;
 
     /**
-     * Set the person's post number.
-     *
-     * @param string $postNumber
-     * @return RequestBuilderInterface
+     * Set the person's post number
      */
     public function setPersonPostNumber(string $postNumber): RequestBuilderInterface;
 
@@ -136,10 +121,6 @@ interface RequestBuilderInterface
      * @see RequestBuilderInterface::INQUIRY_REASON_ABB
      * @see RequestBuilderInterface::INQUIRY_REASON_ABI
      * @see RequestBuilderInterface::INQUIRY_REASON_ABM
-     *
-     * @param string $dateOfBirth
-     * @param string $reason
-     * @return RequestBuilderInterface
      */
     public function setCreditRatingInquiry(string $dateOfBirth, string $reason): RequestBuilderInterface;
 
@@ -154,8 +135,6 @@ interface RequestBuilderInterface
      * @param string|null $state Federal state, e.g.: "Nordrhein-Westfalen", "Hessen" (Bundesland)
      * @param string|null $addressAddition Example: "c/o Müller" (Adresszusatz)
      * @param string|null $deliveryInstruction Example: "4. Etage" (Zustellhinweis)
-     *
-     * @return RequestBuilderInterface
      */
     public function setAddress(
         string $country = null,
@@ -177,8 +156,6 @@ interface RequestBuilderInterface
      * @param string|null $municipality (Gemeinde)
      * @param string|null $district District/County (Kreis)
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
-     *
-     * @return RequestBuilderInterface
      */
     public function setAddressDetails(
         string $streetNumberAddition = null,
@@ -197,7 +174,6 @@ interface RequestBuilderInterface
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
-     * @return RequestBuilderInterface
      */
     public function setAddressRoutingData(
         string $routingCode = null,
@@ -209,10 +185,6 @@ interface RequestBuilderInterface
 
     /**
      * Set address coordinates.
-     *
-     * @param string $latitude
-     * @param string $longitude
-     * @return RequestBuilderInterface
      */
     public function setCoordinates(string $latitude, string $longitude): RequestBuilderInterface;
 
@@ -221,7 +193,6 @@ interface RequestBuilderInterface
      *
      * @param string $northing Nordwert/Hochwert
      * @param string $easting Ostwert/Rechtswert
-     * @return RequestBuilderInterface
      */
     public function setCoordinatesUtm(string $northing, string $easting): RequestBuilderInterface;
 
@@ -230,7 +201,6 @@ interface RequestBuilderInterface
      *
      * @param string $northing Hochwert/Nordwert
      * @param string $easting Rechtswert/Ostwert
-     * @return RequestBuilderInterface
      */
     public function setCoordinatesGk(string $northing, string $easting): RequestBuilderInterface;
 
@@ -241,7 +211,6 @@ interface RequestBuilderInterface
      * @param string|null $postalCode
      * @param string|null $city
      * @param string|null $cityAddition Example: "am Main" (Ortszusatz)
-     * @return RequestBuilderInterface
      */
     public function setPostfach(
         string $number = null,
@@ -258,7 +227,6 @@ interface RequestBuilderInterface
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
-     * @return RequestBuilderInterface
      */
     public function setPostfachRoutingData(
         string $routingCode = null,
@@ -279,7 +247,6 @@ interface RequestBuilderInterface
      * @param string|null $municipality (Gemeinde)
      * @param string|null $district District/County (Kreis)
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
-     * @return RequestBuilderInterface
      */
     public function setPackstation(
         string $number = null,
@@ -300,7 +267,6 @@ interface RequestBuilderInterface
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
-     * @return RequestBuilderInterface
      */
     public function setPackstationRoutingData(
         string $routingCode = null,
@@ -321,7 +287,6 @@ interface RequestBuilderInterface
      * @param string|null $municipality (Gemeinde)
      * @param string|null $district District/County (Kreis)
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
-     * @return RequestBuilderInterface
      */
     public function setPostfiliale(
         string $number = null,
@@ -342,7 +307,6 @@ interface RequestBuilderInterface
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
-     * @return RequestBuilderInterface
      */
     public function setPostfilialeRoutingData(
         string $routingCode = null,
@@ -363,7 +327,6 @@ interface RequestBuilderInterface
      * @param string|null $municipality (Gemeinde)
      * @param string|null $district District/County (Kreis)
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
-     * @return RequestBuilderInterface
      */
     public function setCorporateAddress(
         string $name = null,
@@ -384,7 +347,6 @@ interface RequestBuilderInterface
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
-     * @return RequestBuilderInterface
      */
     public function setCorporateAddressRoutingData(
         string $routingCode = null,
@@ -396,10 +358,6 @@ interface RequestBuilderInterface
 
     /**
      * Add an arbitrary key-value pair to the request. Use for fields that have no native representation.
-     *
-     * @param string $key
-     * @param string $value
-     * @return RequestBuilderInterface
      */
     public function addExtendedField(string $key, string $value): RequestBuilderInterface;
 

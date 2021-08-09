@@ -9,8 +9,6 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 
 /**
- * Interface RoutingDataInterface
- *
  * @api
  */
 interface RoutingDataInterface
@@ -36,13 +34,7 @@ interface RoutingDataInterface
      */
     public function getCargoCenter(): string;
 
-    /**
-     * @return string
-     */
     public function getStreetKey(): string;
 
-    /**
-     * @return string
-     */
     public function getDistrictKey(): string;
 }

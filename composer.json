@@ -37,7 +37,12 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-develop": "1.0.x-dev"
+            "dev-develop": "2.0.x-dev"
         }
+    },
+    "scripts": {
+        "test": "phpunit -c test/phpunit.xml",
+        "phpstan": "phpstan analyze src",
+        "lint": "phpcs --exclude=PSR12.Properties.ConstantVisibility,PSR2.Classes.PropertyDeclaration --standard=PSR12 src test"
     }
 }

@@ -91,6 +91,138 @@ class GetRecordsTestProvider
         ];
     }
 
+    /**
+     * Provide request and response for Postoffice validation.
+     *
+     * @return mixed[]
+     */
+    public static function processPostfilialeSuccess(): array
+    {
+        $requestBuilder = new RequestBuilder();
+
+        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfiliale('540', '53113', 'Bonn');
+
+        $recordRequest = $requestBuilder->create();
+        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/postfilialeResponse.xml');
+
+        $recordRequests = [];
+
+        $requestBuilder->setMetadata(1);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfiliale('142', '04229', 'Leipzig');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(2);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfiliale('150', '53114', 'Bonn');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(3);
+        $requestBuilder->setPerson('Hans', 'Mustermann', null, ['12345678']);
+        $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Postoffice', '150');
+        $recordRequests[] = $requestBuilder->create();
+
+        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/postfilialeMultiResponse.xml');
+
+        return [
+            'single_record' => ['session-id', 'config-name', 'client-id', [$recordRequest], $singleResponseXml],
+            'multi_record' => ['session-id', 'config-name', 'client-id', $recordRequests, $multiResponseXml],
+        ];
+    }
+
+    /**
+     * Provide request and response for Postfach validation.
+     *
+     * @return mixed[]
+     */
+    public static function processPostfachSuccess(): array
+    {
+        $requestBuilder = new RequestBuilder();
+
+        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfach('540', '53113', 'Bonn');
+
+        $recordRequest = $requestBuilder->create();
+        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/postfachResponse.xml');
+
+        $recordRequests = [];
+
+        $requestBuilder->setMetadata(1);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfach('142', '04229', 'Leipzig');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(2);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setPostfach('150', '53114', 'Bonn');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(3);
+        $requestBuilder->setPerson('Hans', 'Mustermann', null, ['12345678']);
+        $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Postfach', '150');
+        $recordRequests[] = $requestBuilder->create();
+
+        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/postfachMultiResponse.xml');
+
+        return [
+            'single_record' => ['session-id', 'config-name', 'client-id', [$recordRequest], $singleResponseXml],
+            'multi_record' => ['session-id', 'config-name', 'client-id', $recordRequests, $multiResponseXml],
+        ];
+    }
+
+    /**
+     * Provide request and response for Grossempfänger(BulkReceiver) validation.
+     *
+     * @return mixed[]
+     */
+    public static function processGeSuccess(): array
+    {
+        $requestBuilder = new RequestBuilder();
+
+        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setCorporateAddress('Bulkstation', '53113', 'Bonn');
+
+        $recordRequest = $requestBuilder->create();
+        $singleResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/geResponse.xml');
+
+        $recordRequests = [];
+
+        $requestBuilder->setMetadata(1);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setCorporateAddress('Bulkstation', '04229', 'Leipzig');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(2);
+        $requestBuilder->setPerson('Hans', 'Mustermann');
+        $requestBuilder->setPersonPostNumber('12345678');
+        $requestBuilder->setCorporateAddress('Bulkstation', '53114', 'Bonn');
+        $recordRequests[] = $requestBuilder->create();
+
+        $requestBuilder->setMetadata(3);
+        $requestBuilder->setPerson('Hans', 'Mustermann', null, ['12345678']);
+        $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Bulkstation', '150');
+        $recordRequests[] = $requestBuilder->create();
+
+        $multiResponseXml = \file_get_contents(__DIR__ . '/_files/getRecords/geMultiResponse.xml');
+
+        return [
+            'single_record' => ['session-id', 'config-name', 'client-id', [$recordRequest], $singleResponseXml],
+            'multi_record' => ['session-id', 'config-name', 'client-id', $recordRequests, $multiResponseXml],
+        ];
+    }
+
     public static function authenticationFailed(): array
     {
         $requestBuilder = new RequestBuilder();

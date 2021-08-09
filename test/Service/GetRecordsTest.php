@@ -39,6 +39,27 @@ class GetRecordsTest extends SoapClientTestCase
     }
 
     /**
+     * @return array
+     */
+    public function postfilialeDataProvider(): array
+    {
+        return GetRecordsTestProvider::processPostfilialeSuccess();
+    }
+
+    /**
+     * @return array
+     */
+    public function postfachDataProvider(): array
+    {
+        return GetRecordsTestProvider::processPostfachSuccess();
+    }
+
+    public function geDataProvider(): array
+    {
+        return GetRecordsTestProvider::processGeSuccess();
+    }
+
+    /**
      * @return string[][]
      */
     public function authFailureDataProvider(): array
@@ -132,6 +153,168 @@ class GetRecordsTest extends SoapClientTestCase
      * @throws ServiceException
      */
     public function getPackstationRecordsSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        array $inRecords,
+        string $responseXml
+    ): void {
+        $recordIds = array_map(
+            function (InRecordWSType $inRecord) {
+                return $inRecord->getRecordId();
+            },
+            $inRecords
+        );
+
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $records = $service->getRecords($inRecords, $sessionId, $configName, $clientId);
+
+        self::assertIsArray($records);
+        self::assertNotEmpty($records);
+        self::assertContainsOnlyInstancesOf(RecordInterface::class, $records);
+        self::assertCount(count($inRecords), $records);
+
+        foreach ($records as $record) {
+            self::assertContains($record->getRecordId(), $recordIds);
+            self::assertIsArray($record->getStatusCodes());
+            self::assertContainsOnly('string', $record->getStatusCodes());
+
+            ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+        }
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider postfilialeDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param array $inRecords
+     * @param string $responseXml
+     * @throws AuthenticationException
+     * @throws ServiceException
+     */
+    public function getPostfilialeRecordsSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        array $inRecords,
+        string $responseXml
+    ): void {
+        $recordIds = array_map(
+            function (InRecordWSType $inRecord) {
+                return $inRecord->getRecordId();
+            },
+            $inRecords
+        );
+
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $records = $service->getRecords($inRecords, $sessionId, $configName, $clientId);
+
+        self::assertIsArray($records);
+        self::assertNotEmpty($records);
+        self::assertContainsOnlyInstancesOf(RecordInterface::class, $records);
+        self::assertCount(count($inRecords), $records);
+
+        foreach ($records as $record) {
+            self::assertContains($record->getRecordId(), $recordIds);
+            self::assertIsArray($record->getStatusCodes());
+            self::assertContainsOnly('string', $record->getStatusCodes());
+
+            ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+        }
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider postfachDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param array $inRecords
+     * @param string $responseXml
+     * @throws AuthenticationException
+     * @throws ServiceException
+     */
+    public function getPostfachRecordsSuccess(
+        ?string $sessionId,
+        ?string $configName,
+        ?string $clientId,
+        array $inRecords,
+        string $responseXml
+    ): void {
+        $recordIds = array_map(
+            function (InRecordWSType $inRecord) {
+                return $inRecord->getRecordId();
+            },
+            $inRecords
+        );
+
+        $logger = new TestLogger();
+        $soapClient = $this->getSoapClientMock($responseXml);
+
+        $serviceFactory = new SoapServiceFactory($soapClient);
+        $service = $serviceFactory->createAddressVerificationService('user', 'password', $logger);
+        $records = $service->getRecords($inRecords, $sessionId, $configName, $clientId);
+
+        self::assertIsArray($records);
+        self::assertNotEmpty($records);
+        self::assertContainsOnlyInstancesOf(RecordInterface::class, $records);
+        self::assertCount(count($inRecords), $records);
+
+        foreach ($records as $record) {
+            self::assertContains($record->getRecordId(), $recordIds);
+            self::assertIsArray($record->getStatusCodes());
+            self::assertContainsOnly('string', $record->getStatusCodes());
+
+            ResponseRecordExpectation::assertDataPresent($record, $responseXml);
+        }
+
+        // Assert communication gets logged.
+        CommunicationExpectation::assertCommunicationLogged(
+            $soapClient->__getLastRequest(),
+            $soapClient->__getLastResponse(),
+            $logger
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider geDataProvider
+     *
+     * @param string|null $sessionId
+     * @param string|null $configName
+     * @param string|null $clientId
+     * @param array $inRecords
+     * @param string $responseXml
+     * @throws AuthenticationException
+     * @throws ServiceException
+     */
+    public function getGeRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
         ?string $clientId,

@@ -11,9 +11,9 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 /**
  * @api
  */
-interface AddressInterface
+interface BulkReceiverInterface
 {
-    public function getCountry(): string;
+    public function getName(): string;
 
     public function getPostalCode(): string;
 
@@ -28,16 +28,4 @@ interface AddressInterface
     public function getCity(): string;
 
     public function getCityAddition(): string;
-
-    public function getUrbanDistrict(): string;
-
-    public function getStreetName(): string;
-
-    public function getStreetNumber(): string;
-
-    public function getStreetNumberAddition(): string;
-
-    public function getAddressAddition(): string;
-
-    public function getDeliveryInstruction(): string;
 }

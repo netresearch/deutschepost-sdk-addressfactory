@@ -12,8 +12,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Exception\ServiceException;
 use Psr\Log\LoggerInterface;
 
 /**
- * ServiceFactoryInterface
- *
  * @api
  */
 interface ServiceFactoryInterface
@@ -22,12 +20,6 @@ interface ServiceFactoryInterface
      * Create the address verification service to have address data corrected,
      * enhanced, and any duplicates removed.
      *
-     * @param string $username
-     * @param string $password
-     * @param LoggerInterface $logger
-     * @param bool $sandboxMode
-     *
-     * @return AddressVerificationServiceInterface
      * @throws ServiceException
      */
     public function createAddressVerificationService(

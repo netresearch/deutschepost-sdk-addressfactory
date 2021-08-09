@@ -57,6 +57,29 @@ class ResponseRecordExpectation
             new RequestXPath('./af:NameItem/af:Adresszusatz', $response->getAddress() ? $response->getAddress()->getAddressAddition() : ''),
             new RequestXPath('./af:NameItem/af:Zustellhinweis', $response->getAddress() ? $response->getAddress()->getDeliveryInstruction() : ''),
 
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Nr', $response->getPostOffice() ? $response->getPostOffice()->getNumber() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Plz', $response->getPostOffice() ? $response->getPostOffice()->getPostalCode() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Ort', $response->getPostOffice() ? $response->getPostOffice()->getCity() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Ortszusatz', $response->getPostOffice() ? $response->getPostOffice()->getCityAddition() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Bundesland', $response->getPostOffice() ? $response->getPostOffice()->getState() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Gemeinde', $response->getPostOffice() ? $response->getPostOffice()->getMunicipality() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:Kreis', $response->getPostOffice() ? $response->getPostOffice()->getDistrict() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfiliale/af:RegBezirk', $response->getPostOffice() ? $response->getPostOffice()->getRegion() : ''),
+
+            new RequestXPath('./af:AdrItem/af:Postfach/af:Nr', $response->getPostalBox() ? $response->getPostalBox()->getNumber() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfach/af:Plz', $response->getPostalBox() ? $response->getPostalBox()->getPostalCode() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfach/af:Ort', $response->getPostalBox() ? $response->getPostalBox()->getCity() : ''),
+            new RequestXPath('./af:AdrItem/af:Postfach/af:Ortszusatz', $response->getPostalBox() ? $response->getPostalBox()->getCityAddition() : ''),
+
+            new RequestXPath('./af:AdrItem/af:GE/af:Name', $response->getBulkReceiver() ? $response->getBulkReceiver()->getName() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Plz', $response->getBulkReceiver() ? $response->getBulkReceiver()->getPostalCode() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Ort', $response->getBulkReceiver() ? $response->getBulkReceiver()->getCity() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Ortszusatz', $response->getBulkReceiver() ? $response->getBulkReceiver()->getCityAddition() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Bundesland', $response->getBulkReceiver() ? $response->getBulkReceiver()->getState() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Gemeinde', $response->getBulkReceiver() ? $response->getBulkReceiver()->getMunicipality() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:Kreis', $response->getBulkReceiver() ? $response->getBulkReceiver()->getDistrict() : ''),
+            new RequestXPath('./af:AdrItem/af:GE/af:RegBezirk', $response->getBulkReceiver() ? $response->getBulkReceiver()->getRegion() : ''),
+
             new RequestXPath('./af:GeoItem/af:KoordWgs84/af:Breite', $response->getGeoData() ? $response->getGeoData()->getLatitude() : ''),
             new RequestXPath('./af:GeoItem/af:KoordWgs84/af:Laenge', $response->getGeoData() ? $response->getGeoData()->getLongitude() : ''),
 

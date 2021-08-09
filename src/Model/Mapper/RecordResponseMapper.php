@@ -8,23 +8,31 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper;
 
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\ParcelStationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostalBoxInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostOfficeInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\AdrItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GeoItemType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GEType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\HausanschriftType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\LeitdatenType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\NameItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtszusatzType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PackstationType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfachType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfilialeType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\StrasseType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ModuleCodesType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Address;
+use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\BulkReceiver;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoData;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataGk;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataUtm;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Packstation;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Person;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\PhoneNumber;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Record;
@@ -33,14 +41,32 @@ use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Routi
 class RecordResponseMapper
 {
     /**
+     * @var AddressItemMapper
+     */
+    private $addressItemMapper;
+
+    public function __construct()
+    {
+        $this->addressItemMapper = new AddressItemMapper();
+    }
+
+    /**
      * @param OutRecordWSType $outRecord
      *
      * @return RecordInterface
      */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
-        $person = $address = $coords = $utm = $gk = $routingData = $packstation = null;
-        $phoneNumbers = [];
+        $person =
+        $address =
+        $coords =
+        $utm =
+        $gk =
+        $routingData =
+        $parcelStation =
+        $postOffice =
+        $postalBox =
+        $bulkReceiver = null;
 
         // Person
         if ($outRecord->getNameItem() !== null) {
@@ -49,7 +75,7 @@ class RecordResponseMapper
             $company = [
                 $name->getFirma1(),
                 $name->getFirma2(),
-                $name->getFirma3()
+                $name->getFirma3(),
             ];
 
             $person = new Person(
@@ -66,67 +92,14 @@ class RecordResponseMapper
             );
         }
 
-        // Address
-        if ($outRecord->getAdrItem() !== null) {
-            $routing = null;
-
-            if ($outRecord->getAdrItem()->getHausanschrift() !== null) {
-                /** @var HausanschriftType $adr */
-                $adr = $outRecord->getAdrItem()->getHausanschrift();
-
-                $city = $adr->getOrt();
-                $cityAddition = $adr->getOrtszusatz();
-                $street = $adr->getStrasse();
-                $routing = $adr->getLeitdaten();
-                $name = $outRecord->getNameItem();
-
-                $address = new Address(
-                    $adr->getLand(),
-                    $adr->getPlz(),
-                    $adr->getBundesland(),
-                    $adr->getRegBezirk(),
-                    $adr->getKreis(),
-                    $adr->getGemeinde(),
-                    $city instanceof OrtType ? $city->getValue() : '',
-                    $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : '',
-                    $adr->getOrtsteil(),
-                    $street instanceof StrasseType ? $street->getValue() : '',
-                    $adr->getHausnr(),
-                    $adr->getHausnrZusatz(),
-                    $name instanceof NameItemType ? $name->getAdresszusatz() : '',
-                    $name instanceof NameItemType ? $name->getZustellhinweis() : ''
-                );
-            }
-
-            if ($outRecord->getAdrItem()->getPackstation() !== null) {
-                /** @var PackstationType $adr */
-                $adr = $outRecord->getAdrItem()->getPackstation();
-
-                $city = $adr->getOrt();
-                $cityAddition = $adr->getOrtszusatz();
-                $routing = $adr->getLeitdaten();
-
-                $packstation = new Packstation(
-                    $adr->getNr(),
-                    $adr->getPlz(),
-                    $adr->getBundesland(),
-                    $adr->getRegBezirk(),
-                    $adr->getKreis(),
-                    $adr->getGemeinde(),
-                    $city instanceof OrtType ? $city->getValue() : '',
-                    $cityAddition instanceof OrtszusatzType ? $cityAddition->getValue() : ''
-                );
-            }
-
-            if ($routing !== null) {
-                $routingData = new RoutingData(
-                    $routing->getLeitcode(),
-                    $routing->getAlort(),
-                    $routing->getFrachtzentrum(),
-                    $routing->getStrSchluessel(),
-                    $routing->getKgs()
-                );
-            }
+        // Address data
+        if (($adrItem = $outRecord->getAdrItem()) !== null) {
+            $address = $this->addressItemMapper->mapAddress($adrItem, $outRecord->getNameItem());
+            $parcelStation = $this->addressItemMapper->mapParcelStation($adrItem);
+            $postOffice = $this->addressItemMapper->mapPostOffice($adrItem);
+            $postalBox = $this->addressItemMapper->mapPostalBox($adrItem);
+            $bulkReceiver = $this->addressItemMapper->mapBulkReceiver($adrItem);
+            $routingData = $this->extractRoutingData($adrItem);
         }
 
         // Geo Data
@@ -145,7 +118,75 @@ class RecordResponseMapper
                 $gk = new GeoDataGk($geo->getGkbDhdn()->getHochwert(), $geo->getGkbDhdn()->getRechtswert());
             }
         }
+        $phoneNumbers = $this->mapPhoneNumbers($outRecord);
 
+        // Status Codes
+        $statusCodes = array_reduce(
+            $outRecord->getStatusItem()->getPDStatusCodeItem()->getModuleCodes(),
+            function (array $codes, ModuleCodesType $moduleCodes) {
+                $codes = array_merge($codes, $moduleCodes->getStatusCode());
+
+                return $codes;
+            },
+            []
+        );
+
+        return new Record(
+            $outRecord->getRecordId(),
+            $person,
+            $address,
+            $parcelStation,
+            $postOffice,
+            $postalBox,
+            $bulkReceiver,
+            $coords,
+            $utm,
+            $gk,
+            $routingData,
+            $phoneNumbers,
+            $statusCodes
+        );
+    }
+
+    private function extractRoutingData(
+        AdrItemType $adrItem
+    ): ?RoutingData {
+        $routingData = $routing = null;
+        if ($adrItem->getPackstation() !== null) {
+            $routing = $adrItem->getPackstation()->getLeitdaten();
+        }
+
+        if ($adrItem->getPostfiliale() !== null) {
+            $routing = $adrItem->getPostfiliale()->getLeitdaten();
+        }
+
+        if ($adrItem->getPostfach() !== null) {
+            $routing = $adrItem->getPostfach()->getLeitdaten();
+        }
+
+        if ($adrItem->getGE() !== null) {
+            $routing = $adrItem->getGE()->getLeitdaten();
+        }
+        if ($routing !== null) {
+            $routingData = new RoutingData(
+                $routing->getLeitcode(),
+                $routing->getAlort(),
+                $routing->getFrachtzentrum(),
+                $routing->getStrSchluessel(),
+                $routing->getKgs()
+            );
+        }
+
+        return $routingData;
+    }
+
+    /**
+     * @param OutRecordWSType $outRecord
+     * @return PhoneNumber[]
+     */
+    private function mapPhoneNumbers(OutRecordWSType $outRecord): array
+    {
+        $phoneNumbers = [];
         // Phone Numbers
         if ($outRecord->getRufnrItem() !== null) {
             $map = [
@@ -156,7 +197,7 @@ class RecordResponseMapper
                 'Fax' => PhoneNumberInterface::TYPE_FAX,
             ];
             $phoneNumbers = array_map(
-                function (RufnrType $phoneNumber) use ($map) {
+                static function (RufnrType $phoneNumber) use ($map) {
                     return new PhoneNumber(
                         $map[$phoneNumber->getTyp()] ?? PhoneNumberInterface::TYPE_UNKNOWN,
                         $phoneNumber->getOrtsvorwahl(),
@@ -167,27 +208,6 @@ class RecordResponseMapper
             );
         }
 
-        // Status Codes
-        $statusCodes = array_reduce(
-            $outRecord->getStatusItem()->getPDStatusCodeItem()->getModuleCodes(),
-            function (array $codes, ModuleCodesType $moduleCodes) {
-                $codes = array_merge($codes, $moduleCodes->getStatusCode());
-                return $codes;
-            },
-            []
-        );
-
-        return new Record(
-            $outRecord->getRecordId(),
-            $person,
-            $address,
-            $packstation,
-            $coords,
-            $utm,
-            $gk,
-            $routingData,
-            $phoneNumbers,
-            $statusCodes
-        );
+        return $phoneNumbers;
     }
 }

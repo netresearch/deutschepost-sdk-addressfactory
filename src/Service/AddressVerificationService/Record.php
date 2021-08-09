@@ -9,12 +9,15 @@ declare(strict_types=1);
 namespace PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService;
 
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\BulkReceiverInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataUtmInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PackstationInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\ParcelStationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostalBoxInterface;
+use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostOfficeInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 
@@ -36,9 +39,24 @@ class Record implements RecordInterface
     private $address;
 
     /**
-     * @var PackstationInterface|null
+     * @var ParcelStationInterface|null
      */
-    private $packstation;
+    private $parcelStation;
+
+    /**
+     * @var PostOfficeInterface|null
+     */
+    private $postOffice;
+
+    /**
+     * @var PostalBoxInterface|null
+     */
+    private $postalBox;
+
+    /**
+     * @var BulkReceiverInterface|null
+     */
+    private $bulkReceiver;
 
     /**
      * @var GeoDataInterface|null
@@ -73,22 +91,28 @@ class Record implements RecordInterface
     /**
      * Record constructor.
      *
-     * @param int $recordId
-     * @param PersonInterface|null $person
-     * @param AddressInterface|null $address
-     * @param PackstationInterface|null $packstation
-     * @param GeoDataInterface|null $geoData
-     * @param GeoDataUtmInterface|null $geoDataUtm
-     * @param GeoDataGkInterface|null $geoDataGk
-     * @param RoutingDataInterface|null $routingData
-     * @param PhoneNumberInterface[] $phoneNumbers
-     * @param string[] $statusCodes
+     * @param int                         $recordId
+     * @param PersonInterface|null        $person
+     * @param AddressInterface|null       $address
+     * @param ParcelStationInterface|null $parcelStation
+     * @param PostOfficeInterface|null    $postOffice
+     * @param PostalBoxInterface|null     $postalBox
+     * @param BulkReceiverInterface|null  $bulkReceiver
+     * @param GeoDataInterface|null       $geoData
+     * @param GeoDataUtmInterface|null    $geoDataUtm
+     * @param GeoDataGkInterface|null     $geoDataGk
+     * @param RoutingDataInterface|null   $routingData
+     * @param PhoneNumberInterface[]      $phoneNumbers
+     * @param string[]                    $statusCodes
      */
     public function __construct(
         int $recordId,
         PersonInterface $person = null,
         AddressInterface $address = null,
-        PackstationInterface $packstation = null,
+        ParcelStationInterface $parcelStation = null,
+        PostOfficeInterface $postOffice = null,
+        PostalBoxInterface $postalBox = null,
+        BulkReceiverInterface $bulkReceiver = null,
         GeoDataInterface $geoData = null,
         GeoDataUtmInterface $geoDataUtm = null,
         GeoDataGkInterface $geoDataGk = null,
@@ -105,7 +129,10 @@ class Record implements RecordInterface
         $this->routingData = $routingData;
         $this->phoneNumbers = $phoneNumbers;
         $this->statusCodes = $statusCodes;
-        $this->packstation = $packstation;
+        $this->parcelStation = $parcelStation;
+        $this->postOffice = $postOffice;
+        $this->postalBox = $postalBox;
+        $this->bulkReceiver = $bulkReceiver;
     }
 
     public function getRecordId(): int
@@ -153,8 +180,23 @@ class Record implements RecordInterface
         return $this->statusCodes;
     }
 
-    public function getPackstation(): ?PackstationInterface
+    public function getParcelStation(): ?ParcelStationInterface
     {
-        return $this->packstation;
+        return $this->parcelStation;
+    }
+
+    public function getPostOffice(): ?PostOfficeInterface
+    {
+        return $this->postOffice;
+    }
+
+    public function getPostalBox(): ?PostalBoxInterface
+    {
+        return $this->postalBox;
+    }
+
+    public function getBulkReceiver(): ?BulkReceiverInterface
+    {
+        return $this->bulkReceiver;
     }
 }

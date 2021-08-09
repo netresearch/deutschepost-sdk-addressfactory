@@ -26,8 +26,6 @@ interface AddressVerificationServiceInterface
      * @param string|null $clientId Optionally, the client id parameter can be used to determine which clients are
      *                              to be compared. You receive the client id from Deutsche Post Direkt GmbH.
      *
-     * @return string
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -38,8 +36,6 @@ interface AddressVerificationServiceInterface
      *
      * @param string $sessionId The id of the session to close
      *
-     * @return void
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -47,18 +43,6 @@ interface AddressVerificationServiceInterface
 
     /**
      * Perform an address search based on flat address parameters.
-     *
-     * @param string $lastName
-     * @param string $firstName
-     * @param string $street
-     * @param string $houseNumber
-     * @param string $postalCode
-     * @param string $city
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     *
-     * @return RecordInterface
      *
      * @throws AuthenticationException
      * @throws ServiceException

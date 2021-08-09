@@ -1,0 +1,113 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns3:processDataResponse xmlns:af="http://www.postdirekt.de/schema/af/data/v_1_1" xmlns:ns3="http://service.v_1_1.direct.af.postdirekt.de/">
+            <outRecord recordId="1" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Name>Mustermann</af:Name>
+                    <af:PsPostNr>12345678</af:PsPostNr>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Postfach>
+                        <af:Nr>142</af:Nr>
+                        <af:Plz>04229</af:Plz>
+                        <af:Ort>Leipzig</af:Ort>
+                    </af:Postfach>
+                </af:AdrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC131103</af:StatusCode>
+                            <af:StatusCode>BAC013103</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC200501</af:StatusCode>
+                            <af:StatusCode>FNC030501</af:StatusCode>
+                            <af:StatusCode>FNC401107</af:StatusCode>
+                            <af:StatusCode>FNC050107</af:StatusCode>
+                            <af:StatusCode>FNC000500</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                            <af:StatusCode>PDC030500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+            <outRecord recordId="2" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Name>Mustermann</af:Name>
+                    <af:PsPostNr>12345678</af:PsPostNr>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Postfach>
+                        <af:Nr>150</af:Nr>
+                        <af:Plz>53113</af:Plz>
+                        <af:Ort>Bonn</af:Ort>
+                    </af:Postfach>
+                </af:AdrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC130103</af:StatusCode>
+                            <af:StatusCode>BAC013103</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC200501</af:StatusCode>
+                            <af:StatusCode>FNC030501</af:StatusCode>
+                            <af:StatusCode>FNC401107</af:StatusCode>
+                            <af:StatusCode>FNC050107</af:StatusCode>
+                            <af:StatusCode>FNC000500</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                            <af:StatusCode>PDC030500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+            <outRecord recordId="3" fileId="0" fileType="Merge">
+                <af:NameItem>
+                    <af:Anrede>Herr</af:Anrede>
+                    <af:Vorname>Hans</af:Vorname>
+                    <af:Name>Mustermann</af:Name>
+                    <af:Firma1>12345678</af:Firma1>
+                </af:NameItem>
+                <af:AdrItem>
+                    <af:Hausanschrift>
+                        <af:Land>Deutschland</af:Land>
+                    </af:Hausanschrift>
+                    <af:Postfach>
+                        <af:Nr>150</af:Nr>
+                        <af:Plz>53113</af:Plz>
+                        <af:Ort>Bonn</af:Ort>
+                    </af:Postfach>
+                </af:AdrItem>
+                <af:StatusItem>
+                    <af:PDStatusCodeItem>
+                        <af:ModuleCodes name="BAC">
+                            <af:StatusCode>BAC130103</af:StatusCode>
+                            <af:StatusCode>BAC013103</af:StatusCode>
+                            <af:StatusCode>BAC013113</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="FNC">
+                            <af:StatusCode>FNC401107</af:StatusCode>
+                            <af:StatusCode>FNC050107</af:StatusCode>
+                            <af:StatusCode>FNC000500</af:StatusCode>
+                        </af:ModuleCodes>
+                        <af:ModuleCodes name="PDC">
+                            <af:StatusCode>PDC050500</af:StatusCode>
+                            <af:StatusCode>PDC040500</af:StatusCode>
+                            <af:StatusCode>PDC030500</af:StatusCode>
+                        </af:ModuleCodes>
+                    </af:PDStatusCodeItem>
+                </af:StatusItem>
+            </outRecord>
+        </ns3:processDataResponse>
+    </soap:Body>
+</soap:Envelope>
