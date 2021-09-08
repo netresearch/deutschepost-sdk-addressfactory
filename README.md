@@ -34,7 +34,7 @@ $ composer remove deutschepost/sdk-api-addressfactory
 ## Testing
 
 ```bash
-$ ./vendor/bin/phpunit -c test/phpunit.xml
+$ composer run test
 ```
 
 ## Features

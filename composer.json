@@ -35,11 +35,6 @@
             "PostDirekt\\Sdk\\AddressfactoryDirect\\Test\\": "test/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "2.0.x-dev"
-        }
-    },
     "scripts": {
         "test": "phpunit -c test/phpunit.xml",
         "phpstan": "phpstan analyze src",
