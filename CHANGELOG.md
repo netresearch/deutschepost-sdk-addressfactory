@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Allow ampersand in API password.
+
 ## 2.0.0
 
 ### Changed
 
--  English public interface names for non-address types
+- English public interface names for non-address types
 
 ### Added
 

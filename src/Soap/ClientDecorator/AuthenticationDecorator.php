@@ -64,7 +64,7 @@ class AuthenticationDecorator extends AbstractDecorator
      * Add security header to the SOAP client.
      *
      * Uses plain XML to create the header node, instead of the PHP SOAP classes
-     * as its not possible to add attributes to a SoapVar (the "Type" attribute
+     * as it is not possible to add attributes to a SoapVar (the "Type" attribute
      * of the password node).
      *
      * @return void
@@ -84,7 +84,7 @@ XML;
             self::WSSE_NS,
             'wsse',
             new \SoapVar(
-                sprintf($xml, self::WSSE_NS, $this->username, self::WSSE_PASSWORD_TYPE, $this->password),
+                sprintf($xml, self::WSSE_NS, $this->username, self::WSSE_PASSWORD_TYPE, htmlentities($this->password)),
                 XSD_ANYXML
             )
         );

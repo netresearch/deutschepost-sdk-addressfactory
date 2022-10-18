@@ -10,5 +10,4 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 abstract class InitialAufloesungRestriction extends KorrekturType
 {
-
 }
