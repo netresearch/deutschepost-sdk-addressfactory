@@ -84,7 +84,7 @@ XML;
             self::WSSE_NS,
             'wsse',
             new \SoapVar(
-                sprintf($xml, self::WSSE_NS, $this->username, self::WSSE_PASSWORD_TYPE, $this->password),
+                sprintf($xml, self::WSSE_NS, $this->username, self::WSSE_PASSWORD_TYPE, htmlspecialchars($this->password)),
                 XSD_ANYXML
             )
         );
