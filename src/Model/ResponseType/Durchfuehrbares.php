@@ -10,20 +10,11 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 abstract class Durchfuehrbares
 {
-    /**
-     * @var Fehler $Fehler
-     */
-    protected $Fehler;
+    protected Fehler $Fehler;
 
-    /**
-     * @var boolean $durchgefuehrt
-     */
-    protected $durchgefuehrt;
+    protected bool $durchgefuehrt;
 
-    /**
-     * @var boolean $erfolg
-     */
-    protected $erfolg;
+    protected bool $erfolg;
 
     /**
      * @return Fehler

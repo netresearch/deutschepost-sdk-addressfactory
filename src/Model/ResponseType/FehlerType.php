@@ -10,27 +10,15 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class FehlerType
 {
-    /**
-     * @var int $code
-     */
-    protected $code;
+    private int $code;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return int
-     */
     public function getCode(): int
     {
         return $this->code;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

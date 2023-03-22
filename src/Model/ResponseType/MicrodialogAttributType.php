@@ -10,27 +10,15 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class MicrodialogAttributType
 {
-    /**
-     * @var string
-     */
-    protected $_;
+    private string $_;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->_;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

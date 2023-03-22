@@ -13,12 +13,9 @@ class ModuleStatusType extends Durchfuehrbares
     /**
      * @var DienstType[] $Dienst
      */
-    protected $Dienst;
+    private array $Dienst;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
     /**
      * @return DienstType[]
@@ -28,9 +25,6 @@ class ModuleStatusType extends Durchfuehrbares
         return $this->Dienst;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

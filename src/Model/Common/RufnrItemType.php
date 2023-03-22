@@ -13,7 +13,7 @@ class RufnrItemType
     /**
      * @var RufnrType[]|null $Rufnr
      */
-    protected $Rufnr;
+    private ?array $Rufnr;
 
     /**
      * @param RufnrType[] $Rufnr

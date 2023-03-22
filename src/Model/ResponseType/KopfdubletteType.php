@@ -10,53 +10,29 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class KopfdubletteType
 {
-    /**
-     * @var int $fileId
-     */
-    protected $fileId;
+    private int $fileId;
 
-    /**
-     * @var int $recordId
-     */
-    protected $recordId;
+    private int $recordId;
 
-    /**
-     * @var int $sequenceId
-     */
-    protected $sequenceId;
+    private int $sequenceId;
 
-    /**
-     * @var string $fileType
-     */
-    protected $fileType;
+    private string $fileType;
 
-    /**
-     * @return int
-     */
     public function getFileId(): int
     {
         return $this->fileId;
     }
 
-    /**
-     * @return int
-     */
     public function getRecordId(): int
     {
         return $this->recordId;
     }
 
-    /**
-     * @return int
-     */
     public function getSequenceId(): int
     {
         return $this->sequenceId;
     }
 
-    /**
-     * @return string
-     */
     public function getFileType(): string
     {
         return $this->fileType;

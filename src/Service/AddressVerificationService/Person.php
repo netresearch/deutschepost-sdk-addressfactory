@@ -13,90 +13,21 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PersonInterface;
 class Person implements PersonInterface
 {
     /**
-     * @var string
-     */
-    private $salutation;
-
-    /**
-     * @var string
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     */
-    private $lastName;
-
-    /**
-     * @var string[]
-     */
-    private $company;
-
-    /**
-     * @var string
-     */
-    private $prefix;
-
-    /**
-     * @var string
-     */
-    private $suffix;
-
-    /**
-     * @var string
-     */
-    private $academicTitle;
-
-    /**
-     * @var string
-     */
-    private $titleOfNobility;
-
-    /**
-     * @var string
-     */
-    private $gender;
-
-    /**
-     * @var string
-     */
-    private $postNumber;
-
-    /**
      * Person constructor.
-     * @param string $salutation
-     * @param string $firstName
-     * @param string $lastName
      * @param string[] $company
-     * @param string $prefix
-     * @param string $suffix
-     * @param string $academicTitle
-     * @param string $titleOfNobility
-     * @param string $gender
-     * @param string $postNumber
      */
     public function __construct(
-        string $salutation = '',
-        string $firstName = '',
-        string $lastName = '',
-        array $company = [],
-        string $prefix = '',
-        string $suffix = '',
-        string $academicTitle = '',
-        string $titleOfNobility = '',
-        string $gender = '',
-        string $postNumber = ''
+        private readonly string $salutation = '',
+        private readonly string $firstName = '',
+        private readonly string $lastName = '',
+        private readonly array $company = [],
+        private readonly string $prefix = '',
+        private readonly string $suffix = '',
+        private readonly string $academicTitle = '',
+        private readonly string $titleOfNobility = '',
+        private readonly string $gender = '',
+        private readonly string $postNumber = ''
     ) {
-        $this->salutation = $salutation;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->company = $company;
-        $this->prefix = $prefix;
-        $this->suffix = $suffix;
-        $this->academicTitle = $academicTitle;
-        $this->titleOfNobility = $titleOfNobility;
-        $this->gender = $gender;
-        $this->postNumber = $postNumber;
     }
 
     public function getSalutation(): string

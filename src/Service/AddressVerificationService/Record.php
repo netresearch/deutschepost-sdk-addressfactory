@@ -24,115 +24,26 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 class Record implements RecordInterface
 {
     /**
-     * @var int
-     */
-    private $recordId;
-
-    /**
-     * @var PersonInterface|null
-     */
-    private $person;
-
-    /**
-     * @var AddressInterface|null
-     */
-    private $address;
-
-    /**
-     * @var ParcelStationInterface|null
-     */
-    private $parcelStation;
-
-    /**
-     * @var PostOfficeInterface|null
-     */
-    private $postOffice;
-
-    /**
-     * @var PostalBoxInterface|null
-     */
-    private $postalBox;
-
-    /**
-     * @var BulkReceiverInterface|null
-     */
-    private $bulkReceiver;
-
-    /**
-     * @var GeoDataInterface|null
-     */
-    private $geoData;
-
-    /**
-     * @var GeoDataUtmInterface|null
-     */
-    private $geoDataUtm;
-
-    /**
-     * @var GeoDataGkInterface|null
-     */
-    private $geoDataGk;
-
-    /**
-     * @var RoutingDataInterface|null
-     */
-    private $routingData;
-
-    /**
-     * @var PhoneNumberInterface[]
-     */
-    private $phoneNumbers;
-
-    /**
-     * @var string[]
-     */
-    private $statusCodes;
-
-    /**
      * Record constructor.
      *
-     * @param int                         $recordId
-     * @param PersonInterface|null        $person
-     * @param AddressInterface|null       $address
-     * @param ParcelStationInterface|null $parcelStation
-     * @param PostOfficeInterface|null    $postOffice
-     * @param PostalBoxInterface|null     $postalBox
-     * @param BulkReceiverInterface|null  $bulkReceiver
-     * @param GeoDataInterface|null       $geoData
-     * @param GeoDataUtmInterface|null    $geoDataUtm
-     * @param GeoDataGkInterface|null     $geoDataGk
-     * @param RoutingDataInterface|null   $routingData
-     * @param PhoneNumberInterface[]      $phoneNumbers
-     * @param string[]                    $statusCodes
+     * @param PhoneNumberInterface[] $phoneNumbers
+     * @param string[] $statusCodes
      */
     public function __construct(
-        int $recordId,
-        PersonInterface $person = null,
-        AddressInterface $address = null,
-        ParcelStationInterface $parcelStation = null,
-        PostOfficeInterface $postOffice = null,
-        PostalBoxInterface $postalBox = null,
-        BulkReceiverInterface $bulkReceiver = null,
-        GeoDataInterface $geoData = null,
-        GeoDataUtmInterface $geoDataUtm = null,
-        GeoDataGkInterface $geoDataGk = null,
-        RoutingDataInterface $routingData = null,
-        array $phoneNumbers = [],
-        array $statusCodes = []
+        private readonly int $recordId,
+        private readonly ?PersonInterface $person = null,
+        private readonly ?AddressInterface $address = null,
+        private readonly ?ParcelStationInterface $parcelStation = null,
+        private readonly ?PostOfficeInterface $postOffice = null,
+        private readonly ?PostalBoxInterface $postalBox = null,
+        private readonly ?BulkReceiverInterface $bulkReceiver = null,
+        private readonly ?GeoDataInterface $geoData = null,
+        private readonly ?GeoDataUtmInterface $geoDataUtm = null,
+        private readonly ?GeoDataGkInterface $geoDataGk = null,
+        private readonly ?RoutingDataInterface $routingData = null,
+        private readonly array $phoneNumbers = [],
+        private readonly array $statusCodes = []
     ) {
-        $this->recordId = $recordId;
-        $this->person = $person;
-        $this->address = $address;
-        $this->geoData = $geoData;
-        $this->geoDataUtm = $geoDataUtm;
-        $this->geoDataGk = $geoDataGk;
-        $this->routingData = $routingData;
-        $this->phoneNumbers = $phoneNumbers;
-        $this->statusCodes = $statusCodes;
-        $this->parcelStation = $parcelStation;
-        $this->postOffice = $postOffice;
-        $this->postalBox = $postalBox;
-        $this->bulkReceiver = $bulkReceiver;
     }
 
     public function getRecordId(): int

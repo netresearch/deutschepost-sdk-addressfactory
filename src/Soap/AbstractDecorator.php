@@ -19,19 +19,8 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataResponse;
 
 abstract class AbstractDecorator extends AbstractClient
 {
-    /**
-     * @var AbstractClient
-     */
-    private $client;
-
-    /**
-     * AbstractDecorator constructor.
-     *
-     * @param AbstractClient $client
-     */
-    public function __construct(AbstractClient $client)
+    public function __construct(private readonly AbstractClient $client)
     {
-        $this->client = $client;
     }
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse

@@ -15,12 +15,9 @@ class ModuleCodesType
      *
      * @var string[]|string $StatusCode
      */
-    protected $StatusCode;
+    private string|array $StatusCode;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
     /**
      * @return string[]
@@ -34,9 +31,6 @@ class ModuleCodesType
         return $this->StatusCode;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

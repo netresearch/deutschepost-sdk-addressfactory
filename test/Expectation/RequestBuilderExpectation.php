@@ -21,7 +21,6 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
 class RequestBuilderExpectation
 {
     /**
-     * @param RecordStub $requestData
      * @return RequestXPath[]
      */
     public static function getXPaths(RecordStub $requestData): array

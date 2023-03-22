@@ -12,76 +12,16 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\ParcelStationInterface;
 
 class ParcelStation implements ParcelStationInterface
 {
-    /**
-     * @var string
-     */
-    private $number;
-
-    /**
-     * @var string
-     */
-    private $postalCode;
-
-    /**
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @var string
-     */
-    private $region;
-
-    /**
-     * @var string
-     */
-    private $district;
-
-    /**
-     * @var string
-     */
-    private $municipality;
-
-    /**
-     * @var string
-     */
-    private $city;
-
-    /**
-     * @var string
-     */
-    private $cityAddition;
-
-    /**
-     * Packstation constructor.
-     *
-     * @param string $number
-     * @param string $postalCode
-     * @param string $state
-     * @param string $region
-     * @param string $district
-     * @param string $municipality
-     * @param string $city
-     * @param string $cityAddition
-     */
     public function __construct(
-        string $number = '',
-        string $postalCode = '',
-        string $state = '',
-        string $region = '',
-        string $district = '',
-        string $municipality = '',
-        string $city = '',
-        string $cityAddition = ''
+        private readonly string $number = '',
+        private readonly string $postalCode = '',
+        private readonly string $state = '',
+        private readonly string $region = '',
+        private readonly string $district = '',
+        private readonly string $municipality = '',
+        private readonly string $city = '',
+        private readonly string $cityAddition = ''
     ) {
-        $this->number = $number;
-        $this->postalCode = $postalCode;
-        $this->state = $state;
-        $this->region = $region;
-        $this->district = $district;
-        $this->municipality = $municipality;
-        $this->city = $city;
-        $this->cityAddition = $cityAddition;
     }
 
     public function getNumber(): string

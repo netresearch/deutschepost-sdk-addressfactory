@@ -38,17 +38,11 @@ class GetRecordsTest extends SoapClientTestCase
         return GetRecordsTestProvider::processPackstationSuccess();
     }
 
-    /**
-     * @return array
-     */
     public function postfilialeDataProvider(): array
     {
         return GetRecordsTestProvider::processPostfilialeSuccess();
     }
 
-    /**
-     * @return array
-     */
     public function postfachDataProvider(): array
     {
         return GetRecordsTestProvider::processPostfachSuccess();
@@ -101,9 +95,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            function (InRecordWSType $inRecord) {
-                return $inRecord->getRecordId();
-            },
+            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -160,9 +152,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            function (InRecordWSType $inRecord) {
-                return $inRecord->getRecordId();
-            },
+            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -198,11 +188,6 @@ class GetRecordsTest extends SoapClientTestCase
      * @test
      * @dataProvider postfilialeDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param array $inRecords
-     * @param string $responseXml
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -214,9 +199,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            function (InRecordWSType $inRecord) {
-                return $inRecord->getRecordId();
-            },
+            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -252,11 +235,6 @@ class GetRecordsTest extends SoapClientTestCase
      * @test
      * @dataProvider postfachDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param array $inRecords
-     * @param string $responseXml
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -268,9 +246,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            function (InRecordWSType $inRecord) {
-                return $inRecord->getRecordId();
-            },
+            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -306,11 +282,6 @@ class GetRecordsTest extends SoapClientTestCase
      * @test
      * @dataProvider geDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param array $inRecords
-     * @param string $responseXml
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -322,9 +293,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            function (InRecordWSType $inRecord) {
-                return $inRecord->getRecordId();
-            },
+            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
             $inRecords
         );
 

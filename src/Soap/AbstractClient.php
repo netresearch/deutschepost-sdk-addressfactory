@@ -24,10 +24,6 @@ abstract class AbstractClient
      * The "openSession" operation is used to generate a new session id
      * used within any subsequent webservice call.
      *
-     * @param OpenSessionRequest $request
-     *
-     * @return OpenSessionResponse
-     *
      * @throws AuthenticationErrorException
      * @throws \SoapFault
      */
@@ -37,10 +33,6 @@ abstract class AbstractClient
      * The operation "closeSession" closes a previously with "openSession"
      * created session instance.
      *
-     * @param CloseSessionRequest $request
-     *
-     * @return CloseSessionResponse
-     *
      * @throws AuthenticationErrorException
      * @throws \SoapFault
      */
@@ -49,10 +41,6 @@ abstract class AbstractClient
     /**
      * The operation "processSimpleData" performs a simple address comparison.
      *
-     * @param ProcessSimpleDataRequest $request
-     *
-     * @return ProcessSimpleDataResponse
-     *
      * @throws AuthenticationErrorException
      * @throws \SoapFault
      */
@@ -60,10 +48,6 @@ abstract class AbstractClient
 
     /**
      * The operation "processData" performs a detailed address comparison.
-     *
-     * @param ProcessDataRequest $request
-     *
-     * @return ProcessDataResponse
      *
      * @throws AuthenticationErrorException
      * @throws \SoapFault

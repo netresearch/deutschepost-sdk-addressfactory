@@ -15,37 +15,22 @@ class ZustellbarkeitspruefungType extends PruefungType
      *
      * @var string
      */
-    protected $ebene;
+    private string $ebene;
 
-    /**
-     * @var string $grund
-     */
-    protected $grund;
+    private string $grund;
 
-    /**
-     * @var string $letzteBeauskunftung
-     */
-    protected $letzteBeauskunftung;
+    private string $letzteBeauskunftung;
 
-    /**
-     * @return string
-     */
     public function getEbene(): string
     {
         return $this->ebene;
     }
 
-    /**
-     * @return string
-     */
     public function getGrund(): string
     {
         return $this->grund;
     }
 
-    /**
-     * @return string
-     */
     public function getLetzteBeauskunftung(): string
     {
         return $this->letzteBeauskunftung;

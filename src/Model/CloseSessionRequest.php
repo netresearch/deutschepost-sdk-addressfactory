@@ -12,15 +12,9 @@ class CloseSessionRequest
 {
     /**
      * The session id.
-     *
-     * @var string
      */
-    private $sessionId;
+    private ?string $sessionId = null;
 
-    /**
-     * @param string $sessionId
-     * @return CloseSessionRequest
-     */
     public function setSessionId(string $sessionId): self
     {
         $this->sessionId = $sessionId;

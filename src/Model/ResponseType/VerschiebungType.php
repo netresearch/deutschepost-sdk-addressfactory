@@ -13,7 +13,7 @@ class VerschiebungType extends VerschiebungRestriction
     /**
      * @var Quelle[] $Quelle
      */
-    protected $Quelle;
+    private array $Quelle;
 
     /**
      * @return Quelle[]

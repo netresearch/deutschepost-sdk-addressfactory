@@ -13,17 +13,11 @@ class FehltrefferType
     /**
      * @var AttributRefType[] $AttributRef
      */
-    protected $AttributRef;
+    private array $AttributRef;
 
-    /**
-     * @var boolean $mehrdeutig
-     */
-    protected $mehrdeutig;
+    private bool $mehrdeutig;
 
-    /**
-     * @var int $code
-     */
-    protected $code;
+    private int $code;
 
     /**
      * @return AttributRefType[]
@@ -33,17 +27,11 @@ class FehltrefferType
         return $this->AttributRef;
     }
 
-    /**
-     * @return boolean
-     */
     public function getMehrdeutig(): bool
     {
         return $this->mehrdeutig;
     }
 
-    /**
-     * @return int
-     */
     public function getCode(): int
     {
         return $this->code;

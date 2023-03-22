@@ -8,28 +8,14 @@ declare(strict_types=1);
 
 namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Mapper;
 
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\ParcelStationInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostalBoxInterface;
-use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostOfficeInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\AdrItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GeoItemType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GEType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\HausanschriftType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\LeitdatenType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\NameItemType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtszusatzType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\OrtType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PackstationType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfachType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfilialeType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrType;
-use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\StrasseType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ModuleCodesType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Address;
-use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\BulkReceiver;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoData;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataGk;
 use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\GeoDataUtm;
@@ -40,21 +26,13 @@ use PostDirekt\Sdk\AddressfactoryDirect\Service\AddressVerificationService\Routi
 
 class RecordResponseMapper
 {
-    /**
-     * @var AddressItemMapper
-     */
-    private $addressItemMapper;
+    private readonly AddressItemMapper $addressItemMapper;
 
     public function __construct()
     {
         $this->addressItemMapper = new AddressItemMapper();
     }
 
-    /**
-     * @param OutRecordWSType $outRecord
-     *
-     * @return RecordInterface
-     */
     public function map(OutRecordWSType $outRecord): RecordInterface
     {
         $person =
@@ -123,11 +101,7 @@ class RecordResponseMapper
         // Status Codes
         $statusCodes = array_reduce(
             $outRecord->getStatusItem()->getPDStatusCodeItem()->getModuleCodes(),
-            function (array $codes, ModuleCodesType $moduleCodes) {
-                $codes = array_merge($codes, $moduleCodes->getStatusCode());
-
-                return $codes;
-            },
+            fn(array $codes, ModuleCodesType $moduleCodes) => array_merge($codes, $moduleCodes->getStatusCode()),
             []
         );
 
@@ -181,7 +155,6 @@ class RecordResponseMapper
     }
 
     /**
-     * @param OutRecordWSType $outRecord
      * @return PhoneNumber[]
      */
     private function mapPhoneNumbers(OutRecordWSType $outRecord): array
@@ -197,13 +170,11 @@ class RecordResponseMapper
                 'Fax' => PhoneNumberInterface::TYPE_FAX,
             ];
             $phoneNumbers = array_map(
-                static function (RufnrType $phoneNumber) use ($map) {
-                    return new PhoneNumber(
-                        $map[$phoneNumber->getTyp()] ?? PhoneNumberInterface::TYPE_UNKNOWN,
-                        $phoneNumber->getOrtsvorwahl(),
-                        $phoneNumber->getDurchwahl()
-                    );
-                },
+                static fn(RufnrType $phoneNumber) => new PhoneNumber(
+                    $map[$phoneNumber->getTyp()] ?? PhoneNumberInterface::TYPE_UNKNOWN,
+                    $phoneNumber->getOrtsvorwahl(),
+                    $phoneNumber->getDurchwahl()
+                ),
                 $outRecord->getRufnrItem()->getRufnr()
             );
         }

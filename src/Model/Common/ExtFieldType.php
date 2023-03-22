@@ -10,20 +10,10 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 
 class ExtFieldType
 {
-    /**
-     * @var string
-     */
-    protected $_;
+    private string $_;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @param string $value
-     * @param string $name
-     */
     public function __construct(
         string $value,
         string $name
@@ -32,17 +22,11 @@ class ExtFieldType
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->_;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

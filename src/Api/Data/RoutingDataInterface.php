@@ -14,23 +14,17 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Api\Data;
 interface RoutingDataInterface
 {
     /**
-     * Returns the 11 digit code, created out of postal code, street code and house number.
-     *
-     * @return string
+     * Returns the 11-digit code, created out of postal code, street code and house number.
      */
     public function getRoutingCode(): string;
 
     /**
      * Returns the alphanumeric destination location identifier.
-     *
-     * @return string
      */
     public function getAlOrt(): string;
 
     /**
      * Returns the name of the cargo center.
-     *
-     * @return string
      */
     public function getCargoCenter(): string;
 

@@ -12,14 +12,8 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
 
 class ProcessSimpleDataResponse
 {
-    /**
-     * @var OutRecordWSType
-     */
-    private $outRecord;
+    private OutRecordWSType $outRecord;
 
-    /**
-     * @return OutRecordWSType
-     */
     public function getOutRecord(): OutRecordWSType
     {
         return $this->outRecord;

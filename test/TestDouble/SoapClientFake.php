@@ -21,7 +21,7 @@ class SoapClientFake extends \SoapClient
      *
      * @throws \SoapFault
      */
-    public function __construct($wsdl, array $options = null)
+    public function __construct(mixed $wsdl, array $options = null)
     {
         $wsdl = __DIR__ . '/../Provider/_files/AF-Direct-Service/AF-Direct.wsdl';
 

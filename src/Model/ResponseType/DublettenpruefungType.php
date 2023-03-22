@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class DublettenpruefungType extends DublettenpruefungRestriction
 {
-    /**
-     * @var GruppeninfoType $Gruppeninfo
-     */
-    protected $Gruppeninfo;
+    private GruppeninfoType $Gruppeninfo;
 
-    /**
-     * @return GruppeninfoType
-     */
     public function getGruppeninfo(): GruppeninfoType
     {
         return $this->Gruppeninfo;

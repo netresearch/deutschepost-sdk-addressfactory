@@ -13,7 +13,7 @@ class StatusCodeItemType
     /**
      * @var ModuleCodesType[] $ModuleCodes
      */
-    protected $ModuleCodes;
+    private array $ModuleCodes;
 
     /**
      * @return ModuleCodesType[]

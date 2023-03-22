@@ -17,7 +17,7 @@ class ProcessDataResponse
      *
      * @var OutRecordWSType[]|OutRecordWSType
      */
-    private $outRecord;
+    private array|OutRecordWSType $outRecord;
 
     /**
      * @return OutRecordWSType[]

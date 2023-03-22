@@ -12,41 +12,15 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataInterface;
 
 class GeoData implements GeoDataInterface
 {
-    /**
-     * @var string
-     */
-    private $latitude;
-
-    /**
-     * @var string
-     */
-    private $longitude;
-
-    /**
-     * GeoData constructor.
-     *
-     * @param string $longitude
-     * @param string $latitude
-     */
-    public function __construct(
-        string $longitude,
-        string $latitude
-    ) {
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+    public function __construct(private readonly string $longitude, private readonly string $latitude)
+    {
     }
 
-    /**
-     * @return string
-     */
     public function getLatitude(): string
     {
         return $this->latitude;
     }
 
-    /**
-     * @return string
-     */
     public function getLongitude(): string
     {
         return $this->longitude;

@@ -10,27 +10,15 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class GeschlossenerZeitraumType
 {
-    /**
-     * @var string $von
-     */
-    protected $von;
+    private string $von;
 
-    /**
-     * @var string $bis
-     */
-    protected $bis;
+    private string $bis;
 
-    /**
-     * @return string
-     */
     public function getVon(): string
     {
         return $this->von;
     }
 
-    /**
-     * @return string
-     */
     public function getBis(): string
     {
         return $this->bis;

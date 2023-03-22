@@ -15,10 +15,6 @@ class CommunicationExpectation
 {
     /**
      * Mock client does not send headers, only check for request body being logged.
-     *
-     * @param string $requestXml
-     * @param string $responseXml
-     * @param TestLogger $logger
      */
     public static function assertCommunicationLogged(string $requestXml, string $responseXml, TestLogger $logger): void
     {
@@ -28,10 +24,6 @@ class CommunicationExpectation
 
     /**
      * Mock client does not send headers, only check for request body being logged.
-     *
-     * @param string $requestXml
-     * @param string $responseXml
-     * @param TestLogger $logger
      */
     public static function assertErrorsLogged(string $requestXml, string $responseXml, TestLogger $logger): void
     {

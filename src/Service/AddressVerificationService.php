@@ -23,28 +23,10 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 
 class AddressVerificationService implements AddressVerificationServiceInterface
 {
-    /**
-     * @var AbstractClient
-     */
-    private $client;
-
-    /**
-     * @var RecordResponseMapper
-     */
-    private $recordResponseMapper;
-
-    /**
-     * AddressFactoryService constructor.
-     *
-     * @param AbstractClient $client
-     * @param RecordResponseMapper $recordResponseMapper
-     */
     public function __construct(
-        AbstractClient $client,
-        RecordResponseMapper $recordResponseMapper
+        private readonly AbstractClient $client,
+        private readonly RecordResponseMapper $recordResponseMapper
     ) {
-        $this->client = $client;
-        $this->recordResponseMapper = $recordResponseMapper;
     }
 
     public function openSession(string $configName, string $clientId = null): string
@@ -130,9 +112,7 @@ class AddressVerificationService implements AddressVerificationServiceInterface
         try {
             $response = $this->client->processData($requestType);
             return array_map(
-                function (OutRecordWSType $outRecord) {
-                    return $this->recordResponseMapper->map($outRecord);
-                },
+                fn(OutRecordWSType $outRecord) => $this->recordResponseMapper->map($outRecord),
                 $response->getOutRecord()
             );
         } catch (AuthenticationErrorException $exception) {

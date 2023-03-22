@@ -10,20 +10,10 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 
 class UtmWgs84Type
 {
-    /**
-     * @var string $Ost
-     */
-    protected $Ost;
+    private string $Ost;
 
-    /**
-     * @var string $Nord
-     */
-    protected $Nord;
+    private string $Nord;
 
-    /**
-     * @param string $Ost
-     * @param string $Nord
-     */
     public function __construct(
         string $Ost,
         string $Nord
@@ -32,17 +22,11 @@ class UtmWgs84Type
         $this->Nord = $Nord;
     }
 
-    /**
-     * @return string
-     */
     public function getOst(): string
     {
         return $this->Ost;
     }
 
-    /**
-     * @return string
-     */
     public function getNord(): string
     {
         return $this->Nord;

@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model;
 
 class OpenSessionResponse
 {
-    /**
-     * @var string
-     */
-    private $sessionId;
+    private string $sessionId;
 
-    /**
-     * @return string
-     */
     public function getSessionId(): string
     {
         return $this->sessionId;

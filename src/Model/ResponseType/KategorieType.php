@@ -10,27 +10,15 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class KategorieType
 {
-    /**
-     * @var string $indiz
-     */
-    protected $indiz;
+    private string $indiz;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return string
-     */
     public function getIndiz(): string
     {
         return $this->indiz;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

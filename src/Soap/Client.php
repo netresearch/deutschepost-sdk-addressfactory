@@ -27,19 +27,8 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\ProcessSimpleDataResponse;
  */
 class Client extends AbstractClient
 {
-    /**
-     * @var \SoapClient
-     */
-    private $soapClient;
-
-    /**
-     * Client constructor.
-     *
-     * @param \SoapClient $soapClient
-     */
-    public function __construct(\SoapClient $soapClient)
+    public function __construct(private readonly \SoapClient $soapClient)
     {
-        $this->soapClient = $soapClient;
     }
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse

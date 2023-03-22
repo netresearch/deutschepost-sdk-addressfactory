@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class TypAenderungType extends TypAenderungRestriction
 {
-    /**
-     * @var Ziel $Ziel
-     */
-    protected $Ziel;
+    private Ziel $Ziel;
 
-    /**
-     * @return Ziel
-     */
     public function getZiel(): Ziel
     {
         return $this->Ziel;

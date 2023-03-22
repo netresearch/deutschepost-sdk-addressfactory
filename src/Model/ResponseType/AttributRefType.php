@@ -13,12 +13,12 @@ class AttributRefType
     /**
      * @var ZusatzInfoType[] $ZusatzInfo
      */
-    protected $ZusatzInfo;
+    private array $ZusatzInfo;
 
     /**
      * @var string $name
      */
-    protected $name;
+    private string $name;
 
     /**
      * @return ZusatzInfoType[]
@@ -28,9 +28,6 @@ class AttributRefType
         return $this->ZusatzInfo;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

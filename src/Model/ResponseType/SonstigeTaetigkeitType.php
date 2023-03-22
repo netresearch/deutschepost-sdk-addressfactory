@@ -12,27 +12,15 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\ExtFieldItemType;
 
 class SonstigeTaetigkeitType extends TaetigkeitType
 {
-    /**
-     * @var ExtFieldItemType $ExtFieldItem
-     */
-    protected $ExtFieldItem;
+    private ExtFieldItemType $ExtFieldItem;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return ExtFieldItemType
-     */
     public function getExtFieldItem(): ExtFieldItemType
     {
         return $this->ExtFieldItem;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

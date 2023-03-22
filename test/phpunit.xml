@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.5/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
          colors="true"
          columns="max"
          stderr="true"
@@ -11,9 +11,9 @@
             <directory>.</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage>
+        <include>
             <directory suffix=".php">../src</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </coverage>
 </phpunit>

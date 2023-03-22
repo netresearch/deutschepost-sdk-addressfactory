@@ -13,7 +13,7 @@ class MicrodialogItemType
     /**
      * @var MicrodialogElementType[] $Element
      */
-    protected $Element;
+    private array $Element;
 
     /**
      * @return MicrodialogElementType[]

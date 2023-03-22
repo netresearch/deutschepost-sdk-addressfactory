@@ -12,125 +12,23 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\AddressInterface;
 
 class Address implements AddressInterface
 {
-    /**
-     * @var string
-     */
-    private $country;
-
-    /**
-     * @var string
-     */
-    private $postalCode;
-
-    /**
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @var string
-     */
-    private $region;
-
-    /**
-     * @var string
-     */
-    private $district;
-
-    /**
-     * @var string
-     */
-    private $municipality;
-
-    /**
-     * @var string
-     */
-    private $city;
-
-    /**
-     * @var string
-     */
-    private $cityAddition;
-
-    /**
-     * @var string
-     */
-    private $urbanDistrict;
-
-    /**
-     * @var string
-     */
-    private $streetName;
-
-    /**
-     * @var string
-     */
-    private $streetNumber;
-
-    /**
-     * @var string
-     */
-    private $streetNumberAddition;
-
-    /**
-     * @var string
-     */
-    private $addressAddition;
-
-    /**
-     * @var string
-     */
-    private $deliveryInstruction;
-
-    /**
-     * Address constructor.
-     * @param string $country
-     * @param string $postalCode
-     * @param string $state
-     * @param string $region
-     * @param string $district
-     * @param string $municipality
-     * @param string $city
-     * @param string $cityAddition
-     * @param string $urbanDistrict
-     * @param string $streetName
-     * @param string $streetNumber
-     * @param string $streetNumberAddition
-     * @param string $addressAddition
-     * @param string $deliveryInstruction
-     */
     public function __construct(
-        string $country = '',
-        string $postalCode = '',
-        string $state = '',
-        string $region = '',
-        string $district = '',
-        string $municipality = '',
-        string $city = '',
-        string $cityAddition = '',
-        string $urbanDistrict = '',
-        string $streetName = '',
-        string $streetNumber = '',
-        string $streetNumberAddition = '',
-        string $addressAddition = '',
-        string $deliveryInstruction = ''
+        private readonly string $country = '',
+        private readonly string $postalCode = '',
+        private readonly string $state = '',
+        private readonly string $region = '',
+        private readonly string $district = '',
+        private readonly string $municipality = '',
+        private readonly string $city = '',
+        private readonly string $cityAddition = '',
+        private readonly string $urbanDistrict = '',
+        private readonly string $streetName = '',
+        private readonly string $streetNumber = '',
+        private readonly string $streetNumberAddition = '',
+        private readonly string $addressAddition = '',
+        private readonly string $deliveryInstruction = ''
     ) {
-        $this->country = $country;
-        $this->postalCode = $postalCode;
-        $this->state = $state;
-        $this->region = $region;
-        $this->district = $district;
-        $this->municipality = $municipality;
-        $this->city = $city;
-        $this->cityAddition = $cityAddition;
-        $this->urbanDistrict = $urbanDistrict;
-        $this->streetName = $streetName;
-        $this->streetNumber = $streetNumber;
-        $this->streetNumberAddition = $streetNumberAddition;
-        $this->addressAddition = $addressAddition;
-        $this->deliveryInstruction = $deliveryInstruction;
     }
-
 
     public function getCountry(): string
     {

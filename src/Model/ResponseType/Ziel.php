@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class Ziel
 {
-    /**
-     * @var string $elementRef
-     */
-    protected $elementRef;
+    private string $elementRef;
 
-    /**
-     * @return string
-     */
     public function getElementRef(): string
     {
         return $this->elementRef;

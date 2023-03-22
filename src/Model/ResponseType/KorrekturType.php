@@ -10,10 +10,7 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class KorrekturType extends AttributBearbeitungRestriction
 {
-    /**
-     * @var boolean $signifikant
-     */
-    protected $signifikant;
+    private bool $signifikant;
 
     /**
      * @return boolean

@@ -67,7 +67,7 @@ class RequestBuilderTest extends SoapClientTestCase
 
         try {
             $service->getRecords(array_values($inRecordTypes), $sessionId, $configName, $clientId);
-        } catch (ServiceException $exception) {
+        } catch (ServiceException) {
             // ignore, we are just interested in the request
         }
 

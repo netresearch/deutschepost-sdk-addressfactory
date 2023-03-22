@@ -12,30 +12,16 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RecordType;
 
 class InRecordWSType extends RecordType
 {
-    /**
-     * @var string|null $anfragegrund
-     */
-    private $anfragegrund;
+    private ?string $anfragegrund = null;
 
-    /**
-     * @var string|null $geburtsdatum
-     */
-    private $geburtsdatum;
+    private ?string $geburtsdatum = null;
 
-    /**
-     * @param string $reason
-     * @return InRecordWSType
-     */
     public function setAnfragegrund(string $reason): self
     {
         $this->anfragegrund = $reason;
         return $this;
     }
 
-    /**
-     * @param string $dateOfBirth
-     * @return InRecordWSType
-     */
     public function setGeburtsdatum(string $dateOfBirth): self
     {
         $this->geburtsdatum = $dateOfBirth;

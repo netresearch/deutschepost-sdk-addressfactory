@@ -15,12 +15,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\SoapClientFake;
 
 class SoapClientTestCase extends TestCase
 {
-    /**
-     * @param string $responseXml
-     *
-     * @return \SoapClient|MockObject
-     */
-    protected function getSoapClientMock(string $responseXml)
+    protected function getSoapClientMock(string $responseXml): \SoapClient|\PHPUnit\Framework\MockObject\MockObject
     {
         $wsdl = __DIR__ . '/Provider/_files/AF-Direct-Service/AF-Direct.wsdl';
         $clientOptions = [

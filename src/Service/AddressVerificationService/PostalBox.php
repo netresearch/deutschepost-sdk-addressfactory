@@ -12,42 +12,12 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PostalBoxInterface;
 
 class PostalBox implements PostalBoxInterface
 {
-    /**
-     * @var string
-     */
-    private $number;
-
-    /**
-     * @var string
-     */
-    private $postalCode;
-
-    /**
-     * @var string
-     */
-    private $city;
-
-    /**
-     * @var string
-     */
-    private $cityAddition;
-
-    /**
-     * @param string $number
-     * @param string $postalCode
-     * @param string $city
-     * @param string $cityAddition
-     */
     public function __construct(
-        string $number = '',
-        string $postalCode = '',
-        string $city = '',
-        string $cityAddition = ''
+        private readonly string $number = '',
+        private readonly string $postalCode = '',
+        private readonly string $city = '',
+        private readonly string $cityAddition = ''
     ) {
-        $this->number = $number;
-        $this->postalCode = $postalCode;
-        $this->city = $city;
-        $this->cityAddition = $cityAddition;
     }
 
     public function getNumber(): string

@@ -26,29 +26,26 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
  */
 class ErrorHandlerDecorator extends AbstractDecorator
 {
-    const AUTH_ERROR_MESSAGE = 'Authentication failed. Please check your access credentials.';
+    final public const AUTH_ERROR_MESSAGE = 'Authentication failed. Please check your access credentials.';
 
-    const FAULT_AUTH_FAILED  = 'Failed Authentication';
-    const FAULT_UNAUTHORIZED = 'Unauthorized';
+    final public const FAULT_AUTH_FAILED  = 'Failed Authentication';
+    final public const FAULT_UNAUTHORIZED = 'Unauthorized';
 
     /**
      * Executes the passed webservice requests and processes any occurring \SoapFault.
      *
-     * @param \Closure $request
-     *
-     * @return mixed
-     *
      * @throws AuthenticationErrorException
      * @throws \SoapFault
      */
-    private function execute(\Closure $request)
-    {
+    private function execute(
+        \Closure $request
+    ): mixed {
         try {
             $response = $request();
         } catch (\SoapFault $fault) {
             if (
                 ($fault->faultstring === self::FAULT_UNAUTHORIZED)
-                || (strpos($fault->faultstring, self::FAULT_AUTH_FAILED) !== false)
+                || (str_contains($fault->faultstring, self::FAULT_AUTH_FAILED))
             ) {
                 throw new AuthenticationErrorException(self::AUTH_ERROR_MESSAGE, 401, $fault);
             }
@@ -61,29 +58,21 @@ class ErrorHandlerDecorator extends AbstractDecorator
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse
     {
-        return $this->execute(function () use ($request) {
-            return parent::openSession($request);
-        });
+        return $this->execute(fn() => parent::openSession($request));
     }
 
     public function closeSession(CloseSessionRequest $request): CloseSessionResponse
     {
-        return $this->execute(function () use ($request) {
-            return parent::closeSession($request);
-        });
+        return $this->execute(fn() => parent::closeSession($request));
     }
 
     public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse
     {
-        return $this->execute(function () use ($request) {
-            return parent::processSimpleData($request);
-        });
+        return $this->execute(fn() => parent::processSimpleData($request));
     }
 
     public function processData(ProcessDataRequest $request): ProcessDataResponse
     {
-        return $this->execute(function () use ($request) {
-            return parent::processData($request);
-        });
+        return $this->execute(fn() => parent::processData($request));
     }
 }

@@ -12,52 +12,13 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RoutingDataInterface;
 
 class RoutingData implements RoutingDataInterface
 {
-    /**
-     * @var string
-     */
-    private $routingCode;
-
-    /**
-     * @var string
-     */
-    private $alOrt;
-
-    /**
-     * @var string
-     */
-    private $cargoCenter;
-
-    /**
-     * @var string
-     */
-    private $streetKey;
-
-    /**
-     * @var string
-     */
-    private $districtKey;
-
-    /**
-     * RoutingData constructor.
-     *
-     * @param string $routingCode
-     * @param string $alOrt
-     * @param string $cargoCenter
-     * @param string $streetKey
-     * @param string $districtKey
-     */
     public function __construct(
-        string $routingCode,
-        string $alOrt,
-        string $cargoCenter,
-        string $streetKey,
-        string $districtKey
+        private readonly string $routingCode,
+        private readonly string $alOrt,
+        private readonly string $cargoCenter,
+        private readonly string $streetKey,
+        private readonly string $districtKey
     ) {
-        $this->routingCode = $routingCode;
-        $this->alOrt = $alOrt;
-        $this->cargoCenter = $cargoCenter;
-        $this->streetKey = $streetKey;
-        $this->districtKey = $districtKey;
     }
 
     public function getRoutingCode(): string

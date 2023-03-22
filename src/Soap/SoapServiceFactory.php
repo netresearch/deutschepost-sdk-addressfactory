@@ -19,19 +19,8 @@ use Psr\Log\LoggerInterface;
 
 class SoapServiceFactory implements ServiceFactoryInterface
 {
-    /**
-     * @var \SoapClient
-     */
-    private $soapClient;
-
-    /**
-     * SoapServiceFactory constructor.
-     *
-     * @param \SoapClient $soapClient
-     */
-    public function __construct(\SoapClient $soapClient)
+    public function __construct(private readonly \SoapClient $soapClient)
     {
-        $this->soapClient = $soapClient;
     }
 
     public function createAddressVerificationService(

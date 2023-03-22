@@ -15,7 +15,7 @@ abstract class PruefungType extends BearbeitungType
      *
      * @var string
      */
-    protected $ergebnis;
+    protected string $ergebnis;
 
     /**
      * @return string

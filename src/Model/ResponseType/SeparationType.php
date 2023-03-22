@@ -13,7 +13,7 @@ class SeparationType extends SeparationRestriction
     /**
      * @var Quelle[] $Quelle
      */
-    protected $Quelle;
+    private array $Quelle;
 
     /**
      * @return Quelle[]

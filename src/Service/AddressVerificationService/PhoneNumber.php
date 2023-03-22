@@ -12,33 +12,11 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 
 class PhoneNumber implements PhoneNumberInterface
 {
-    /**
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @var string
-     */
-    private $areaCode;
-
-    /**
-     * @var string
-     */
-    private $dialNumber;
-
-    /**
-     * PhoneNumber constructor.
-     *
-     * @param string $type
-     * @param string $areaCode
-     * @param string $dialNumber
-     */
-    public function __construct(string $type, string $areaCode, string $dialNumber)
-    {
-        $this->type = $type;
-        $this->areaCode = $areaCode;
-        $this->dialNumber = $dialNumber;
+    public function __construct(
+        private readonly string $type,
+        private readonly string $areaCode,
+        private readonly string $dialNumber
+    ) {
     }
 
     public function getType(): string

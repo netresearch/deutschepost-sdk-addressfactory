@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class Quelle
 {
-    /**
-     * @var AttributRefType $Ziel
-     */
-    protected $Ziel;
+    private AttributRefType $Ziel;
 
-    /**
-     * @return AttributRefType
-     */
     public function getZiel(): AttributRefType
     {
         return $this->Ziel;

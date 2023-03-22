@@ -34,9 +34,6 @@ class AuthenticationTest extends SoapClientTestCase
      * @test
      * @dataProvider invalidCredentialsDataProvider
      *
-     * @param string $username
-     * @param string $password
-     * @param string $responseXml
      *
      * @throws ServiceException
      */

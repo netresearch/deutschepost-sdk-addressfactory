@@ -11,38 +11,17 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Test\Expectation;
 class RequestXPath
 {
     /**
-     * @var string
-     */
-    private $xpath;
-
-    /**
-     * @var string
-     */
-    private $value;
-
-    /**
      * RequestXPath constructor.
-     *
-     * @param string $xpath
-     * @param string $value
      */
-    public function __construct(string $xpath, string $value)
+    public function __construct(private readonly string $xpath, private readonly string $value)
     {
-        $this->xpath = $xpath;
-        $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
     public function getXpath(): string
     {
         return $this->xpath;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;

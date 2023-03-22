@@ -10,40 +10,22 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class GruppeninfoType
 {
-    /**
-     * @var KopfdubletteType $Kopfdublette
-     */
-    protected $Kopfdublette;
+    private KopfdubletteType $Kopfdublette;
 
-    /**
-     * @var int $gruppe
-     */
-    protected $gruppe;
+    private int $gruppe;
 
-    /**
-     * @var int $sequenceId
-     */
-    protected $sequenceId;
+    private int $sequenceId;
 
-    /**
-     * @return KopfdubletteType
-     */
     public function getKopfdublette(): KopfdubletteType
     {
         return $this->Kopfdublette;
     }
 
-    /**
-     * @return int
-     */
     public function getGruppe(): int
     {
         return $this->gruppe;
     }
 
-    /**
-     * @return int
-     */
     public function getSequenceId(): int
     {
         return $this->sequenceId;

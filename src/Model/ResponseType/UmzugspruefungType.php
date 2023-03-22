@@ -10,66 +10,36 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class UmzugspruefungType extends PruefungType
 {
-    /**
-     * @var KategorieType $Kategorie
-     */
-    protected $Kategorie;
+    private KategorieType $Kategorie;
 
-    /**
-     * @var GeschlossenerZeitraumType $GueltigkeitNachsendeauftrag
-     */
-    protected $GueltigkeitNachsendeauftrag;
+    private GeschlossenerZeitraumType $GueltigkeitNachsendeauftrag;
 
-    /**
-     * @var string $quelle
-     */
-    protected $quelle;
+    private string $quelle;
 
-    /**
-     * @var int $widerspruch
-     */
-    protected $widerspruch;
+    private int $widerspruch;
 
-    /**
-     * @var boolean $los
-     */
-    protected $los;
+    private bool $los;
 
-    /**
-     * @return KategorieType
-     */
     public function getKategorie(): KategorieType
     {
         return $this->Kategorie;
     }
 
-    /**
-     * @return GeschlossenerZeitraumType
-     */
     public function getGueltigkeitNachsendeauftrag(): GeschlossenerZeitraumType
     {
         return $this->GueltigkeitNachsendeauftrag;
     }
 
-    /**
-     * @return string
-     */
     public function getQuelle(): string
     {
         return $this->quelle;
     }
 
-    /**
-     * @return int
-     */
     public function getWiderspruch(): int
     {
         return $this->widerspruch;
     }
 
-    /**
-     * @return boolean
-     */
     public function getLos(): bool
     {
         return $this->los;

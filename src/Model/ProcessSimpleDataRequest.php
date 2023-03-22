@@ -14,67 +14,43 @@ class ProcessSimpleDataRequest
 {
     /**
      * The session id.
-     *
-     * @var string|null
      */
-    private $sessionId;
+    private ?string $sessionId = null;
 
     /**
      * The configuration name. You can get the name of the configuration from Deutsche Post Direkt.
-     *
-     * @var string|null
      */
-    private $configName;
+    private ?string $configName = null;
 
     /**
      * The "mandantId" parameter is optionally and can be used to determine which clients are to be
      * compared. You receive the "mandantId" from DeutschePost Direkt GmbH.
-     *
-     * @var string|null
      */
-    private $mandantId;
+    private ?string $mandantId = null;
 
     /**
      * The input data record to be compared.
-     *
-     * @var SimpleInRecordWSType
      */
-    private $simpleInRecord;
+    private ?SimpleInRecordWSType $simpleInRecord = null;
 
-    /**
-     * @param string|null $sessionId
-     * @return ProcessSimpleDataRequest
-     */
     public function setSessionId(?string $sessionId): self
     {
         $this->sessionId = $sessionId;
         return $this;
     }
 
-    /**
-     * @param string|null $configName
-     * @return ProcessSimpleDataRequest
-     */
     public function setConfigName(?string $configName): self
     {
         $this->configName = $configName;
         return $this;
     }
 
-    /**
-     * @param string|null $clientId
-     * @return ProcessSimpleDataRequest
-     */
     public function setMandantId(?string $clientId): self
     {
         $this->mandantId = $clientId;
         return $this;
     }
 
-    /**
-     * @param SimpleInRecordWSType $simpleInRecord
-     * @return ProcessSimpleDataRequest
-     */
     public function setSimpleInRecord(SimpleInRecordWSType $simpleInRecord): self
     {
         $this->simpleInRecord = $simpleInRecord;

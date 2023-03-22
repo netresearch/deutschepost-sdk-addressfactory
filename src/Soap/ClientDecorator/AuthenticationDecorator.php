@@ -21,42 +21,15 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
 
 class AuthenticationDecorator extends AbstractDecorator
 {
-    const WSSE_NS            = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
-    const WSSE_PASSWORD_TYPE = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText'; // phpcs:ignore
+    final public const WSSE_NS = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
+    final public const WSSE_PASSWORD_TYPE = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText';
 
-    /**
-     * @var \SoapClient
-     */
-    private $soapClient;
-
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * AuthenticationDecorator constructor.
-     *
-     * @param string $username
-     * @param string $password
-     * @param AbstractClient $client
-     * @param \SoapClient $soapClient
-     */
     public function __construct(
         AbstractClient $client,
-        \SoapClient $soapClient,
-        string $username,
-        string $password
+        private readonly \SoapClient $soapClient,
+        private readonly string $username,
+        private readonly string $password
     ) {
-        $this->soapClient = $soapClient;
-        $this->username = $username;
-        $this->password = $password;
-
         parent::__construct($client);
     }
 
@@ -69,7 +42,7 @@ class AuthenticationDecorator extends AbstractDecorator
      *
      * @return void
      */
-    private function addAuthHeader()
+    private function addAuthHeader(): void
     {
         $xml = <<<XML
 <wsse:Security xmlns:wsse="%s" SOAP-ENV:mustUnderstand="1">

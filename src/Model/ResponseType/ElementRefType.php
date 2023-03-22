@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class ElementRefType
 {
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

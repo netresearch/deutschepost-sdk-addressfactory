@@ -243,17 +243,17 @@ class RecordStub
 
     public function getGeoUtmEasting(): string
     {
-        return (string) 5620529.081787705;
+        return (string) 5_620_529.081787705;
     }
 
     public function getGeoGkNorthing(): string
     {
-        return (string) 5621252.89057518;
+        return (string) 5_621_252.89057518;
     }
 
     public function getGeoGkEasting(): string
     {
-        return (string) 2579160.87986511;
+        return (string) 2_579_160.87986511;
     }
 
     public function getPostfachNumber(): string

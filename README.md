@@ -7,7 +7,7 @@ ADDRESSFACTORY DIRECT web service which allows to correct and enrich address dat
 
 ### System Requirements
 
-- PHP 7.1+ with SOAP extension
+- PHP 8.1+ with SOAP extension
 
 ### Package Requirements
 
@@ -18,31 +18,33 @@ ADDRESSFACTORY DIRECT web service which allows to correct and enrich address dat
 - `phpstan/phpstan`: Static analysis tool
 - `phpunit/phpunit`: Testing framework
 - `squizlabs/php_codesniffer`: Static analysis tool
+- `rector/rector`: Refactoring tool
+- `fig/log-test`: Test utilities for `psr/log`
 
 ## Installation
 
 ```bash
-$ composer require deutschepost/sdk-api-addressfactory
+composer require deutschepost/sdk-api-addressfactory
 ```
 
 ## Uninstallation
 
 ```bash
-$ composer remove deutschepost/sdk-api-addressfactory
+composer remove deutschepost/sdk-api-addressfactory
 ```
 
 ## Testing
 
 ```bash
-$ composer run test
+composer run test
 ```
 
 ## Features
 
 The Postdirekt Addressfactory API SDK supports the following features:
 
-* Get address record by flat address data
-* Get address record(s) by complex address data
+- Get address record by flat address data
+- Get address record(s) by complex address data
 
 ### Get Record By Address
 
@@ -52,11 +54,11 @@ Verify a single address record by passing name and street address.
 
 The library's components suitable for consumption comprise of
 
-* service:
-  * service factory
-  * address verification service
-* data transfer objects:
-  * response record with corrections and status codes indicating issues with the input data
+- service:
+  - service factory
+  - address verification service
+- data transfer objects:
+  - response record with corrections and status codes indicating issues with the input data
 
 #### Usage
 
@@ -82,12 +84,12 @@ Verify address records by passing in a complex request objects.
 
 The library's components suitable for consumption comprise of
 
-* service:
-  * service factory
-  * address verification service
-  * data transfer object builder
-* data transfer objects:
-  * response record with corrections and status codes indicating issues with the input data
+- service:
+  - service factory
+  - address verification service
+  - data transfer object builder
+- data transfer objects:
+  - response record with corrections and status codes indicating issues with the input data
 
 #### Usage
 

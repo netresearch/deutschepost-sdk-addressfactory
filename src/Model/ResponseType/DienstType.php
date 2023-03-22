@@ -10,238 +10,130 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class DienstType extends Durchfuehrbares
 {
-    /**
-     * @var TaetigkeitType $Taetigkeit
-     */
-    protected $Taetigkeit;
+    private TaetigkeitType $Taetigkeit;
 
-    /**
-     * @var BonitaetspruefungType $Bonitaetspruefung
-     */
-    protected $Bonitaetspruefung;
+    private BonitaetspruefungType $Bonitaetspruefung;
 
-    /**
-     * @var IdentifizierungType $Identifizierung
-     */
-    protected $Identifizierung;
+    private IdentifizierungType $Identifizierung;
 
-    /**
-     * @var AnreicherungType $Anreicherung
-     */
-    protected $Anreicherung;
+    private AnreicherungType $Anreicherung;
 
-    /**
-     * @var KorrekturType $Korrektur
-     */
-    protected $Korrektur;
+    private KorrekturType $Korrektur;
 
-    /**
-     * @var InitialAufloesungType $InitialAufloesung
-     */
-    protected $InitialAufloesung;
+    private InitialAufloesungType $InitialAufloesung;
 
-    /**
-     * @var VerschiebungType $Verschiebung
-     */
-    protected $Verschiebung;
+    private VerschiebungType $Verschiebung;
 
-    /**
-     * @var TypAenderungType $TypAenderung
-     */
-    protected $TypAenderung;
+    private TypAenderungType $TypAenderung;
 
-    /**
-     * @var UmstrukturierungType $Umstrukturierung
-     */
-    protected $Umstrukturierung;
+    private UmstrukturierungType $Umstrukturierung;
 
-    /**
-     * @var SeparationType $Separation
-     */
-    protected $Separation;
+    private SeparationType $Separation;
 
-    /**
-     * @var ZustellbarkeitspruefungType $Zustellbarkeitspruefung
-     */
-    protected $Zustellbarkeitspruefung;
+    private ZustellbarkeitspruefungType $Zustellbarkeitspruefung;
 
-    /**
-     * @var DublettenpruefungType $Dublettenpruefung
-     */
-    protected $Dublettenpruefung;
+    private DublettenpruefungType $Dublettenpruefung;
 
-    /**
-     * @var SonstigeTaetigkeitType $SonstigeTaetigkeit
-     */
-    protected $SonstigeTaetigkeit;
+    private SonstigeTaetigkeitType $SonstigeTaetigkeit;
 
-    /**
-     * @var EntfernungType $Entfernung
-     */
-    protected $Entfernung;
+    private EntfernungType $Entfernung;
 
-    /**
-     * @var UmzugspruefungType $Umzugspruefung
-     */
-    protected $Umzugspruefung;
+    private UmzugspruefungType $Umzugspruefung;
 
-    /**
-     * @var GueltigkeitspruefungType $Gueltigkeitspruefung
-     */
-    protected $Gueltigkeitspruefung;
+    private GueltigkeitspruefungType $Gueltigkeitspruefung;
 
-    /**
-     * @var string $Log
-     */
-    protected $Log;
+    private string $Log;
 
-    /**
-     * @var string $name
-     */
-    protected $name;
+    private string $name;
 
-    /**
-     * @return TaetigkeitType
-     */
     public function getTaetigkeit(): TaetigkeitType
     {
         return $this->Taetigkeit;
     }
 
-    /**
-     * @return BonitaetspruefungType
-     */
     public function getBonitaetspruefung(): BonitaetspruefungType
     {
         return $this->Bonitaetspruefung;
     }
 
-    /**
-     * @return IdentifizierungType
-     */
     public function getIdentifizierung(): IdentifizierungType
     {
         return $this->Identifizierung;
     }
 
-    /**
-     * @return AnreicherungType
-     */
     public function getAnreicherung(): AnreicherungType
     {
         return $this->Anreicherung;
     }
 
-    /**
-     * @return KorrekturType
-     */
     public function getKorrektur(): KorrekturType
     {
         return $this->Korrektur;
     }
 
-    /**
-     * @return InitialAufloesungType
-     */
     public function getInitialAufloesung(): InitialAufloesungType
     {
         return $this->InitialAufloesung;
     }
 
-    /**
-     * @return VerschiebungType
-     */
     public function getVerschiebung(): VerschiebungType
     {
         return $this->Verschiebung;
     }
 
-    /**
-     * @return TypAenderungType
-     */
     public function getTypAenderung(): TypAenderungType
     {
         return $this->TypAenderung;
     }
 
 
-    /**
-     * @return UmstrukturierungType
-     */
     public function getUmstrukturierung(): UmstrukturierungType
     {
         return $this->Umstrukturierung;
     }
 
 
-    /**
-     * @return SeparationType
-     */
     public function getSeparation(): SeparationType
     {
         return $this->Separation;
     }
 
-    /**
-     * @return ZustellbarkeitspruefungType
-     */
     public function getZustellbarkeitspruefung(): ZustellbarkeitspruefungType
     {
         return $this->Zustellbarkeitspruefung;
     }
 
 
-    /**
-     * @return DublettenpruefungType
-     */
     public function getDublettenpruefung(): DublettenpruefungType
     {
         return $this->Dublettenpruefung;
     }
 
-    /**
-     * @return SonstigeTaetigkeitType
-     */
     public function getSonstigeTaetigkeit(): SonstigeTaetigkeitType
     {
         return $this->SonstigeTaetigkeit;
     }
 
-    /**
-     * @return EntfernungType
-     */
     public function getEntfernung(): EntfernungType
     {
         return $this->Entfernung;
     }
 
-    /**
-     * @return UmzugspruefungType
-     */
     public function getUmzugspruefung(): UmzugspruefungType
     {
         return $this->Umzugspruefung;
     }
 
-    /**
-     * @return GueltigkeitspruefungType
-     */
     public function getGueltigkeitspruefung(): GueltigkeitspruefungType
     {
         return $this->Gueltigkeitspruefung;
     }
 
-    /**
-     * @return string
-     */
     public function getLog(): string
     {
         return $this->Log;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

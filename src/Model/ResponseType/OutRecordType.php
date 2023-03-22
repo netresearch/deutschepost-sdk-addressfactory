@@ -12,53 +12,29 @@ use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RecordType;
 
 class OutRecordType extends RecordType
 {
-    /**
-     * @var MicrodialogItemType $MicrodialogItem
-     */
-    protected $MicrodialogItem;
+    protected MicrodialogItemType $MicrodialogItem;
 
-    /**
-     * @var MoveSourceType $MoveSource
-     */
-    protected $MoveSource;
+    protected MoveSourceType $MoveSource;
 
-    /**
-     * @var StatusItemType $StatusItem
-     */
-    protected $StatusItem;
+    protected StatusItemType $StatusItem;
 
-    /**
-     * @var PreisType $Preis
-     */
-    protected $Preis;
+    protected PreisType $Preis;
 
-    /**
-     * @return MicrodialogItemType
-     */
     public function getMicrodialogItem(): MicrodialogItemType
     {
         return $this->MicrodialogItem;
     }
 
-    /**
-     * @return MoveSourceType
-     */
     public function getMoveSource(): MoveSourceType
     {
         return $this->MoveSource;
     }
 
-    /**
-     * @return StatusItemType
-     */
     public function getStatusItem(): StatusItemType
     {
         return $this->StatusItem;
     }
 
-    /**
-     * @return PreisType
-     */
     public function getPreis(): PreisType
     {
         return $this->Preis;

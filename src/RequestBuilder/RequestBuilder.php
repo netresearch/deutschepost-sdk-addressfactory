@@ -37,7 +37,7 @@ class RequestBuilder implements RequestBuilderInterface
      *
      * @var mixed[]
      */
-    private $data = [];
+    private array $data = [];
 
     public function setMetadata(
         int $recordId,
@@ -342,7 +342,7 @@ class RequestBuilder implements RequestBuilderInterface
 
     public function create()
     {
-        $recordId = isset($this->data['meta']['recordId']) ? $this->data['meta']['recordId'] : time();
+        $recordId = $this->data['meta']['recordId'] ?? time();
         $record = new InRecordWSType($recordId);
         if (isset($this->data['meta']['fileType'])) {
             $record->setFileType($this->data['meta']['fileType']);
@@ -711,9 +711,7 @@ class RequestBuilder implements RequestBuilderInterface
         // Arbitrary extra fields
         if (isset($this->data['fields']) && is_array($this->data['fields'])) {
             $fields = array_map(
-                function (array $data) {
-                    return new ExtFieldType($data['value'], $data['key']);
-                },
+                fn(array $data) => new ExtFieldType($data['value'], $data['key']),
                 $this->data['fields']
             );
             $record->setExtFieldItem(new ExtFieldItemType($fields));

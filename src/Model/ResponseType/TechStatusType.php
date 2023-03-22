@@ -13,7 +13,7 @@ class TechStatusType
     /**
      * @var ModuleStatusType[] $ModuleStatus
      */
-    protected $ModuleStatus;
+    private array $ModuleStatus;
 
     /**
      * @return ModuleStatusType[]

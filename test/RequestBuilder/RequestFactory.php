@@ -15,18 +15,10 @@ use PostDirekt\Sdk\AddressfactoryDirect\Test\TestDouble\RecordStub;
 class RequestFactory
 {
     /**
-     * @var RequestBuilderInterface
-     */
-    private $requestBuilder;
-
-    /**
      * RequestFactory constructor.
-     *
-     * @param RequestBuilderInterface $requestBuilder
      */
-    public function __construct(RequestBuilderInterface $requestBuilder)
+    public function __construct(private readonly RequestBuilderInterface $requestBuilder)
     {
-        $this->requestBuilder = $requestBuilder;
     }
 
     public function create(RecordStub $data): InRecordWSType

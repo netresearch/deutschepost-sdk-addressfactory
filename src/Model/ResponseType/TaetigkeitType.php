@@ -13,17 +13,14 @@ abstract class TaetigkeitType
     /**
      * @var AttributRefType[] $AttributRef
      */
-    protected $AttributRef;
+    protected array $AttributRef;
 
     /**
      * @var ZusatzInfoType[] $ZusatzInfo
      */
-    protected $ZusatzInfo;
+    protected array $ZusatzInfo;
 
-    /**
-     * @var string $elementRef
-     */
-    protected $elementRef;
+    protected string $elementRef;
 
     /**
      * @return AttributRefType[]

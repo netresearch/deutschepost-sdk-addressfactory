@@ -38,25 +38,16 @@ class GetRecordTest extends SoapClientTestCase
         return GetRecordTestProvider::processPackstationSuccess();
     }
 
-    /**
-     * @return array
-     */
     public function postfilialeDataProvider(): array
     {
         return GetRecordTestProvider::processPostfilialeSuccess();
     }
 
-    /**
-     * @return array
-     */
     public function postfachDataProvider(): array
     {
         return GetRecordTestProvider::processPostfachSuccess();
     }
 
-    /**
-     * @return array
-     */
     public function geDataProvider(): array
     {
         return GetRecordTestProvider::processGeSuccess();
@@ -196,10 +187,6 @@ class GetRecordTest extends SoapClientTestCase
      * @test
      * @dataProvider postfilialeDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param string $responseXml
      * @throws AuthenticationException
      * @throws ServiceException
      */
@@ -247,10 +234,6 @@ class GetRecordTest extends SoapClientTestCase
      * @test
      * @dataProvider postfachDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param string $responseXml
      * @throws AuthenticationException
      * @throws ServiceException
      */

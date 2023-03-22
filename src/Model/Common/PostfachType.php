@@ -10,120 +10,65 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 
 class PostfachType
 {
-    /**
-     * @var string|null $Nr
-     */
-    protected $Nr;
+    private ?string $Nr = null;
 
-    /**
-     * @var string|null $Plz
-     */
-    protected $Plz;
+    private ?string $Plz = null;
 
-    /**
-     * @var OrtType|null $Ort
-     */
-    protected $Ort;
+    private ?OrtType $Ort = null;
 
-    /**
-     * @var OrtszusatzType|null $Ortszusatz
-     */
-    protected $Ortszusatz;
+    private ?OrtszusatzType $Ortszusatz = null;
 
-    /**
-     * @var LeitdatenType|null $Leitdaten
-     */
-    protected $Leitdaten;
+    private ?LeitdatenType $Leitdaten = null;
 
-    /**
-     * @return string
-     */
     public function getNr(): string
     {
         return (string) $this->Nr;
     }
 
-    /**
-     * @param string $Nr
-     *
-     * @return PostfachType
-     */
     public function setNr(string $Nr): PostfachType
     {
         $this->Nr = $Nr;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPlz(): string
     {
         return (string) $this->Plz;
     }
 
-    /**
-     * @param string $Plz
-     *
-     * @return PostfachType
-     */
     public function setPlz(string $Plz): PostfachType
     {
         $this->Plz = $Plz;
         return $this;
     }
 
-    /**
-     * @return OrtType|null
-     */
     public function getOrt(): ?OrtType
     {
         return $this->Ort;
     }
 
-    /**
-     * @param OrtType $Ort
-     *
-     * @return PostfachType
-     */
     public function setOrt(OrtType $Ort): PostfachType
     {
         $this->Ort = $Ort;
         return $this;
     }
 
-    /**
-     * @return OrtszusatzType|null
-     */
     public function getOrtszusatz(): ?OrtszusatzType
     {
         return $this->Ortszusatz;
     }
 
-    /**
-     * @param OrtszusatzType $Ortszusatz
-     *
-     * @return PostfachType
-     */
     public function setOrtszusatz(OrtszusatzType $Ortszusatz): PostfachType
     {
         $this->Ortszusatz = $Ortszusatz;
         return $this;
     }
 
-    /**
-     * @return LeitdatenType|null
-     */
     public function getLeitdaten(): ?LeitdatenType
     {
         return $this->Leitdaten;
     }
 
-    /**
-     * @param LeitdatenType $Leitdaten
-     *
-     * @return PostfachType
-     */
     public function setLeitdaten(LeitdatenType $Leitdaten): PostfachType
     {
         $this->Leitdaten = $Leitdaten;

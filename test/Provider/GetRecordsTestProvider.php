@@ -21,7 +21,7 @@ class GetRecordsTestProvider
     {
         $requestBuilder = new RequestBuilder();
 
-        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setMetadata(1_580_213_265);
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setAddress('Deutschland', '53114', 'Bonn', 'Sträßchenweg', '10');
         $recordRequest = $requestBuilder->create();
@@ -56,7 +56,7 @@ class GetRecordsTestProvider
     {
         $requestBuilder = new RequestBuilder();
 
-        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setMetadata(1_580_213_265);
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setPersonPostNumber('12345678');
         $requestBuilder->setPackstation('150', '53114', 'Bonn');
@@ -100,7 +100,7 @@ class GetRecordsTestProvider
     {
         $requestBuilder = new RequestBuilder();
 
-        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setMetadata(1_580_213_265);
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setPersonPostNumber('12345678');
         $requestBuilder->setPostfiliale('540', '53113', 'Bonn');
@@ -144,7 +144,7 @@ class GetRecordsTestProvider
     {
         $requestBuilder = new RequestBuilder();
 
-        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setMetadata(1_580_213_265);
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setPersonPostNumber('12345678');
         $requestBuilder->setPostfach('540', '53113', 'Bonn');
@@ -188,7 +188,7 @@ class GetRecordsTestProvider
     {
         $requestBuilder = new RequestBuilder();
 
-        $requestBuilder->setMetadata(1580213265);
+        $requestBuilder->setMetadata(1_580_213_265);
         $requestBuilder->setPerson('Hans', 'Mustermann');
         $requestBuilder->setPersonPostNumber('12345678');
         $requestBuilder->setCorporateAddress('Bulkstation', '53113', 'Bonn');

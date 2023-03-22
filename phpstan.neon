@@ -3,3 +3,11 @@ parameters:
     level: 7
     paths:
         - src
+    ignoreErrors:
+        -
+            messages:
+                - "#^Property PostDirekt\\\\Sdk\\\\AddressfactoryDirect\\\\Model\\\\[a-zA-Z0-9\\_]+Request\\:\\:\\$[a-zA-Z0-9\\_]+ is never read, only written\\.$#"
+                - "#^Property PostDirekt\\\\Sdk\\\\AddressfactoryDirect\\\\Model\\\\[a-zA-Z0-9\\_]+Response\\:\\:\\$[a-zA-Z0-9\\_]+ is never written, only read\\.$#"
+                - "#^Property PostDirekt\\\\Sdk\\\\AddressfactoryDirect\\\\Model\\\\RequestType\\\\[a-zA-Z0-9\\_]+\\:\\:\\$[a-zA-Z0-9\\_]+ is never read, only written\\.$#"
+                - "#^Property PostDirekt\\\\Sdk\\\\AddressfactoryDirect\\\\Model\\\\ResponseType\\\\[a-zA-Z0-9\\_]+\\:\\:\\$[a-zA-Z0-9\\_]+ is never written, only read\\.$#"
+            path: src/Model/*

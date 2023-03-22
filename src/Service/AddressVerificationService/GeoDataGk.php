@@ -12,41 +12,15 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\GeoDataGkInterface;
 
 class GeoDataGk implements GeoDataGkInterface
 {
-    /**
-     * @var string
-     */
-    private $northing;
-
-    /**
-     * @var string
-     */
-    private $easting;
-
-    /**
-     * GeoDataGk constructor.
-     *
-     * @param string $northing
-     * @param string $easting
-     */
-    public function __construct(
-        string $northing,
-        string $easting
-    ) {
-        $this->northing = $northing;
-        $this->easting = $easting;
+    public function __construct(private readonly string $northing, private readonly string $easting)
+    {
     }
 
-    /**
-     * @return string
-     */
     public function getNorthing(): string
     {
         return $this->northing;
     }
 
-    /**
-     * @return string
-     */
     public function getEasting(): string
     {
         return $this->easting;

@@ -13,7 +13,7 @@ class ExtFieldItemType
     /**
      * @var ExtFieldType[]|null $ExtField
      */
-    protected $ExtField;
+    private ?array $ExtField;
 
     /**
      * @param ExtFieldType[] $ExtField
