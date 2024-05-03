@@ -41,10 +41,5 @@
         "test": "phpunit -c test/phpunit.xml",
         "phpstan": "phpstan --xdebug analyze src",
         "lint": "phpcs --exclude=PSR2.Classes.PropertyDeclaration,Generic.Files.LineLength --standard=PSR12 src test"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "2.1.x-dev"
-        }
     }
 }
