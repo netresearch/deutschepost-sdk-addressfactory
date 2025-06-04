@@ -10,9 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType;
 
 class OutRecordWSType extends OutRecordType
 {
-    /**
-     * @var string
-     */
     private string $icdTrefferKz;
 
     public function getIcdTrefferKz(): string

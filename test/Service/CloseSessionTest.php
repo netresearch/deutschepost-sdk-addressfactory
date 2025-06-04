@@ -23,7 +23,7 @@ class CloseSessionTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         return CloseSessionTestProvider::closeSession();
     }
@@ -31,7 +31,7 @@ class CloseSessionTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function authFailureDataProvider(): array
+    public static function authFailureDataProvider(): array
     {
         return FailureTestProvider::authenticationFailed();
     }
@@ -39,7 +39,7 @@ class CloseSessionTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function serverErrorDataProvider(): array
+    public static function serverErrorDataProvider(): array
     {
         return FailureTestProvider::serverError();
     }
@@ -53,13 +53,11 @@ class CloseSessionTest extends SoapClientTestCase
      *
      * Assert that web service communication gets logged.
      *
-     * @test
-     * @dataProvider dataProvider
      *
-     * @param string $sessionId
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function closeSession(string $sessionId, string $responseXml): void
     {
         $logger = new TestLogger();
@@ -84,12 +82,11 @@ class CloseSessionTest extends SoapClientTestCase
      * - communication gets logged
      * - an authentication exception is thrown
      *
-     * @test
-     * @dataProvider authFailureDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('authFailureDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function closeSessionAuthError(string $responseXml): void
     {
         $this->expectException(AuthenticationException::class);
@@ -121,12 +118,11 @@ class CloseSessionTest extends SoapClientTestCase
      * - communication gets logged
      * - a service exception is thrown
      *
-     * @test
-     * @dataProvider serverErrorDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('serverErrorDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function closeSessionServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);

@@ -15,9 +15,6 @@ class AttributRefType
      */
     private array $ZusatzInfo;
 
-    /**
-     * @var string $name
-     */
     private string $name;
 
     /**

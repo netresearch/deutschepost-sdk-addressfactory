@@ -29,7 +29,7 @@ interface AddressVerificationServiceInterface
      * @throws AuthenticationException
      * @throws ServiceException
      */
-    public function openSession(string $configName, string $clientId = null): string;
+    public function openSession(string $configName, ?string $clientId = null): string;
 
     /**
      * The operation "closeSession" closes a previously with "openSession" created session instance.
@@ -54,9 +54,9 @@ interface AddressVerificationServiceInterface
         string $houseNumber = '',
         string $lastName = '',
         string $firstName = '',
-        string $sessionId = null,
-        string $configName = null,
-        string $clientId = null
+        ?string $sessionId = null,
+        ?string $configName = null,
+        ?string $clientId = null
     ): RecordInterface;
 
     /**
@@ -66,18 +66,15 @@ interface AddressVerificationServiceInterface
      *
      * @param mixed[] $records
      * @param string|null $sessionId The id of the session to close
-     * @param string|null $configName
-     * @param string|null $clientId
      *
      * @return RecordInterface[]
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
     public function getRecords(
         array $records,
-        string $sessionId = null,
-        string $configName = null,
-        string $clientId = null
+        ?string $sessionId = null,
+        ?string $configName = null,
+        ?string $clientId = null
     ): array;
 }

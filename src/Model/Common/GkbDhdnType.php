@@ -10,14 +10,8 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 
 class GkbDhdnType
 {
-    /**
-     * @var string
-     */
     private string $Rechtswert;
 
-    /**
-     * @var string
-     */
     private string $Hochwert;
 
     public function __construct(

@@ -1,9 +1,9 @@
-includes:
 parameters:
     level: 7
     paths:
         - src
     ignoreErrors:
+        - '#Property .* is never assigned .* so it can be removed from the property type\.#'
         -
             messages:
                 - "#^Property PostDirekt\\\\Sdk\\\\AddressfactoryDirect\\\\Model\\\\[a-zA-Z0-9\\_]+Request\\:\\:\\$[a-zA-Z0-9\\_]+ is never read, only written\\.$#"

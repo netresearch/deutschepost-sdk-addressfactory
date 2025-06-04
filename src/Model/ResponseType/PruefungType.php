@@ -12,14 +12,9 @@ abstract class PruefungType extends BearbeitungType
 {
     /**
      * One of: positiv, negativ, unbestimmt
-     *
-     * @var string
      */
     protected string $ergebnis;
 
-    /**
-     * @return string
-     */
     public function getErgebnis(): string
     {
         return $this->ergebnis;

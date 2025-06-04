@@ -38,9 +38,6 @@ abstract class TaetigkeitType
         return $this->ZusatzInfo;
     }
 
-    /**
-     * @return string
-     */
     public function getElementRef(): string
     {
         return $this->elementRef;

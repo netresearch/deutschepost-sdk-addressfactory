@@ -25,7 +25,7 @@ class GetRecordTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function addressDataProvider(): array
+    public static function addressDataProvider(): array
     {
         return GetRecordTestProvider::processAddressSuccess();
     }
@@ -33,17 +33,17 @@ class GetRecordTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function packstationDataProvider(): array
+    public static function packstationDataProvider(): array
     {
         return GetRecordTestProvider::processPackstationSuccess();
     }
 
-    public function postfilialeDataProvider(): array
+    public static function postfilialeDataProvider(): array
     {
         return GetRecordTestProvider::processPostfilialeSuccess();
     }
 
-    public function postfachDataProvider(): array
+    public static function postfachDataProvider(): array
     {
         return GetRecordTestProvider::processPostfachSuccess();
     }
@@ -56,7 +56,7 @@ class GetRecordTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function authFailureDataProvider(): array
+    public static function authFailureDataProvider(): array
     {
         return FailureTestProvider::authenticationFailed();
     }
@@ -64,7 +64,7 @@ class GetRecordTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function serverErrorDataProvider(): array
+    public static function serverErrorDataProvider(): array
     {
         return FailureTestProvider::serverError();
     }
@@ -77,15 +77,11 @@ class GetRecordTest extends SoapClientTestCase
      * - different combinations of session id/config name/client id are processed properly
      * - communication gets logged
      *
-     * @test
-     * @dataProvider addressDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('addressDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getAddressRecordSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -134,15 +130,11 @@ class GetRecordTest extends SoapClientTestCase
      * - different combinations of session id/config name/client id are processed properly
      * - communication gets logged
      *
-     * @test
-     * @dataProvider packstationDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('packstationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPackstationRecordSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -184,12 +176,11 @@ class GetRecordTest extends SoapClientTestCase
     }
 
     /**
-     * @test
-     * @dataProvider postfilialeDataProvider
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('postfilialeDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPostfilialeRecordSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -231,12 +222,11 @@ class GetRecordTest extends SoapClientTestCase
     }
 
     /**
-     * @test
-     * @dataProvider postfachDataProvider
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('postfachDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPostfachRecordSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -284,12 +274,11 @@ class GetRecordTest extends SoapClientTestCase
      * - communication gets logged
      * - an authentication exception is thrown
      *
-     * @test
-     * @dataProvider authFailureDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('authFailureDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getRecordAuthError(string $responseXml): void
     {
         $this->expectException(AuthenticationException::class);
@@ -321,12 +310,11 @@ class GetRecordTest extends SoapClientTestCase
      * - communication gets logged
      * - a service exception is thrown
      *
-     * @test
-     * @dataProvider serverErrorDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('serverErrorDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getRecordServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);

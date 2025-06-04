@@ -30,7 +30,7 @@ class AddressItemMapper
 {
     public function mapParcelStation(AdrItemType $adrItem): ?ParcelStationInterface
     {
-        if ($adrItem->getPackstation() === null) {
+        if (!$adrItem->getPackstation() instanceof \PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PackstationType) {
             return null;
         }
         /** @var PackstationType $adr */
@@ -52,7 +52,7 @@ class AddressItemMapper
 
     public function mapPostOffice(AdrItemType $adrItem): ?PostOfficeInterface
     {
-        if ($adrItem->getPostfiliale() === null) {
+        if (!$adrItem->getPostfiliale() instanceof \PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfilialeType) {
             return null;
         }
         /** @var PostfilialeType $adr */
@@ -74,7 +74,7 @@ class AddressItemMapper
 
     public function mapBulkReceiver(AdrItemType $adrItem): ?BulkReceiver
     {
-        if ($adrItem->getGE() === null) {
+        if (!$adrItem->getGE() instanceof \PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GEType) {
             return null;
         }
         /** @var GEType $adr */
@@ -96,7 +96,7 @@ class AddressItemMapper
 
     public function mapPostalBox(AdrItemType $adrItem): ?PostalBox
     {
-        if ($adrItem->getPostfach() === null) {
+        if (!$adrItem->getPostfach() instanceof \PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfachType) {
             return null;
         }
         /** @var PostfachType $adr */
@@ -114,7 +114,7 @@ class AddressItemMapper
 
     public function mapAddress(AdrItemType $adrItem, ?NameItemType $name): ?Address
     {
-        if ($adrItem->getHausanschrift() === null) {
+        if (!$adrItem->getHausanschrift() instanceof \PostDirekt\Sdk\AddressfactoryDirect\Model\Common\HausanschriftType) {
             return null;
         }
         /** @var HausanschriftType $adr */

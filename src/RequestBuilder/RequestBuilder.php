@@ -54,15 +54,15 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPerson(
-        string $firstName = null,
-        string $lastName = null,
-        string $salutation = null,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $salutation = null,
         array $company = [],
-        string $prefix = null,
-        string $suffix = null,
-        string $academicTitle = null,
-        string $titleOfNobility = null,
-        string $gender = null
+        ?string $prefix = null,
+        ?string $suffix = null,
+        ?string $academicTitle = null,
+        ?string $titleOfNobility = null,
+        ?string $gender = null
     ): RequestBuilderInterface {
         $this->data['person']['firstName'] = $firstName;
         $this->data['person']['lastName'] = $lastName;
@@ -107,14 +107,14 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setAddress(
-        string $country = null,
-        string $postalCode = null,
-        string $city = null,
-        string $streetName = null,
-        string $streetNumber = null,
-        string $state = null,
-        string $addressAddition = null,
-        string $deliveryInstruction = null
+        ?string $country = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $streetName = null,
+        ?string $streetNumber = null,
+        ?string $state = null,
+        ?string $addressAddition = null,
+        ?string $deliveryInstruction = null
     ): RequestBuilderInterface {
         $this->data['address']['country'] = $country;
         $this->data['address']['postalCode'] = $postalCode;
@@ -129,12 +129,12 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setAddressDetails(
-        string $streetNumberAddition = null,
-        string $cityAddition = null,
-        string $urbanDistrict = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $streetNumberAddition = null,
+        ?string $cityAddition = null,
+        ?string $urbanDistrict = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface {
         $this->data['address']['streetNumberAddition'] = $streetNumberAddition;
         $this->data['address']['cityAddition'] = $cityAddition;
@@ -147,11 +147,11 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setAddressRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface {
         $this->data['address']['routing']['code'] = $routingCode;
         $this->data['address']['routing']['alOrt'] = $alOrt;
@@ -187,10 +187,10 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPostfach(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null
     ): RequestBuilderInterface {
         $this->data['postfach']['number'] = $number;
         $this->data['postfach']['postalCode'] = $postalCode;
@@ -201,11 +201,11 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPostfachRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface {
         $this->data['postfach']['routing']['code'] = $routingCode;
         $this->data['postfach']['routing']['alOrt'] = $alOrt;
@@ -217,14 +217,14 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPackstation(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface {
         $this->data['packstation']['number'] = $number;
         $this->data['packstation']['postalCode'] = $postalCode;
@@ -239,11 +239,11 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPackstationRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface {
         $this->data['packstation']['routing']['code'] = $routingCode;
         $this->data['packstation']['routing']['alOrt'] = $alOrt;
@@ -255,14 +255,14 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPostfiliale(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface {
         $this->data['postfiliale']['number'] = $number;
         $this->data['postfiliale']['postalCode'] = $postalCode;
@@ -277,11 +277,11 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setPostfilialeRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface {
         $this->data['postfiliale']['routing']['code'] = $routingCode;
         $this->data['postfiliale']['routing']['alOrt'] = $alOrt;
@@ -293,14 +293,14 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setCorporateAddress(
-        string $name = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $name = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface {
         $this->data['ge']['name'] = $name;
         $this->data['ge']['postalCode'] = $postalCode;
@@ -315,11 +315,11 @@ class RequestBuilder implements RequestBuilderInterface
     }
 
     public function setCorporateAddressRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface {
         $this->data['ge']['routing']['code'] = $routingCode;
         $this->data['ge']['routing']['alOrt'] = $alOrt;
@@ -340,7 +340,7 @@ class RequestBuilder implements RequestBuilderInterface
         return $this;
     }
 
-    public function create()
+    public function create(): InRecordWSType
     {
         $recordId = $this->data['meta']['recordId'] ?? time();
         $record = new InRecordWSType($recordId);
@@ -691,7 +691,7 @@ class RequestBuilder implements RequestBuilderInterface
         // Phone numbers
         if (isset($this->data['phoneNumbers']) && is_array($this->data['phoneNumbers'])) {
             $phoneNumbers = array_map(
-                function (array $phone) {
+                function (array $phone): RufnrType {
                     $nr = new RufnrType($phone['type']);
                     $nr->setOrtsvorwahl($phone['areaCode']);
                     $nr->setDurchwahl($phone['dialNumber']);
@@ -711,7 +711,7 @@ class RequestBuilder implements RequestBuilderInterface
         // Arbitrary extra fields
         if (isset($this->data['fields']) && is_array($this->data['fields'])) {
             $fields = array_map(
-                fn(array $data) => new ExtFieldType($data['value'], $data['key']),
+                fn(array $data): ExtFieldType => new ExtFieldType($data['value'], $data['key']),
                 $this->data['fields']
             );
             $record->setExtFieldItem(new ExtFieldItemType($fields));

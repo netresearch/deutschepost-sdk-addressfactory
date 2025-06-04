@@ -39,8 +39,6 @@ class AuthenticationDecorator extends AbstractDecorator
      * Uses plain XML to create the header node, instead of the PHP SOAP classes
      * as it is not possible to add attributes to a SoapVar (the "Type" attribute
      * of the password node).
-     *
-     * @return void
      */
     private function addAuthHeader(): void
     {

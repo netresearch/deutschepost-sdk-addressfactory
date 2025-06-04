@@ -16,12 +16,10 @@ class SoapClientFake extends \SoapClient
      *
      * PHPUnit does not pass through the wsdl to the client constructor, need to add it by overriding original one.
      *
-     * @param mixed $wsdl
      * @param mixed[]|null $options
-     *
      * @throws \SoapFault
      */
-    public function __construct(mixed $wsdl, array $options = null)
+    public function __construct(mixed $wsdl, ?array $options = null)
     {
         $wsdl = __DIR__ . '/../Provider/_files/AF-Direct-Service/AF-Direct.wsdl';
 

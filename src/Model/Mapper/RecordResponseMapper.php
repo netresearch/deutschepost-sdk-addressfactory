@@ -12,7 +12,13 @@ use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\PhoneNumberInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Api\Data\RecordInterface;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\AdrItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GeoItemType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\GEType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\LeitdatenType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\NameItemType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PackstationType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfachType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\PostfilialeType;
+use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrItemType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\Common\RufnrType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\ModuleCodesType;
 use PostDirekt\Sdk\AddressfactoryDirect\Model\ResponseType\OutRecordWSType;
@@ -47,7 +53,7 @@ class RecordResponseMapper
         $bulkReceiver = null;
 
         // Person
-        if ($outRecord->getNameItem() !== null) {
+        if ($outRecord->getNameItem() instanceof NameItemType) {
             /** @var NameItemType $name */
             $name = $outRecord->getNameItem();
             $company = [
@@ -71,7 +77,7 @@ class RecordResponseMapper
         }
 
         // Address data
-        if (($adrItem = $outRecord->getAdrItem()) !== null) {
+        if (($adrItem = $outRecord->getAdrItem()) instanceof AdrItemType) {
             $address = $this->addressItemMapper->mapAddress($adrItem, $outRecord->getNameItem());
             $parcelStation = $this->addressItemMapper->mapParcelStation($adrItem);
             $postOffice = $this->addressItemMapper->mapPostOffice($adrItem);
@@ -81,7 +87,7 @@ class RecordResponseMapper
         }
 
         // Geo Data
-        if ($outRecord->getGeoItem() !== null) {
+        if ($outRecord->getGeoItem() instanceof GeoItemType) {
             /** @var GeoItemType $geo */
             $geo = $outRecord->getGeoItem();
             if ($geo->getKoordWgs84() !== null) {
@@ -101,7 +107,7 @@ class RecordResponseMapper
         // Status Codes
         $statusCodes = array_reduce(
             $outRecord->getStatusItem()->getPDStatusCodeItem()->getModuleCodes(),
-            fn(array $codes, ModuleCodesType $moduleCodes) => array_merge($codes, $moduleCodes->getStatusCode()),
+            fn(array $codes, ModuleCodesType $moduleCodes): array => array_merge($codes, $moduleCodes->getStatusCode()),
             []
         );
 
@@ -126,23 +132,23 @@ class RecordResponseMapper
         AdrItemType $adrItem
     ): ?RoutingData {
         $routingData = $routing = null;
-        if ($adrItem->getPackstation() !== null) {
+        if ($adrItem->getPackstation() instanceof PackstationType) {
             $routing = $adrItem->getPackstation()->getLeitdaten();
         }
 
-        if ($adrItem->getPostfiliale() !== null) {
+        if ($adrItem->getPostfiliale() instanceof PostfilialeType) {
             $routing = $adrItem->getPostfiliale()->getLeitdaten();
         }
 
-        if ($adrItem->getPostfach() !== null) {
+        if ($adrItem->getPostfach() instanceof PostfachType) {
             $routing = $adrItem->getPostfach()->getLeitdaten();
         }
 
-        if ($adrItem->getGE() !== null) {
+        if ($adrItem->getGE() instanceof GEType) {
             $routing = $adrItem->getGE()->getLeitdaten();
         }
-        if ($routing !== null) {
-            $routingData = new RoutingData(
+        if ($routing instanceof LeitdatenType) {
+            return new RoutingData(
                 $routing->getLeitcode(),
                 $routing->getAlort(),
                 $routing->getFrachtzentrum(),
@@ -161,7 +167,7 @@ class RecordResponseMapper
     {
         $phoneNumbers = [];
         // Phone Numbers
-        if ($outRecord->getRufnrItem() !== null) {
+        if ($outRecord->getRufnrItem() instanceof RufnrItemType) {
             $map = [
                 'Unbekannt' => PhoneNumberInterface::TYPE_UNKNOWN,
                 'Privat' => PhoneNumberInterface::TYPE_PRIVATE,
@@ -170,7 +176,7 @@ class RecordResponseMapper
                 'Fax' => PhoneNumberInterface::TYPE_FAX,
             ];
             $phoneNumbers = array_map(
-                static fn(RufnrType $phoneNumber) => new PhoneNumber(
+                static fn(RufnrType $phoneNumber): PhoneNumber => new PhoneNumber(
                     $map[$phoneNumber->getTyp()] ?? PhoneNumberInterface::TYPE_UNKNOWN,
                     $phoneNumber->getOrtsvorwahl(),
                     $phoneNumber->getDurchwahl()

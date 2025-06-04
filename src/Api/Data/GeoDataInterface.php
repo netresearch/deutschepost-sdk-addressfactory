@@ -18,8 +18,5 @@ interface GeoDataInterface
      */
     public function getLatitude(): string;
 
-    /**
-     * @return string
-     */
     public function getLongitude(): string;
 }

@@ -21,6 +21,7 @@ use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractClient;
 use PostDirekt\Sdk\AddressfactoryDirect\Soap\AbstractDecorator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
+use PostDirekt\Sdk\AddressfactoryDirect\Model;
 
 class LoggerDecorator extends AbstractDecorator
 {
@@ -73,21 +74,21 @@ class LoggerDecorator extends AbstractDecorator
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse
     {
-        return $this->logCommunication(fn() => parent::openSession($request));
+        return $this->logCommunication(fn(): OpenSessionResponse => parent::openSession($request));
     }
 
     public function closeSession(CloseSessionRequest $request): CloseSessionResponse
     {
-        return $this->logCommunication(fn() => parent::closeSession($request));
+        return $this->logCommunication(fn(): CloseSessionResponse => parent::closeSession($request));
     }
 
     public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse
     {
-        return $this->logCommunication(fn() => parent::processSimpleData($request));
+        return $this->logCommunication(fn(): ProcessSimpleDataResponse => parent::processSimpleData($request));
     }
 
     public function processData(ProcessDataRequest $request): ProcessDataResponse
     {
-        return $this->logCommunication(fn() => parent::processData($request));
+        return $this->logCommunication(fn(): ProcessDataResponse => parent::processData($request));
     }
 }

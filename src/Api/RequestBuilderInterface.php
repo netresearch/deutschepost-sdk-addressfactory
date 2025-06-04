@@ -49,8 +49,6 @@ interface RequestBuilderInterface
     /**
      * Set a name for the inquiry.
      *
-     * @param string|null $firstName
-     * @param string|null $lastName
      * @param string|null $salutation Examples: "Frau", "Mr"
      * @param string[] $company Company, up to three lines
      * @param string|null $prefix Name prefix. e.g.: "von"
@@ -64,15 +62,15 @@ interface RequestBuilderInterface
      *
      */
     public function setPerson(
-        string $firstName = null,
-        string $lastName = null,
-        string $salutation = null,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $salutation = null,
         array $company = [],
-        string $prefix = null,
-        string $suffix = null,
-        string $academicTitle = null,
-        string $titleOfNobility = null,
-        string $gender = null
+        ?string $prefix = null,
+        ?string $suffix = null,
+        ?string $academicTitle = null,
+        ?string $titleOfNobility = null,
+        ?string $gender = null
     ): RequestBuilderInterface;
 
     /**
@@ -137,14 +135,14 @@ interface RequestBuilderInterface
      * @param string|null $deliveryInstruction Example: "4. Etage" (Zustellhinweis)
      */
     public function setAddress(
-        string $country = null,
-        string $postalCode = null,
-        string $city = null,
-        string $streetName = null,
-        string $streetNumber = null,
-        string $state = null,
-        string $addressAddition = null,
-        string $deliveryInstruction = null
+        ?string $country = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $streetName = null,
+        ?string $streetNumber = null,
+        ?string $state = null,
+        ?string $addressAddition = null,
+        ?string $deliveryInstruction = null
     ): RequestBuilderInterface;
 
     /**
@@ -158,29 +156,28 @@ interface RequestBuilderInterface
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
      */
     public function setAddressDetails(
-        string $streetNumberAddition = null,
-        string $cityAddition = null,
-        string $urbanDistrict = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $streetNumberAddition = null,
+        ?string $cityAddition = null,
+        ?string $urbanDistrict = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface;
 
     /**
      * Set a regular address' routing data for the inquiry.
      *
-     * @param string|null $routingCode
      * @param string|null $alOrt (Alphanummer des Bestimmungsortes)
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
      */
     public function setAddressRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface;
 
     /**
@@ -208,40 +205,35 @@ interface RequestBuilderInterface
      * Set a Postfach address for the inquiry.
      *
      * @param string|null $number Postfach number
-     * @param string|null $postalCode
-     * @param string|null $city
      * @param string|null $cityAddition Example: "am Main" (Ortszusatz)
      */
     public function setPostfach(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Postfach address' routing data for the inquiry.
      *
-     * @param string|null $routingCode
      * @param string|null $alOrt (Alphanummer des Bestimmungsortes)
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
      */
     public function setPostfachRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Packstation address for the inquiry.
      *
      * @param string|null $number Packstation number
-     * @param string|null $postalCode
-     * @param string|null $city
      * @param string|null $cityAddition Example: "am Main" (Ortszusatz)
      * @param string|null $state Federal state, e.g.: "Nordrhein-Westfalen", "Hessen" (Bundesland)
      * @param string|null $municipality (Gemeinde)
@@ -249,39 +241,36 @@ interface RequestBuilderInterface
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
      */
     public function setPackstation(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Packstation address' routing data for the inquiry.
      *
-     * @param string|null $routingCode
      * @param string|null $alOrt (Alphanummer des Bestimmungsortes)
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
      */
     public function setPackstationRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Postfiliale address for the inquiry.
      *
      * @param string|null $number Postfiliale number
-     * @param string|null $postalCode
-     * @param string|null $city
      * @param string|null $cityAddition Example: "am Main" (Ortszusatz)
      * @param string|null $state Federal state, e.g.: "Nordrhein-Westfalen", "Hessen" (Bundesland)
      * @param string|null $municipality (Gemeinde)
@@ -289,39 +278,36 @@ interface RequestBuilderInterface
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
      */
     public function setPostfiliale(
-        string $number = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $number = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Postfiliale address' routing data for the inquiry.
      *
-     * @param string|null $routingCode
      * @param string|null $alOrt (Alphanummer des Bestimmungsortes)
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
      */
     public function setPostfilialeRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Großempfänger address (large-scale addressee with own postal code).
      *
      * @param string|null $name Name of the institution/company/agency
-     * @param string|null $postalCode
-     * @param string|null $city
      * @param string|null $cityAddition Example: "am Main" (Ortszusatz)
      * @param string|null $state Federal state, e.g.: "Nordrhein-Westfalen", "Hessen" (Bundesland)
      * @param string|null $municipality (Gemeinde)
@@ -329,31 +315,30 @@ interface RequestBuilderInterface
      * @param string|null $region Administrative Region/District (Regierungsbezirk)
      */
     public function setCorporateAddress(
-        string $name = null,
-        string $postalCode = null,
-        string $city = null,
-        string $cityAddition = null,
-        string $state = null,
-        string $municipality = null,
-        string $district = null,
-        string $region = null
+        ?string $name = null,
+        ?string $postalCode = null,
+        ?string $city = null,
+        ?string $cityAddition = null,
+        ?string $state = null,
+        ?string $municipality = null,
+        ?string $district = null,
+        ?string $region = null
     ): RequestBuilderInterface;
 
     /**
      * Set a Großempfänger address' routing data for the inquiry.
      *
-     * @param string|null $routingCode
      * @param string|null $alOrt (Alphanummer des Bestimmungsortes)
      * @param string|null $cargoCenter (Frachtzentrum)
      * @param string|null $streetKey (Straßenschlüssel)
      * @param string|null $districtKey (KGS, Kreisgemeindeschlüssel)
      */
     public function setCorporateAddressRoutingData(
-        string $routingCode = null,
-        string $alOrt = null,
-        string $cargoCenter = null,
-        string $streetKey = null,
-        string $districtKey = null
+        ?string $routingCode = null,
+        ?string $alOrt = null,
+        ?string $cargoCenter = null,
+        ?string $streetKey = null,
+        ?string $districtKey = null
     ): RequestBuilderInterface;
 
     /**

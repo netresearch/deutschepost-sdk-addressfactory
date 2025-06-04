@@ -23,7 +23,7 @@ class OpenSessionTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         return OpenSessionTestProvider::openSession();
     }
@@ -31,7 +31,7 @@ class OpenSessionTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function authFailureDataProvider(): array
+    public static function authFailureDataProvider(): array
     {
         return FailureTestProvider::authenticationFailed();
     }
@@ -39,7 +39,7 @@ class OpenSessionTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function serverErrorDataProvider(): array
+    public static function serverErrorDataProvider(): array
     {
         return FailureTestProvider::serverError();
     }
@@ -56,16 +56,14 @@ class OpenSessionTest extends SoapClientTestCase
      * - a service exception is thrown in case of error
      * - a session id is returned in case of success
      *
-     * @test
-     * @dataProvider dataProvider
      *
-     * @param string $configName
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function openSession(string $configName, string $responseXml): void
     {
-        if (empty($configName)) {
+        if ($configName === '' || $configName === '0') {
             $this->expectException(ServiceException::class);
             $this->expectExceptionMessage('Internal Server Error');
         }
@@ -104,12 +102,11 @@ class OpenSessionTest extends SoapClientTestCase
      * - communication gets logged
      * - an authentication exception is thrown
      *
-     * @test
-     * @dataProvider authFailureDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('authFailureDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function openSessionAuthError(string $responseXml): void
     {
         $this->expectException(AuthenticationException::class);
@@ -141,12 +138,11 @@ class OpenSessionTest extends SoapClientTestCase
      * - communication gets logged
      * - a service exception is thrown
      *
-     * @test
-     * @dataProvider serverErrorDataProvider
      *
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('serverErrorDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function openSessionServerError(string $responseXml): void
     {
         $this->expectException(ServiceException::class);

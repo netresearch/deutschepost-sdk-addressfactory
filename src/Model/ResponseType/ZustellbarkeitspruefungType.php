@@ -12,8 +12,6 @@ class ZustellbarkeitspruefungType extends PruefungType
 {
     /**
      * One of: Person, Haushalt, Gebaeude
-     *
-     * @var string
      */
     private string $ebene;
 

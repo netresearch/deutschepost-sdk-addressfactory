@@ -16,8 +16,6 @@ class BonitaetspruefungType extends BearbeitungType
 
     /**
      * One of: gruen, gelb, rot
-     *
-     * @var string
      */
     private string $ampelwert;
 

@@ -12,9 +12,6 @@ class KorrekturType extends AttributBearbeitungRestriction
 {
     private bool $signifikant;
 
-    /**
-     * @return boolean
-     */
     public function getSignifikant(): bool
     {
         return $this->signifikant;

@@ -18,8 +18,6 @@ class IdentifizierungType extends TaetigkeitType
 
     /**
      * One of: Haerte0, Haerte1, Haerte2, Haerte3
-     *
-     * @var string
      */
     private string $genauigkeit;
 

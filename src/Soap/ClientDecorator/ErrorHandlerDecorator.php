@@ -58,21 +58,21 @@ class ErrorHandlerDecorator extends AbstractDecorator
 
     public function openSession(OpenSessionRequest $request): OpenSessionResponse
     {
-        return $this->execute(fn() => parent::openSession($request));
+        return $this->execute(fn(): OpenSessionResponse => parent::openSession($request));
     }
 
     public function closeSession(CloseSessionRequest $request): CloseSessionResponse
     {
-        return $this->execute(fn() => parent::closeSession($request));
+        return $this->execute(fn(): CloseSessionResponse => parent::closeSession($request));
     }
 
     public function processSimpleData(ProcessSimpleDataRequest $request): ProcessSimpleDataResponse
     {
-        return $this->execute(fn() => parent::processSimpleData($request));
+        return $this->execute(fn(): ProcessSimpleDataResponse => parent::processSimpleData($request));
     }
 
     public function processData(ProcessDataRequest $request): ProcessDataResponse
     {
-        return $this->execute(fn() => parent::processData($request));
+        return $this->execute(fn(): ProcessDataResponse => parent::processData($request));
     }
 }

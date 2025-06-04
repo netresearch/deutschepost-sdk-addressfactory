@@ -16,25 +16,16 @@ abstract class Durchfuehrbares
 
     protected bool $erfolg;
 
-    /**
-     * @return Fehler
-     */
     public function getFehler(): Fehler
     {
         return $this->Fehler;
     }
 
-    /**
-     * @return boolean
-     */
     public function getDurchgefuehrt(): bool
     {
         return $this->durchgefuehrt;
     }
 
-    /**
-     * @return boolean
-     */
     public function getErfolg(): bool
     {
         return $this->erfolg;

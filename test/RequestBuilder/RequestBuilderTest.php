@@ -22,7 +22,7 @@ class RequestBuilderTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         return [
             'full_request' => [
@@ -36,12 +36,12 @@ class RequestBuilderTest extends SoapClientTestCase
      *
      * Assert that all properties set through the builder are included in the request xml.
      *
-     * @test
-     * @dataProvider dataProvider
      *
      * @param RecordStub[] $requestData
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function createRequest(array $requestData): void
     {
         $logger = new TestLogger();

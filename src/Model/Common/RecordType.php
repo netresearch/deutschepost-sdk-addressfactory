@@ -10,9 +10,6 @@ namespace PostDirekt\Sdk\AddressfactoryDirect\Model\Common;
 
 class RecordType
 {
-    /**
-     * @var int $recordId
-     */
     protected int $recordId;
 
     protected ?int $sequenceId = null;
@@ -21,8 +18,6 @@ class RecordType
 
     /**
      * One of: Merge, Purge
-     *
-     * @var string|null $fileType
      */
     protected ?string $fileType = null;
 

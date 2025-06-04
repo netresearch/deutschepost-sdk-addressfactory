@@ -29,7 +29,7 @@ class AddressVerificationService implements AddressVerificationServiceInterface
     ) {
     }
 
-    public function openSession(string $configName, string $clientId = null): string
+    public function openSession(string $configName, ?string $clientId = null): string
     {
         $request = new OpenSessionRequest();
         $request->setConfigName($configName);
@@ -68,9 +68,9 @@ class AddressVerificationService implements AddressVerificationServiceInterface
         string $houseNumber = '',
         string $lastName = '',
         string $firstName = '',
-        string $sessionId = null,
-        string $configName = null,
-        string $clientId = null
+        ?string $sessionId = null,
+        ?string $configName = null,
+        ?string $clientId = null
     ): RecordInterface {
         $address = new SimpleInRecordWSType(time());
         $address->setPlz($postalCode)
@@ -99,9 +99,9 @@ class AddressVerificationService implements AddressVerificationServiceInterface
 
     public function getRecords(
         array $records,
-        string $sessionId = null,
-        string $configName = null,
-        string $clientId = null
+        ?string $sessionId = null,
+        ?string $configName = null,
+        ?string $clientId = null
     ): array {
         $requestType = new ProcessDataRequest();
         $requestType->setSessionId($sessionId);
@@ -112,7 +112,7 @@ class AddressVerificationService implements AddressVerificationServiceInterface
         try {
             $response = $this->client->processData($requestType);
             return array_map(
-                fn(OutRecordWSType $outRecord) => $this->recordResponseMapper->map($outRecord),
+                fn(OutRecordWSType $outRecord): RecordInterface => $this->recordResponseMapper->map($outRecord),
                 $response->getOutRecord()
             );
         } catch (AuthenticationErrorException $exception) {

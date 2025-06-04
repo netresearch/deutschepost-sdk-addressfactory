@@ -25,7 +25,7 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function addressDataProvider(): array
+    public static function addressDataProvider(): array
     {
         return GetRecordsTestProvider::processAddressSuccess();
     }
@@ -33,22 +33,22 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function packstationDataProvider(): array
+    public static function packstationDataProvider(): array
     {
         return GetRecordsTestProvider::processPackstationSuccess();
     }
 
-    public function postfilialeDataProvider(): array
+    public static function postfilialeDataProvider(): array
     {
         return GetRecordsTestProvider::processPostfilialeSuccess();
     }
 
-    public function postfachDataProvider(): array
+    public static function postfachDataProvider(): array
     {
         return GetRecordsTestProvider::processPostfachSuccess();
     }
 
-    public function geDataProvider(): array
+    public static function geDataProvider(): array
     {
         return GetRecordsTestProvider::processGeSuccess();
     }
@@ -56,7 +56,7 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return string[][]
      */
-    public function authFailureDataProvider(): array
+    public static function authFailureDataProvider(): array
     {
         return GetRecordsTestProvider::authenticationFailed();
     }
@@ -64,7 +64,7 @@ class GetRecordsTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function serverErrorDataProvider(): array
+    public static function serverErrorDataProvider(): array
     {
         return GetRecordsTestProvider::serverError();
     }
@@ -77,16 +77,12 @@ class GetRecordsTest extends SoapClientTestCase
      * - communication gets logged
      * - some important response properties are set
      *
-     * @test
-     * @dataProvider addressDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
      * @param InRecordWSType[] $inRecords
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('addressDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getAddressRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -95,7 +91,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
+            fn(InRecordWSType $inRecord): int => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -134,16 +130,12 @@ class GetRecordsTest extends SoapClientTestCase
      * - communication gets logged
      * - some important response properties are set
      *
-     * @test
-     * @dataProvider packstationDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
      * @param InRecordWSType[] $inRecords
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('packstationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPackstationRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -152,7 +144,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
+            fn(InRecordWSType $inRecord): int => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -185,12 +177,11 @@ class GetRecordsTest extends SoapClientTestCase
     }
 
     /**
-     * @test
-     * @dataProvider postfilialeDataProvider
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('postfilialeDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPostfilialeRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -199,7 +190,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
+            fn(InRecordWSType $inRecord): int => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -232,12 +223,11 @@ class GetRecordsTest extends SoapClientTestCase
     }
 
     /**
-     * @test
-     * @dataProvider postfachDataProvider
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('postfachDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getPostfachRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -246,7 +236,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
+            fn(InRecordWSType $inRecord): int => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -279,12 +269,11 @@ class GetRecordsTest extends SoapClientTestCase
     }
 
     /**
-     * @test
-     * @dataProvider geDataProvider
-     *
      * @throws AuthenticationException
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('geDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getGeRecordsSuccess(
         ?string $sessionId,
         ?string $configName,
@@ -293,7 +282,7 @@ class GetRecordsTest extends SoapClientTestCase
         string $responseXml
     ): void {
         $recordIds = array_map(
-            fn(InRecordWSType $inRecord) => $inRecord->getRecordId(),
+            fn(InRecordWSType $inRecord): int => $inRecord->getRecordId(),
             $inRecords
         );
 
@@ -332,16 +321,12 @@ class GetRecordsTest extends SoapClientTestCase
      * - communication gets logged
      * - an authentication exception is thrown
      *
-     * @test
-     * @dataProvider authFailureDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
      * @param InRecordWSType[] $inRecords
-     * @param string $responseXml
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('authFailureDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getRecordsAuthError(
         ?string $sessionId,
         ?string $configName,
@@ -381,16 +366,12 @@ class GetRecordsTest extends SoapClientTestCase
      * - only instances of ServiceException get thrown
      * - communication gets logged
      *
-     * @test
-     * @dataProvider serverErrorDataProvider
      *
-     * @param string|null $sessionId
-     * @param string|null $configName
-     * @param string|null $clientId
      * @param InRecordWSType[] $inRecords
-     * @param \SoapFault $soapFault
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('serverErrorDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function getRecordsServerError(
         ?string $sessionId,
         ?string $configName,

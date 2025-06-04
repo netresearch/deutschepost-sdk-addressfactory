@@ -22,7 +22,7 @@ class AuthenticationTest extends SoapClientTestCase
     /**
      * @return mixed[]
      */
-    public function invalidCredentialsDataProvider(): array
+    public static function invalidCredentialsDataProvider(): array
     {
         return FailureTestProvider::authInvalidCredentials();
     }
@@ -31,12 +31,12 @@ class AuthenticationTest extends SoapClientTestCase
      * Tests sending a request with invalid authentication credentials.
      * This should result into an "401 Unauthorized" error.
      *
-     * @test
-     * @dataProvider invalidCredentialsDataProvider
      *
      *
      * @throws ServiceException
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidCredentialsDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function createAuthenticationErrorRequest(
         string $username,
         string $password,
