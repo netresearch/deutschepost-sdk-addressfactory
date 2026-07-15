@@ -1,5 +1,13 @@
 # Postdirekt Addressfactory API SDK
 
+## Deprecation Notice
+
+In agreement with Deutsche Post Direkt GmbH, the **ADDRESSFACTORY** and **AUTOCOMPLETE** modules have been discontinued and are entering end-of-life.
+
+* No new customers will be onboarded for these modules by Deutsche Post Direkt.
+* Existing customers may continue to access the GitHub source code until approximately **June 2027**.
+* Official support for existing users will end on **December 31, 2026**.
+
 The Postdirekt Addressfactory API SDK package offers an interface to the
 ADDRESSFACTORY DIRECT web service which allows to correct and enrich address datasets.
 
